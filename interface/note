@@ -1,0 +1,4 @@
+(PhotonInfoTrackIso<2.0+0.001*PhotonInfoPt+0.0167*EvtInfo.RhoPU) &&
+(PhotonInfoEcalIso<4.2+0.006*PhotonInfoPt +0.183*EvtInfo.RhoPU) &&
+(PhotonInfoHcalIso<2.2+0.0025*PhotonInfoPt+0.062*EvtInfo.RhoPU)
+
