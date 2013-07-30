@@ -20,12 +20,20 @@
 /Ratio.root/1.1/Wed Mar 13 14:36:41 2013//
 /RecoJetSelection.h/1.2/Wed Mar 13 14:36:41 2013//
 /RecoLeptonSelection.h/1.2/Wed Mar 13 14:36:41 2013//
+/RecoLeptonSelection_forEfficiency.h/1.2/Sun Jun 23 18:21:34 2013//
 /RecoLooseLeptonSelection.h/1.1/Wed Mar 13 14:36:41 2013//
 /RecoLoosePhotonSelection.h/1.1/Wed Mar 13 14:36:41 2013//
 /RecoMZb.h/1.1/Tue Dec 11 14:26:33 2012//
 /RecoMoflljj.h/1.1/Tue Dec 11 14:26:33 2012//
 /RecoPhotonSelection.h/1.3/Wed Mar 13 14:42:40 2013//
 /RecoPhotonSelectionCheckingDR.h/1.1/Wed Mar 13 14:36:41 2013//
+/RecoPhotonSelectionFO.h/1.1/Tue Jun 18 13:38:12 2013//
+/RecoPhotonSelectionFO_NoPtCut.h/1.1/Wed Jun 26 13:23:31 2013//
+/RecoPhotonSelectionNoElectronVeto.h/1.1/Tue Jun 18 13:41:53 2013//
+/RecoPhotonSelectionNoElectronVeto_NoPtCut.h/1.1/Wed Jun 26 13:24:10 2013//
+/RecoPhotonSelectionOnlyDRandPt.h/1.1/Tue Jun 18 13:42:26 2013//
+/RecoPhotonSelectionTIGHT.h/1.1/Tue Jun 18 13:42:43 2013//
+/RecoPhotonSelectionTIGHT_NoPtCut.h/1.1/Wed Jun 26 13:23:45 2013//
 /RecoTstar.h/1.1/Wed Mar 13 14:36:41 2013//
 /RecoZboson.h/1.1/Tue Dec 11 14:26:34 2012//
 /RecoZbosonFordiPhoton.h/1.1/Tue Dec 11 14:26:34 2012//
@@ -35,6 +43,7 @@
 /TopTriggerEfficiencyProvider.cc/1.1/Wed Mar 13 14:36:41 2013//
 /TopTriggerEfficiencyProvider.h/1.1/Wed Mar 13 14:36:42 2013//
 /TriggerBooking.h/1.2/Wed Mar 13 14:36:43 2013//
+/UseEIDRhoCorIsoR03.h/1.2/Mon May  6 15:22:27 2013//
 /Weight3D.root/1.1/Tue Dec 11 14:26:36 2012//
 /Weight3DMinus.root/1.1/Tue Dec 11 14:26:36 2012//
 /Weight3DPlus.root/1.1/Tue Dec 11 14:26:37 2012//
@@ -58,5 +67,4 @@
 /samples_tr_1lepton4jets.h/1.1/Wed Mar 13 14:36:45 2013//
 /setTDRStyle.C/1.1/Tue Dec 11 14:26:40 2012//
 /test.C/1.1/Tue Dec 11 14:26:40 2012//
-/UseEIDRhoCorIsoR03.h/1.2/Mon May  6 15:21:37 2013//
 D

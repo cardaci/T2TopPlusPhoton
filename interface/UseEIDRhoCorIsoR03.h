@@ -98,7 +98,7 @@ bool UseEIDRhoCorIsoR03(LepInfoBranches LepInfo,EvtInfoBranches EvtInfo,int nl, 
 
     if(LepInfo.LeptonType[nl]!=11) return useEID_;
 
-    unsigned int idx=-1;
+    int idx=-1;
     if((fabs(LepInfo.Eta[nl])<=1.4442)){
         idx = 0;
     }else if(((fabs(LepInfo.Eta[nl])<2.4)&&(fabs(LepInfo.Eta[nl])>=1.566))){
@@ -106,7 +106,6 @@ bool UseEIDRhoCorIsoR03(LepInfoBranches LepInfo,EvtInfoBranches EvtInfo,int nl, 
     }
 
     if(idx == -1 ) return useEID_;
-    std::cout<<"idx : "<<idx<<std::endl;
     // effective area for isolation
     ElectronEffectiveArea::ElectronEffectiveAreaTarget EATarget = ElectronEffectiveArea::kEleEAFall11MC; 
     float AEffR03 = ElectronEffectiveArea::GetElectronEffectiveArea(ElectronEffectiveArea::kEleGammaAndNeutralHadronIso03, LepInfo.Eta[nl], EATarget); 
