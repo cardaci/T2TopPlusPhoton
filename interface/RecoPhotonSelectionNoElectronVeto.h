@@ -1,6 +1,7 @@
 #ifndef RecoPhotonSelectionNoElectronVeto_H
 #define RecoPhotonSelectionNoElectronVeto_H
 
+
 #include "format.h"
 #include "DPHI.h"
 #include "EffectiveAreaPhoton.h"
