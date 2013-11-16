@@ -3,7 +3,7 @@ PlotsProducer_TagAndProbeEfficiency(){
   gROOT->SetStyle("Plain");
   gStyle->SetOptStat(0);
 
-  TFile * file_Input   = new TFile("TagAndProbeEfficiencyResults.root");
+  TFile * file_Input   = new TFile("TagAndProbeEfficiencyResults_low_pT_muons_no_dupl.root");
 
   file_Input->cd();
 
@@ -251,7 +251,7 @@ PlotsProducer_TagAndProbeEfficiency(){
   h_EfficiencyRatio_Eta_PT->SetTitle("#varepsilon_{s} (TIGHT to FO-plus-no-electron-veto ratio)");
   h_EfficiencyRatio_Eta_PT->GetYaxis()->SetLabelSize(0.025);
   h_EfficiencyRatio_Eta_PT->SetLineColor(kBlack);
-  h_EfficiencyRatio_Eta_PT->GetYaxis()->SetRangeUser(0.,70.);
+  h_EfficiencyRatio_Eta_PT->GetYaxis()->SetRangeUser(0.,300.);
   h_EfficiencyRatio_Eta_PT->SetMarkerStyle(8);
   h_EfficiencyRatio_Eta_PT->SetMarkerColor(kBlack);
 
