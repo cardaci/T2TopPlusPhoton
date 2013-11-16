@@ -1,3 +1,4 @@
+#include "TFile.h"
 #include "TTree.h"
 #include "TROOT.h"
 #include "TStyle.h"
@@ -8,7 +9,7 @@
 #include "TCanvas.h"
 //#include "interface/TriggerBooking.h"
 #include "interface/DPHI.h"
-#include "interface/RecoLeptonSelection.h"
+#include "interface/RecoLeptonSelection_for_fakeleptons.h"
 #include "interface/RecoPhotonSelectionNoElectronVeto.h"
 #include "interface/RecoJetSelection.h"
 //#include "interface/SolutionOfWNeutrino.h"
@@ -26,13 +27,12 @@ void TagAndProbe()
     gStyle->SetPalette(1);
 
     TChain *root = new TChain("bprimeKit/root");
+    root->Add("/data4/cardaci/skimmingFromJacky2/test/REDUCE_DATA2/reduce_for_Ece_SingleElectron*.root");
     //root->Add("/afs/cern.ch/work/c/cardaci/Photon_Run2012A-20Nov2012-v2_190456-193686/*");
-    root->Add("/afs/cern.ch/work/c/cardaci/SingleElectron_Run2012A-22Jan2013-v1_190456-193686/*");
+    //root->Add("/afs/cern.ch/work/c/cardaci/SingleElectron_Run2012A-22Jan2013-v1_190456-193686/*");
     //root->Add("/afs/cern.ch/work/c/cardaci/MultiJet_Run2012A-13Jul2012-v1_190456-193686/*");
     //root->Add("/afs/cern.ch/work/y/ymtzeng/public/1photon1lepton_DYJetsToLL_M-50_TuneZ2Star_8TeV-madgraph-tarball_Summer12_DR53X-PU_S10_START53_V7A-v1.root ");
     //root->Add("/afs/cern.ch/work/c/cardaci/REDUCE_DATA_Summer12_1lepton4jets_id_vtx_recover/1lepton4jets_DYJetsToLL_M-50_TuneZ2Star_8TeV-madgraph-tarball_Summer12_DR53X-PU_S10_START53_V7A-v1.root");
-
-
 
     EvtInfoBranches EvtInfo;
     EvtInfo.Register(root);
@@ -78,16 +78,15 @@ void TagAndProbe()
        float NJets_Max = 10.5;
        int NJets_N_bins = 11;
 
-       float Eta_Min = -3;
-       float Eta_Max = 3;
+       float Eta_Min = -2.4;
+       float Eta_Max = 2.4;
        int Eta_N_bins = 20;
 
        float PT_Min = 0;
        float PT_Max = 1000;
        int PT_N_bins = 100;
 
-
-
+       float pT_subranges[6] = {0 ,30, 36, 40, 45, 250};
 
        TH1F * h_Zmass_NoElectronVeto_Denominator[5][5];
        TH1F * h_Zmass_NoElectronVeto_Numerator[5][5];
@@ -264,12 +263,22 @@ void TagAndProbe()
 
 
 
-	
+       map< pair<int, int>, int > evtlist;//to remove duplicate event in data
        //Event loop begin
        for(int entry=0; entry < root->GetEntries(); entry++) {
         int tot_entries = root->GetEntries();
 
         root->GetEntry(entry);
+
+        if(!EvtInfo.McFlag) {
+            // remove duplicate event
+            map< pair<int, int> , int>::iterator evtitr;
+            evtitr = evtlist.find( pair<int, int>(EvtInfo.RunNo, EvtInfo.EvtNo) );
+            if( evtitr == evtlist.end() )
+                evtlist.insert( pair<pair<int, int>, int>(pair<int, int>(EvtInfo.RunNo, EvtInfo.EvtNo), 1));
+            else
+                continue;
+        }
 	
 
         if (entry % 500 == 0) cout << "Entry: " << entry << " / " << tot_entries << endl;
@@ -297,7 +306,7 @@ void TagAndProbe()
         int NPhotons_NoElectronVeto = 0;
         float Zmass = 0.;
 
-       	RecoLeptonSelection(EvtInfo, LepInfo, NMuons, M_Index, NElectrons, E_Index, NLeptons, L_Index);
+       	RecoLeptonSelection_for_fakeleptons(EvtInfo, LepInfo, NMuons, M_Index, NElectrons, E_Index, NLeptons, L_Index);
        	RecoJetSelection(LepInfo, JetInfo, PhotonInfo, NMuons, M_Index, NElectrons, E_Index, NJets, J_Index, NPhotons, P_Index);
 	RecoPhotonSelectionNoElectronVeto(LepInfo, PhotonInfo, NMuons, M_Index, NElectrons, E_Index, NPhotons_NoElectronVeto, P_Index_NoElectronVeto, EvtInfo.RhoPU[0]);
 
@@ -327,7 +336,8 @@ void TagAndProbe()
               for(unsigned int k=0; k<5; k++){
 		  if(
 		     PhotonInfo.Eta[P_Index_NoElectronVeto[g]] >= (Eta_Min + i * (Eta_Max - Eta_Min)/ 5) && PhotonInfo.Eta[P_Index_NoElectronVeto[g]] < (Eta_Min + (i+1) * (Eta_Max - Eta_Min) / 5) &&
-		     PhotonInfo.Pt[P_Index_NoElectronVeto[g]] >= (PT_Min + k * (PT_Max - PT_Min)/ 5) && PhotonInfo.Pt[P_Index_NoElectronVeto[g]] < (PT_Min + (k+1) * (PT_Max - PT_Min) / 5)
+		     //PhotonInfo.Pt[P_Index_NoElectronVeto[g]] >= (PT_Min + k * (PT_Max - PT_Min)/ 5) && PhotonInfo.Pt[P_Index_NoElectronVeto[g]] < (PT_Min + (k+1) * (PT_Max - PT_Min) / 5)
+                     PhotonInfo.Pt[P_Index_NoElectronVeto[g]] >= pT_subranges[k] && PhotonInfo.Pt[P_Index_NoElectronVeto[g]] < pT_subranges[k+1] 
 		     )  h_Zmass_NoElectronVeto_noNJetsCut_Denominator[i][k]->Fill(Zmass);
 	      }
 	     }
@@ -337,18 +347,21 @@ void TagAndProbe()
                 for(unsigned int k=0; k<5; k++){
 		  if(
 		     PhotonInfo.Eta[P_Index_NoElectronVeto[g]] >= (Eta_Min + i * (Eta_Max - Eta_Min)/ 5) && PhotonInfo.Eta[P_Index_NoElectronVeto[g]] < (Eta_Min + (i+1) * (Eta_Max - Eta_Min) / 5) &&
-		     PhotonInfo.Pt[P_Index_NoElectronVeto[g]] >= (PT_Min + k * (PT_Max - PT_Min)/ 5) && PhotonInfo.Pt[P_Index_NoElectronVeto[g]] < (PT_Min + (k+1) * (PT_Max - PT_Min) / 5)
+		     //PhotonInfo.Pt[P_Index_NoElectronVeto[g]] >= (PT_Min + k * (PT_Max - PT_Min)/ 5) && PhotonInfo.Pt[P_Index_NoElectronVeto[g]] < (PT_Min + (k+1) * (PT_Max - PT_Min) / 5)
+                     PhotonInfo.Pt[P_Index_NoElectronVeto[g]] >= pT_subranges[k] && PhotonInfo.Pt[P_Index_NoElectronVeto[g]] < pT_subranges[k+1] 
 		     )  h_Zmass_NoElectronVeto_Denominator[i][k]->Fill(Zmass);
 		}
 	       }
 	     }
  	     if(Zmass < 105 && Zmass > 75) {
-	        if(NJets >=4)Denominator_NoElectronVeto_Inclusive->Fill(0.);
-                Denominator_NoElectronVeto_NVTX->Fill(NVertices);
                 Denominator_NoElectronVeto_NJets->Fill(NJets);
-                Denominator_NoElectronVeto_PT->Fill(PhotonInfo.Pt[P_Index_NoElectronVeto[g]]);
-                Denominator_NoElectronVeto_Eta->Fill(PhotonInfo.Eta[P_Index_NoElectronVeto[g]]);
-                Denominator_NoElectronVeto_Eta_PT->Fill(PhotonInfo.Eta[P_Index_NoElectronVeto[g]],PhotonInfo.Pt[P_Index_NoElectronVeto[g]]);
+	        if(NJets >=4){
+                 Denominator_NoElectronVeto_Inclusive->Fill(0.);
+                 Denominator_NoElectronVeto_NVTX->Fill(NVertices);
+                 Denominator_NoElectronVeto_PT->Fill(PhotonInfo.Pt[P_Index_NoElectronVeto[g]]);
+                 Denominator_NoElectronVeto_Eta->Fill(PhotonInfo.Eta[P_Index_NoElectronVeto[g]]);
+                 Denominator_NoElectronVeto_Eta_PT->Fill(PhotonInfo.Eta[P_Index_NoElectronVeto[g]],PhotonInfo.Pt[P_Index_NoElectronVeto[g]]);
+                }
              }	     
 
              if(PhotonInfo.passelectronveto[P_Index_NoElectronVeto[g]] == true){
@@ -357,7 +370,8 @@ void TagAndProbe()
                  for(unsigned int k=0; k<5; k++){
 		   if(
 		      PhotonInfo.Eta[P_Index_NoElectronVeto[g]] >= (Eta_Min + i * (Eta_Max - Eta_Min)/ 5) && PhotonInfo.Eta[P_Index_NoElectronVeto[g]] < (Eta_Min + (i+1) * (Eta_Max - Eta_Min) / 5) &&
-		      PhotonInfo.Pt[P_Index_NoElectronVeto[g]] >= (PT_Min + k * (PT_Max - PT_Min)/ 5) && PhotonInfo.Pt[P_Index_NoElectronVeto[g]] < (PT_Min + (k+1) * (PT_Max - PT_Min) / 5)
+		      //PhotonInfo.Pt[P_Index_NoElectronVeto[g]] >= (PT_Min + k * (PT_Max - PT_Min)/ 5) && PhotonInfo.Pt[P_Index_NoElectronVeto[g]] < (PT_Min + (k+1) * (PT_Max - PT_Min) / 5)
+                      PhotonInfo.Pt[P_Index_NoElectronVeto[g]] >= pT_subranges[k] && PhotonInfo.Pt[P_Index_NoElectronVeto[g]] < pT_subranges[k+1] 
 		      )  h_Zmass_NoElectronVeto_noNJetsCut_Numerator[i][k]->Fill(Zmass);
 		 }
 	       }
@@ -367,18 +381,21 @@ void TagAndProbe()
                     for(unsigned int k=0; k<5; k++){
 		     if(
 		        PhotonInfo.Eta[P_Index_NoElectronVeto[g]] >= (Eta_Min + i * (Eta_Max - Eta_Min)/ 5) && PhotonInfo.Eta[P_Index_NoElectronVeto[g]] < (Eta_Min + (i+1) * (Eta_Max - Eta_Min) / 5) &&
-		        PhotonInfo.Pt[P_Index_NoElectronVeto[g]] >= (PT_Min + k * (PT_Max - PT_Min)/ 5) && PhotonInfo.Pt[P_Index_NoElectronVeto[g]] < (PT_Min + (k+1) * (PT_Max - PT_Min) / 5)
+		        //PhotonInfo.Pt[P_Index_NoElectronVeto[g]] >= (PT_Min + k * (PT_Max - PT_Min)/ 5) && PhotonInfo.Pt[P_Index_NoElectronVeto[g]] < (PT_Min + (k+1) * (PT_Max - PT_Min) / 5)
+                        PhotonInfo.Pt[P_Index_NoElectronVeto[g]] >= pT_subranges[k] && PhotonInfo.Pt[P_Index_NoElectronVeto[g]] < pT_subranges[k+1] 
 		        )  h_Zmass_NoElectronVeto_Numerator[i][k]->Fill(Zmass);
 		    }
 	         }
 	       }
  	       if(Zmass < 105 && Zmass > 75) {
-                  if(NJets >=4)Numerator_NoElectronVeto_Inclusive->Fill(0.);
-                  Numerator_NoElectronVeto_NVTX->Fill(NVertices);
                   Numerator_NoElectronVeto_NJets->Fill(NJets);
-                  Numerator_NoElectronVeto_PT->Fill(PhotonInfo.Pt[P_Index_NoElectronVeto[g]]);
-                  Numerator_NoElectronVeto_Eta->Fill(PhotonInfo.Eta[P_Index_NoElectronVeto[g]]);
-                  Numerator_NoElectronVeto_Eta_PT->Fill(PhotonInfo.Eta[P_Index_NoElectronVeto[g]],PhotonInfo.Pt[P_Index_NoElectronVeto[g]]);
+                  if(NJets >=4){
+                   Numerator_NoElectronVeto_Inclusive->Fill(0.);
+                   Numerator_NoElectronVeto_NVTX->Fill(NVertices);
+                   Numerator_NoElectronVeto_PT->Fill(PhotonInfo.Pt[P_Index_NoElectronVeto[g]]);
+                   Numerator_NoElectronVeto_Eta->Fill(PhotonInfo.Eta[P_Index_NoElectronVeto[g]]);
+                   Numerator_NoElectronVeto_Eta_PT->Fill(PhotonInfo.Eta[P_Index_NoElectronVeto[g]],PhotonInfo.Pt[P_Index_NoElectronVeto[g]]);
+                  }
  	       }
 	     }
 	 } //photon loop
