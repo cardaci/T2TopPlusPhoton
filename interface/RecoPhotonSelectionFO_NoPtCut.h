@@ -1,6 +1,7 @@
 #ifndef RecoPhotonSelectionFO_NoPtCut_H
 #define RecoPhotonSelectionFO_NoPtCut_H
 
+
 #include "format.h"
 #include "DPHI.h"
 #include "EffectiveAreaPhoton.h"
