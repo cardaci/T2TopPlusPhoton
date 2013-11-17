@@ -725,6 +725,8 @@ class JetInfoBranches {
 		float Phi[MAX_JETS];
 		int   JetIDLOOSE[MAX_JETS]; //Add by Chiyi
 		float JetCharge[MAX_JETS];
+                float QGTagsMLP[MAX_JETS];//Add by Yuhsiang
+                float QGTagsLikelihood[MAX_JETS];////Add by Yuhsiang
 		int   NConstituents[MAX_JETS];
 		int   NCH[MAX_JETS];
 		float CEF[MAX_JETS];
@@ -791,6 +793,7 @@ class JetInfoBranches {
 		reco::Candidate* CandRef[MAX_JETS]; // backward pointer to the PAT objects
 #endif  
 
+//                void RegisterTree(TTree *root, std::string name="PFJetInfo") {//Add by Yuhsiang
 		void RegisterTree(TTree *root, std::string name="JetInfo") {
 			root->Branch((name+".Size").c_str()		       , &Size  		     , (name+".Size/I").c_str() 				);
 			root->Branch((name+".Index").c_str()		       , &Index[0]		     , (name+".Index["+name+".Size]/I").c_str()  		);
@@ -802,6 +805,11 @@ class JetInfoBranches {
 			root->Branch((name+".Phi").c_str()		       , &Phi[0]		     , (name+".Phi["+name+".Size]/F").c_str()			);
 			root->Branch((name+".JetIDLOOSE").c_str()	       ,&JetIDLOOSE[0]	     , (name+".JetIDLOOSE["+name+".Size]/I").c_str()		); //Add by Chiyi
 			root->Branch((name+".JetCharge").c_str()	       , &JetCharge[0]  	     , (name+".JetCharge["+name+".Size]/F").c_str()		);
+
+                        root->Branch((name+".QGTagsMLP").c_str()               , &QGTagsMLP[0]               , (name+".QGTagsMLP["+name+".Size]/F").c_str()             );//Add by Yuhsiang
+                        root->Branch((name+".QGTagsLikelihood").c_str()               , &QGTagsLikelihood[0]               , (name+".QGTagsLikelihood["+name+".Size]/F").c_str()             );//Add by Yuhsiang
+
+
 			root->Branch((name+".NConstituents").c_str()	       , &NConstituents[0]	     , (name+".NConstituents["+name+".Size]/I").c_str()		);
 			root->Branch((name+".NCH").c_str()	       , &NCH[0]	     , (name+".NCH["+name+".Size]/I").c_str()		);
 			root->Branch((name+".CEF").c_str() 	       	       , &CEF[0]		     , (name+".CEF["+name+".Size]/F").c_str()		);
@@ -866,8 +874,8 @@ class JetInfoBranches {
 		}  
 
 
-
-		void Register(TTree *root, std::string name="JetInfo") {
+                void Register(TTree *root, std::string name="JetInfo") {
+//		void Register(TTree *root, std::string name="PFJetInfo") {//Add by Yuhsiang
 			root->SetBranchAddress((name+".Size").c_str()			 , &Size		       );
 			root->SetBranchAddress((name+".Index").c_str()  		 , &Index[0]		       );
 			root->SetBranchAddress((name+".NTracks").c_str()		 , &NTracks[0]  	       );
@@ -878,6 +886,10 @@ class JetInfoBranches {
 			root->SetBranchAddress((name+".Phi").c_str()			 , &Phi[0]		       );
 			root->SetBranchAddress((name+".JetIDLOOSE").c_str()		 , &JetIDLOOSE[0]	       ); //Add by Chiyi
 			root->SetBranchAddress((name+".JetCharge").c_str()		 , &JetCharge[0]	       );
+
+                        root->SetBranchAddress((name+".QGTagsMLP").c_str()               , &QGTagsMLP[0]               );//Add by Yuhsiang
+                        root->SetBranchAddress((name+".QGTagsLikelihood").c_str()               , &QGTagsLikelihood[0]               );//Add by Yuhsiang
+
 			root->SetBranchAddress((name+".NConstituents").c_str()		 , &NConstituents[0]	       );
 			root->SetBranchAddress((name+".NCH").c_str()		 , &NCH[0]	       );
 			root->SetBranchAddress((name+".CEF").c_str()		 , &CEF[0]  	       );
@@ -1138,6 +1150,7 @@ class GenInfoBranches {
 		float Phi[MAX_GENS];
 		float Mass[MAX_GENS];
 		int PdgID[MAX_GENS];
+                int PhotonFlag[MAX_GENS];//Add by Yuhsiang
 		int Status[MAX_GENS];
 		int nMo[MAX_GENS];
 		int nDa[MAX_GENS];
@@ -1154,6 +1167,8 @@ class GenInfoBranches {
 			root->Branch("GenInfo.Phi"	, &Phi[0]	, "GenInfo.Phi[GenInfo.Size]/F"		);
 			root->Branch("GenInfo.Mass"	, &Mass[0]	, "GenInfo.Mass[GenInfo.Size]/F"	);
 			root->Branch("GenInfo.PdgID"	, &PdgID[0]	, "GenInfo.PdgID[GenInfo.Size]/I"	);
+                        root->Branch("GenInfo.PhotonFlag"    , &PhotonFlag[0]     , "GenInfo.PhotonFlag[GenInfo.Size]/I"       );//Add by Yuhsiang
+
 			root->Branch("GenInfo.Status"	, &Status[0]	, "GenInfo.Status[GenInfo.Size]/I"	);
 			root->Branch("GenInfo.nMo"	, &nMo[0]	, "GenInfo.nMo[GenInfo.Size]/I"		);
 			root->Branch("GenInfo.nDa"	, &nDa[0]	, "GenInfo.nDa[GenInfo.Size]/I"		);
@@ -1171,6 +1186,7 @@ class GenInfoBranches {
 			root->SetBranchAddress("GenInfo.Phi"	, &Phi[0]	);
 			root->SetBranchAddress("GenInfo.Mass"	, &Mass[0]	);
 			root->SetBranchAddress("GenInfo.PdgID"	, &PdgID[0]	);
+                        root->SetBranchAddress("GenInfo.PhotonFlag"  , &PhotonFlag[0]     );//Add by Yuhsiang
 			root->SetBranchAddress("GenInfo.Status"	, &Status[0]	);
 			root->SetBranchAddress("GenInfo.nMo"	, &nMo[0]	);
 			root->SetBranchAddress("GenInfo.nDa"	, &nDa[0]	);
