@@ -28,14 +28,10 @@ void FakesFromJets_Data()
     gROOT->ProcessLine("setTDRStyle()");
     gStyle->SetPalette(1);
 
-    TChain * root[1]; 
+    TChain * root = new TChain("bprimeKit/root");
 
-    for(unsigned int i=0; i<1; i++){
-     root[i] = new TChain("bprimeKit/root");
-    }
-
-    root[0]->Add("/data4/cardaci/skimmingFromJacky2/test/REDUCE_DATA2/reduce_JetHT*.root");
-    root[0]->Add("/data4/cardaci/skimmingFromJacky2/test/REDUCE_DATA2/reduce_MultiJet_*.root");
+    root->Add("/data4/cardaci/skimmingFromJacky2/test/REDUCE_DATA2/reduce_JetHT*.root");
+    root->Add("/data4/cardaci/skimmingFromJacky2/test/REDUCE_DATA2/reduce_MultiJet_*.root");
 
     //root->Add("/afs/cern.ch/work/c/cardaci/MultiJet_Run2012A-13Jul2012-v1_190456-193686/*");
     //root->Add("/afs/cern.ch/work/y/ymtzeng/public/1photon1lepton_DYJetsToLL_M-50_TuneZ2Star_8TeV-madgraph-tarball_Summer12_DR53X-PU_S10_START53_V7A-v1.root ");
@@ -699,26 +695,19 @@ void FakesFromJets_Data()
     VertexInfoBranches VertexInfo;
 
 
-    float set_of_weights[1] = {0};
-
-    for(int sample_index=0;sample_index<1;sample_index++){
-
-     set_of_weights[sample_index] = 1;
-     cout<<"sample_index:"<<sample_index<<endl;
-
-     EvtInfo.Register(root[sample_index]);
-     GenInfo.Register(root[sample_index]);
-     LepInfo.Register(root[sample_index],"PFLepInfo");
-     JetInfo.Register(root[sample_index],"PFJetInfo");
-     PhotonInfo.Register(root[sample_index],"PhotonInfo");
-     VertexInfo.Register(root[sample_index]);
+     EvtInfo.Register(root);
+     GenInfo.Register(root);
+     LepInfo.Register(root,"PFLepInfo");
+     JetInfo.Register(root,"PFJetInfo");
+     PhotonInfo.Register(root,"PhotonInfo");
+     VertexInfo.Register(root);
 
         map< pair<int, int>, int > evtlist;//to remove duplicate event in data
        //Event loop begin
-	for(int entry=0; entry < root[sample_index]->GetEntries(); entry++) {
-        int tot_entries = root[sample_index]->GetEntries();
+	for(int entry=0; entry < root->GetEntries(); entry++) {
+        int tot_entries = root->GetEntries();
 
-        root[sample_index]->GetEntry(entry);
+        root->GetEntry(entry);
 
         if(!EvtInfo.McFlag) {
             // remove duplicate event
@@ -797,6 +786,7 @@ void FakesFromJets_Data()
                  if(dR < dR_aux){ dR_aux = dR; jindex = j;}
 	      }
 
+	      /*
                double dR_aux2 = 0.5;
 
                int mindex;
@@ -807,62 +797,62 @@ void FakesFromJets_Data()
                  if(dR < dR_aux2){ dR_aux2 = dR; mindex = m;}
                  
                }
-
-		 if( (dR_aux2 == 0.5) /*|| (GenInfo.PhotonFlag[mindex]!=0)*/ ) continue;
+	      */
+//		 if( (dR_aux2 == 0.5) /*|| (GenInfo.PhotonFlag[mindex]!=0)*/ ) continue;
 //              cout<<"GenInfo.PhotonFlag[mindex]:"<<GenInfo.PhotonFlag[mindex] <<endl;
 
 
               Denominator_FO_Matching->Fill(0.);
 
               if(dR_aux < 0.5){
-                Inclusive_noNJetsCut_QGTagsMLP_Matched_FO->Fill(JetInfo.QGTagsMLP[J_Index[jindex]],set_of_weights[sample_index]);
-                Inclusive_noNJetsCut_QGTagsLikelihood_Matched_FO->Fill(JetInfo.QGTagsLikelihood[J_Index[jindex]],set_of_weights[sample_index]);
+                Inclusive_noNJetsCut_QGTagsMLP_Matched_FO->Fill(JetInfo.QGTagsMLP[J_Index[jindex]]);
+                Inclusive_noNJetsCut_QGTagsLikelihood_Matched_FO->Fill(JetInfo.QGTagsLikelihood[J_Index[jindex]]);
                 for(unsigned int i=0; i<5; i++){
                   for(unsigned int k=0; k<5; k++){
 		   if(
   		      PhotonInfo.Eta[P_Index_FO[g]] >= (Eta_Min + i * (Eta_Max - Eta_Min)/ 5) && PhotonInfo.Eta[P_Index_FO[g]] < (Eta_Min + (i+1) * (Eta_Max - Eta_Min) / 5) &&
               //PhotonInfo.Pt[P_Index_FO[g]] >= (PT_Min + k * (PT_Max - PT_Min)/ 5) && PhotonInfo.Pt[P_Index_FO[g]] < (PT_Min + (k+1) * (PT_Max - PT_Min) / 5)
               PhotonInfo.Pt[P_Index_FO[g]] >= pT_subranges[k] && PhotonInfo.Pt[P_Index_FO[g]] < pT_subranges[k+1] 
-		     ) h_QGTagsMLP_noNJetsCut_Matched_FO[i][k]->Fill(JetInfo.QGTagsLikelihood[J_Index[jindex]],set_of_weights[sample_index]);
+		     ) h_QGTagsMLP_noNJetsCut_Matched_FO[i][k]->Fill(JetInfo.QGTagsLikelihood[J_Index[jindex]]);
 		  }
 		}
 		if(NJets >=4){
                   Numerator_FO_Matching->Fill(0.);
-                  Inclusive_QGTagsMLP_Matched_FO->Fill(JetInfo.QGTagsMLP[J_Index[jindex]],set_of_weights[sample_index]);
-                  Inclusive_QGTagsLikelihood_Matched_FO->Fill(JetInfo.QGTagsLikelihood[J_Index[jindex]],set_of_weights[sample_index]);
+                  Inclusive_QGTagsMLP_Matched_FO->Fill(JetInfo.QGTagsMLP[J_Index[jindex]]);
+                  Inclusive_QGTagsLikelihood_Matched_FO->Fill(JetInfo.QGTagsLikelihood[J_Index[jindex]]);
                   for(unsigned int i=0; i<5; i++){
                     for(unsigned int k=0; k<5; k++){
 		     if(
 		        PhotonInfo.Eta[P_Index_FO[g]] >= (Eta_Min + i * (Eta_Max - Eta_Min)/ 5) && PhotonInfo.Eta[P_Index_FO[g]] < (Eta_Min + (i+1) * (Eta_Max - Eta_Min) / 5) &&
                 //PhotonInfo.Pt[P_Index_FO[g]] >= (PT_Min + k * (PT_Max - PT_Min)/ 5) && PhotonInfo.Pt[P_Index_FO[g]] < (PT_Min + (k+1) * (PT_Max - PT_Min) / 5)
                 PhotonInfo.Pt[P_Index_FO[g]] >= pT_subranges[k] && PhotonInfo.Pt[P_Index_FO[g]] < pT_subranges[k+1] 
-		       ) h_QGTagsMLP_Matched_FO[i][k]->Fill(JetInfo.QGTagsLikelihood[J_Index[jindex]],set_of_weights[sample_index]);
+		       ) h_QGTagsMLP_Matched_FO[i][k]->Fill(JetInfo.QGTagsLikelihood[J_Index[jindex]]);
 		     }
 		  }
 		}
 		if(JetInfo.QGTagsLikelihood[J_Index[jindex]] > 0.9){ //Quark-like
-                  Inclusive_noNJetsCut_Sigma_Ieta_Ieta_FO_Quark->Fill(PhotonInfo.SigmaIetaIeta[P_Index_FO[g]],set_of_weights[sample_index]);
+                  Inclusive_noNJetsCut_Sigma_Ieta_Ieta_FO_Quark->Fill(PhotonInfo.SigmaIetaIeta[P_Index_FO[g]]);
                   for(unsigned int i=0; i<5; i++){
                     for(unsigned int k=0; k<5; k++){
 		      if(
  		         PhotonInfo.Eta[P_Index_FO[g]] >= (Eta_Min + i * (Eta_Max - Eta_Min)/ 5) && PhotonInfo.Eta[P_Index_FO[g]] < (Eta_Min + (i+1) * (Eta_Max - Eta_Min) / 5) &&
                  //PhotonInfo.Pt[P_Index_FO[g]] >= (PT_Min + k * (PT_Max - PT_Min)/ 5) && PhotonInfo.Pt[P_Index_FO[g]] < (PT_Min + (k+1) * (PT_Max - PT_Min) / 5)
                  PhotonInfo.Pt[P_Index_FO[g]] >= pT_subranges[k] && PhotonInfo.Pt[P_Index_FO[g]] < pT_subranges[k+1] 		      		         
-			    ) h_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark[i][k]->Fill(PhotonInfo.SigmaIetaIeta[P_Index_FO[g]],set_of_weights[sample_index]);
+			    ) h_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark[i][k]->Fill(PhotonInfo.SigmaIetaIeta[P_Index_FO[g]]);
 		    }
 		  }
 		  if(NJets >=4){
                      Denominator_Quark_Inclusive->Fill(0.);
-                     Inclusive_Sigma_Ieta_Ieta_FO_Quark->Fill(PhotonInfo.SigmaIetaIeta[P_Index_FO[g]],set_of_weights[sample_index]);
-                     if(fabs(PhotonInfo.Eta[P_Index_FO[g]])<=1.4442) Inclusive_Barrel_Sigma_Ieta_Ieta_FO_Quark->Fill(PhotonInfo.SigmaIetaIeta[P_Index_FO[g]],set_of_weights[sample_index]);
-                     if(fabs(PhotonInfo.Eta[P_Index_FO[g]])<=2.4 && fabs(PhotonInfo.Eta[P_Index_FO[g]])>=1.566) Inclusive_Endcap_Sigma_Ieta_Ieta_FO_Quark->Fill(PhotonInfo.SigmaIetaIeta[P_Index_FO[g]],set_of_weights[sample_index]);
+                     Inclusive_Sigma_Ieta_Ieta_FO_Quark->Fill(PhotonInfo.SigmaIetaIeta[P_Index_FO[g]]);
+                     if(fabs(PhotonInfo.Eta[P_Index_FO[g]])<=1.4442) Inclusive_Barrel_Sigma_Ieta_Ieta_FO_Quark->Fill(PhotonInfo.SigmaIetaIeta[P_Index_FO[g]]);
+                     if(fabs(PhotonInfo.Eta[P_Index_FO[g]])<=2.4 && fabs(PhotonInfo.Eta[P_Index_FO[g]])>=1.566) Inclusive_Endcap_Sigma_Ieta_Ieta_FO_Quark->Fill(PhotonInfo.SigmaIetaIeta[P_Index_FO[g]]);
                      for(unsigned int i=0; i<5; i++){
                        for(unsigned int k=0; k<5; k++){
 		        if(
  		           PhotonInfo.Eta[P_Index_FO[g]] >= (Eta_Min + i * (Eta_Max - Eta_Min)/ 5) && PhotonInfo.Eta[P_Index_FO[g]] < (Eta_Min + (i+1) * (Eta_Max - Eta_Min) / 5) &&
                    //PhotonInfo.Pt[P_Index_FO[g]] >= (PT_Min + k * (PT_Max - PT_Min)/ 5) && PhotonInfo.Pt[P_Index_FO[g]] < (PT_Min + (k+1) * (PT_Max - PT_Min) / 5)
                    PhotonInfo.Pt[P_Index_FO[g]] >= pT_subranges[k] && PhotonInfo.Pt[P_Index_FO[g]] < pT_subranges[k+1] 
-			      ) h_Sigma_Ieta_Ieta_FO_Quark[i][k]->Fill(PhotonInfo.SigmaIetaIeta[P_Index_FO[g]],set_of_weights[sample_index]);
+			      ) h_Sigma_Ieta_Ieta_FO_Quark[i][k]->Fill(PhotonInfo.SigmaIetaIeta[P_Index_FO[g]]);
 		       }
 		     }
 		  }
@@ -876,28 +866,28 @@ void FakesFromJets_Data()
 
 
 		if(JetInfo.QGTagsLikelihood[J_Index[jindex]] < 0.9 && JetInfo.QGTagsLikelihood[J_Index[jindex]] >= 0.){ //Gluon/b-jet-like
-                  Inclusive_noNJetsCut_Sigma_Ieta_Ieta_FO_Gluon->Fill(PhotonInfo.SigmaIetaIeta[P_Index_FO[g]],set_of_weights[sample_index]);
+                  Inclusive_noNJetsCut_Sigma_Ieta_Ieta_FO_Gluon->Fill(PhotonInfo.SigmaIetaIeta[P_Index_FO[g]]);
                   for(unsigned int i=0; i<5; i++){
                     for(unsigned int k=0; k<5; k++){
 		      if(
  		         PhotonInfo.Eta[P_Index_FO[g]] >= (Eta_Min + i * (Eta_Max - Eta_Min)/ 5) && PhotonInfo.Eta[P_Index_FO[g]] < (Eta_Min + (i+1) * (Eta_Max - Eta_Min) / 5) &&
                  //PhotonInfo.Pt[P_Index_FO[g]] >= (PT_Min + k * (PT_Max - PT_Min)/ 5) && PhotonInfo.Pt[P_Index_FO[g]] < (PT_Min + (k+1) * (PT_Max - PT_Min) / 5)
                  PhotonInfo.Pt[P_Index_FO[g]] >= pT_subranges[k] && PhotonInfo.Pt[P_Index_FO[g]] < pT_subranges[k+1] 
-		        ) h_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon[i][k]->Fill(PhotonInfo.SigmaIetaIeta[P_Index_FO[g]],set_of_weights[sample_index]);
+		        ) h_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon[i][k]->Fill(PhotonInfo.SigmaIetaIeta[P_Index_FO[g]]);
 		    }
 		  }
 		  if(NJets >=4){
                      Denominator_Gluon_Inclusive->Fill(0.);
-                     Inclusive_Sigma_Ieta_Ieta_FO_Gluon->Fill(PhotonInfo.SigmaIetaIeta[P_Index_FO[g]],set_of_weights[sample_index]);
-                     if(fabs(PhotonInfo.Eta[P_Index_FO[g]])<=1.4442) Inclusive_Barrel_Sigma_Ieta_Ieta_FO_Gluon->Fill(PhotonInfo.SigmaIetaIeta[P_Index_FO[g]],set_of_weights[sample_index]);
-                     if(fabs(PhotonInfo.Eta[P_Index_FO[g]])<=2.4 && fabs(PhotonInfo.Eta[P_Index_FO[g]])>=1.566) Inclusive_Endcap_Sigma_Ieta_Ieta_FO_Gluon->Fill(PhotonInfo.SigmaIetaIeta[P_Index_FO[g]],set_of_weights[sample_index]);
+                     Inclusive_Sigma_Ieta_Ieta_FO_Gluon->Fill(PhotonInfo.SigmaIetaIeta[P_Index_FO[g]]);
+                     if(fabs(PhotonInfo.Eta[P_Index_FO[g]])<=1.4442) Inclusive_Barrel_Sigma_Ieta_Ieta_FO_Gluon->Fill(PhotonInfo.SigmaIetaIeta[P_Index_FO[g]]);
+                     if(fabs(PhotonInfo.Eta[P_Index_FO[g]])<=2.4 && fabs(PhotonInfo.Eta[P_Index_FO[g]])>=1.566) Inclusive_Endcap_Sigma_Ieta_Ieta_FO_Gluon->Fill(PhotonInfo.SigmaIetaIeta[P_Index_FO[g]]);
                      for(unsigned int i=0; i<5; i++){
                        for(unsigned int k=0; k<5; k++){
 		        if(
    		           PhotonInfo.Eta[P_Index_FO[g]] >= (Eta_Min + i * (Eta_Max - Eta_Min)/ 5) && PhotonInfo.Eta[P_Index_FO[g]] < (Eta_Min + (i+1) * (Eta_Max - Eta_Min) / 5) &&
                    //PhotonInfo.Pt[P_Index_FO[g]] >= (PT_Min + k * (PT_Max - PT_Min)/ 5) && PhotonInfo.Pt[P_Index_FO[g]] < (PT_Min + (k+1) * (PT_Max - PT_Min) / 5)
                    PhotonInfo.Pt[P_Index_FO[g]] >= pT_subranges[k] && PhotonInfo.Pt[P_Index_FO[g]] < pT_subranges[k+1] 
-			      ) h_Sigma_Ieta_Ieta_FO_Gluon[i][k]->Fill(PhotonInfo.SigmaIetaIeta[P_Index_FO[g]],set_of_weights[sample_index]);
+			      ) h_Sigma_Ieta_Ieta_FO_Gluon[i][k]->Fill(PhotonInfo.SigmaIetaIeta[P_Index_FO[g]]);
 		       }
 		     }
 		  }
@@ -926,6 +916,7 @@ void FakesFromJets_Data()
                  if(dR < dR_aux){ dR_aux = dR; jindex = j;}
 	      }
 
+	      /*
               double dR_aux2 = 0.5;//Marco edit the matching BTW GenInfo and RecoPhoton
               int mindex;
               for(int m=0;m<GenInfo.Size ;m++) { // loop on GenInfo
@@ -935,8 +926,8 @@ void FakesFromJets_Data()
                  if(dR < dR_aux2){ dR_aux2 = dR; mindex = m;}
 
               }
-
-              if( (dR_aux2 == 0.5) /* || (GenInfo.PhotonFlag[mindex]!=0)*/  ) continue;//end matching
+	      */
+//              if( (dR_aux2 == 0.5) /* || (GenInfo.PhotonFlag[mindex]!=0)*/  ) continue;//end matching
 //              cout<<"GenInfo.PhotonFlag[mindex]:"<<GenInfo.PhotonFlag[mindex] <<endl;
 
 
@@ -945,55 +936,55 @@ void FakesFromJets_Data()
               Denominator_TIGHT_Matching->Fill(0.);
 
               if(dR_aux < 0.5){
-                Inclusive_noNJetsCut_QGTagsMLP_Matched_TIGHT->Fill(JetInfo.QGTagsMLP[J_Index[jindex]],set_of_weights[sample_index]);
-                Inclusive_noNJetsCut_QGTagsLikelihood_Matched_TIGHT->Fill(JetInfo.QGTagsLikelihood[J_Index[jindex]],set_of_weights[sample_index]);
+                Inclusive_noNJetsCut_QGTagsMLP_Matched_TIGHT->Fill(JetInfo.QGTagsMLP[J_Index[jindex]]);
+                Inclusive_noNJetsCut_QGTagsLikelihood_Matched_TIGHT->Fill(JetInfo.QGTagsLikelihood[J_Index[jindex]]);
                 for(unsigned int i=0; i<5; i++){
                   for(unsigned int k=0; k<5; k++){
 		   if(		   
 		      PhotonInfo.Eta[P_Index_TIGHT[g]] >= (Eta_Min + i * (Eta_Max - Eta_Min)/ 5) && PhotonInfo.Eta[P_Index_TIGHT[g]] < (Eta_Min + (i+1) * (Eta_Max - Eta_Min) / 5) &&
               //PhotonInfo.Pt[P_Index_TIGHT[g]] >= (PT_Min + k * (PT_Max - PT_Min)/ 5) && PhotonInfo.Pt[P_Index_TIGHT[g]] < (PT_Min + (k+1) * (PT_Max - PT_Min) / 5)
               PhotonInfo.Pt[P_Index_TIGHT[g]] >= pT_subranges[k] && PhotonInfo.Pt[P_Index_TIGHT[g]] < pT_subranges[k+1] 
-		     ) h_QGTagsMLP_noNJetsCut_Matched_TIGHT[i][k]->Fill(JetInfo.QGTagsLikelihood[J_Index[jindex]],set_of_weights[sample_index]);
+		     ) h_QGTagsMLP_noNJetsCut_Matched_TIGHT[i][k]->Fill(JetInfo.QGTagsLikelihood[J_Index[jindex]]);
 		  }
 		}
 		if(NJets >=4){
                   Numerator_TIGHT_Matching->Fill(0.);
-                  Inclusive_QGTagsMLP_Matched_TIGHT->Fill(JetInfo.QGTagsMLP[J_Index[jindex]],set_of_weights[sample_index]);
-                  Inclusive_QGTagsLikelihood_Matched_TIGHT->Fill(JetInfo.QGTagsLikelihood[J_Index[jindex]],set_of_weights[sample_index]);
+                  Inclusive_QGTagsMLP_Matched_TIGHT->Fill(JetInfo.QGTagsMLP[J_Index[jindex]]);
+                  Inclusive_QGTagsLikelihood_Matched_TIGHT->Fill(JetInfo.QGTagsLikelihood[J_Index[jindex]]);
                   for(unsigned int i=0; i<5; i++){
                     for(unsigned int k=0; k<5; k++){
 		     if(
 		        PhotonInfo.Eta[P_Index_TIGHT[g]] >= (Eta_Min + i * (Eta_Max - Eta_Min)/ 5) && PhotonInfo.Eta[P_Index_TIGHT[g]] < (Eta_Min + (i+1) * (Eta_Max - Eta_Min) / 5) &&
                 //PhotonInfo.Pt[P_Index_TIGHT[g]] >= (PT_Min + k * (PT_Max - PT_Min)/ 5) && PhotonInfo.Pt[P_Index_TIGHT[g]] < (PT_Min + (k+1) * (PT_Max - PT_Min) / 5)
                 PhotonInfo.Pt[P_Index_TIGHT[g]] >= pT_subranges[k] && PhotonInfo.Pt[P_Index_TIGHT[g]] < pT_subranges[k+1] 
-		       ) h_QGTagsMLP_Matched_TIGHT[i][k]->Fill(JetInfo.QGTagsLikelihood[J_Index[jindex]],set_of_weights[sample_index]);
+		       ) h_QGTagsMLP_Matched_TIGHT[i][k]->Fill(JetInfo.QGTagsLikelihood[J_Index[jindex]]);
 		     }
 		  }
 		}
 
 		if(JetInfo.QGTagsLikelihood[J_Index[jindex]] > 0.9){ //Quark-like
-                  Inclusive_noNJetsCut_Sigma_Ieta_Ieta_TIGHT_Quark->Fill(PhotonInfo.SigmaIetaIeta[P_Index_TIGHT[g]],set_of_weights[sample_index]);
+                  Inclusive_noNJetsCut_Sigma_Ieta_Ieta_TIGHT_Quark->Fill(PhotonInfo.SigmaIetaIeta[P_Index_TIGHT[g]]);
                   for(unsigned int i=0; i<5; i++){
                      for(unsigned int k=0; k<5; k++){
 		      if(
 		         PhotonInfo.Eta[P_Index_TIGHT[g]] >= (Eta_Min + i * (Eta_Max - Eta_Min)/ 5) && PhotonInfo.Eta[P_Index_TIGHT[g]] < (Eta_Min + (i+1) * (Eta_Max - Eta_Min) / 5) &&
                  //PhotonInfo.Pt[P_Index_TIGHT[g]] >= (PT_Min + k * (PT_Max - PT_Min)/ 5) && PhotonInfo.Pt[P_Index_TIGHT[g]] < (PT_Min + (k+1) * (PT_Max - PT_Min) / 5)
                  PhotonInfo.Pt[P_Index_TIGHT[g]] >= pT_subranges[k] && PhotonInfo.Pt[P_Index_TIGHT[g]] < pT_subranges[k+1] 
-			 ) h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark[i][k]->Fill(PhotonInfo.SigmaIetaIeta[P_Index_TIGHT[g]],set_of_weights[sample_index]);
+			 ) h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark[i][k]->Fill(PhotonInfo.SigmaIetaIeta[P_Index_TIGHT[g]]);
 		     }
 		  }
                   if(NJets >=4){
                      Numerator_Quark_Inclusive->Fill(0.);
-                     Inclusive_Sigma_Ieta_Ieta_TIGHT_Quark->Fill(PhotonInfo.SigmaIetaIeta[P_Index_TIGHT[g]],set_of_weights[sample_index]);
-                     if(fabs(PhotonInfo.Eta[P_Index_TIGHT[g]])<=1.4442) Inclusive_Barrel_Sigma_Ieta_Ieta_TIGHT_Quark->Fill(PhotonInfo.SigmaIetaIeta[P_Index_TIGHT[g]],set_of_weights[sample_index]);
-                     if(fabs(PhotonInfo.Eta[P_Index_TIGHT[g]])<=2.4 && fabs(PhotonInfo.Eta[P_Index_TIGHT[g]])>=1.566) Inclusive_Endcap_Sigma_Ieta_Ieta_TIGHT_Quark->Fill(PhotonInfo.SigmaIetaIeta[P_Index_TIGHT[g]],set_of_weights[sample_index]);
+                     Inclusive_Sigma_Ieta_Ieta_TIGHT_Quark->Fill(PhotonInfo.SigmaIetaIeta[P_Index_TIGHT[g]]);
+                     if(fabs(PhotonInfo.Eta[P_Index_TIGHT[g]])<=1.4442) Inclusive_Barrel_Sigma_Ieta_Ieta_TIGHT_Quark->Fill(PhotonInfo.SigmaIetaIeta[P_Index_TIGHT[g]]);
+                     if(fabs(PhotonInfo.Eta[P_Index_TIGHT[g]])<=2.4 && fabs(PhotonInfo.Eta[P_Index_TIGHT[g]])>=1.566) Inclusive_Endcap_Sigma_Ieta_Ieta_TIGHT_Quark->Fill(PhotonInfo.SigmaIetaIeta[P_Index_TIGHT[g]]);
                      for(unsigned int i=0; i<5; i++){
                        for(unsigned int k=0; k<5; k++){
 		        if(
   		           PhotonInfo.Eta[P_Index_TIGHT[g]] >= (Eta_Min + i * (Eta_Max - Eta_Min)/ 5) && PhotonInfo.Eta[P_Index_TIGHT[g]] < (Eta_Min + (i+1) * (Eta_Max - Eta_Min) / 5) &&
                    //PhotonInfo.Pt[P_Index_TIGHT[g]] >= (PT_Min + k * (PT_Max - PT_Min)/ 5) && PhotonInfo.Pt[P_Index_TIGHT[g]] < (PT_Min + (k+1) * (PT_Max - PT_Min) / 5)
                    PhotonInfo.Pt[P_Index_TIGHT[g]] >= pT_subranges[k] && PhotonInfo.Pt[P_Index_TIGHT[g]] < pT_subranges[k+1] 
-			      ) h_Sigma_Ieta_Ieta_TIGHT_Quark[i][k]->Fill(PhotonInfo.SigmaIetaIeta[P_Index_TIGHT[g]],set_of_weights[sample_index]);
+			      ) h_Sigma_Ieta_Ieta_TIGHT_Quark[i][k]->Fill(PhotonInfo.SigmaIetaIeta[P_Index_TIGHT[g]]);
 		       }
 		     }
 		  }
@@ -1006,28 +997,28 @@ void FakesFromJets_Data()
 		}
 
 		if(JetInfo.QGTagsLikelihood[J_Index[jindex]] < 0.9 && JetInfo.QGTagsLikelihood[J_Index[jindex]] >= 0.){ //Gluon/b-jet-like
-                  Inclusive_noNJetsCut_Sigma_Ieta_Ieta_TIGHT_Gluon->Fill(PhotonInfo.SigmaIetaIeta[P_Index_TIGHT[g]],set_of_weights[sample_index]);
+                  Inclusive_noNJetsCut_Sigma_Ieta_Ieta_TIGHT_Gluon->Fill(PhotonInfo.SigmaIetaIeta[P_Index_TIGHT[g]]);
                   for(unsigned int i=0; i<5; i++){
                     for(unsigned int k=0; k<5; k++){
 		      if(
 		         PhotonInfo.Eta[P_Index_TIGHT[g]] >= (Eta_Min + i * (Eta_Max - Eta_Min)/ 5) && PhotonInfo.Eta[P_Index_TIGHT[g]] < (Eta_Min + (i+1) * (Eta_Max - Eta_Min) / 5) &&
                  //PhotonInfo.Pt[P_Index_TIGHT[g]] >= (PT_Min + k * (PT_Max - PT_Min)/ 5) && PhotonInfo.Pt[P_Index_TIGHT[g]] < (PT_Min + (k+1) * (PT_Max - PT_Min) / 5)
                  PhotonInfo.Pt[P_Index_TIGHT[g]] >= pT_subranges[k] && PhotonInfo.Pt[P_Index_TIGHT[g]] < pT_subranges[k+1] 
-			    ) h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon[i][k]->Fill(PhotonInfo.SigmaIetaIeta[P_Index_TIGHT[g]],set_of_weights[sample_index]);
+			    ) h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon[i][k]->Fill(PhotonInfo.SigmaIetaIeta[P_Index_TIGHT[g]]);
 		    }
 		  }
 		  if(NJets >=4){
                      Numerator_Gluon_Inclusive->Fill(0.);
-                     Inclusive_Sigma_Ieta_Ieta_TIGHT_Gluon->Fill(PhotonInfo.SigmaIetaIeta[P_Index_TIGHT[g]],set_of_weights[sample_index]);
-                     if(fabs(PhotonInfo.Eta[P_Index_TIGHT[g]])<=1.4442) Inclusive_Barrel_Sigma_Ieta_Ieta_TIGHT_Gluon->Fill(PhotonInfo.SigmaIetaIeta[P_Index_TIGHT[g]],set_of_weights[sample_index]);
-                     if(fabs(PhotonInfo.Eta[P_Index_TIGHT[g]])<=2.4 && fabs(PhotonInfo.Eta[P_Index_TIGHT[g]])>=1.566) Inclusive_Endcap_Sigma_Ieta_Ieta_TIGHT_Gluon->Fill(PhotonInfo.SigmaIetaIeta[P_Index_TIGHT[g]],set_of_weights[sample_index]);
+                     Inclusive_Sigma_Ieta_Ieta_TIGHT_Gluon->Fill(PhotonInfo.SigmaIetaIeta[P_Index_TIGHT[g]]);
+                     if(fabs(PhotonInfo.Eta[P_Index_TIGHT[g]])<=1.4442) Inclusive_Barrel_Sigma_Ieta_Ieta_TIGHT_Gluon->Fill(PhotonInfo.SigmaIetaIeta[P_Index_TIGHT[g]]);
+                     if(fabs(PhotonInfo.Eta[P_Index_TIGHT[g]])<=2.4 && fabs(PhotonInfo.Eta[P_Index_TIGHT[g]])>=1.566) Inclusive_Endcap_Sigma_Ieta_Ieta_TIGHT_Gluon->Fill(PhotonInfo.SigmaIetaIeta[P_Index_TIGHT[g]]);
                      for(unsigned int i=0; i<5; i++){
                        for(unsigned int k=0; k<5; k++){
 		        if(
  		           PhotonInfo.Eta[P_Index_TIGHT[g]] >= (Eta_Min + i * (Eta_Max - Eta_Min)/ 5) && PhotonInfo.Eta[P_Index_TIGHT[g]] < (Eta_Min + (i+1) * (Eta_Max - Eta_Min) / 5) &&
                    //PhotonInfo.Pt[P_Index_TIGHT[g]] >= (PT_Min + k * (PT_Max - PT_Min)/ 5) && PhotonInfo.Pt[P_Index_TIGHT[g]] < (PT_Min + (k+1) * (PT_Max - PT_Min) / 5)
                    PhotonInfo.Pt[P_Index_TIGHT[g]] >= pT_subranges[k] && PhotonInfo.Pt[P_Index_TIGHT[g]] < pT_subranges[k+1] 
-			      ) h_Sigma_Ieta_Ieta_TIGHT_Gluon[i][k]->Fill(PhotonInfo.SigmaIetaIeta[P_Index_TIGHT[g]],set_of_weights[sample_index]);
+			      ) h_Sigma_Ieta_Ieta_TIGHT_Gluon[i][k]->Fill(PhotonInfo.SigmaIetaIeta[P_Index_TIGHT[g]]);
 		       }
 		     }
 		  }
@@ -1051,10 +1042,6 @@ void FakesFromJets_Data()
 
 
 
-
-
-
-    } // sample loop end
 
 
 
