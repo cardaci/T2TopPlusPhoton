@@ -22,7 +22,7 @@
 
 #include <TFile.h>//Add by Yuhsiang
 
-void FakesFromJets_QCDnonEnriched()
+void FakesFromJets_GJets()
 {
     gROOT->ProcessLine(".L interface/setTDRStyle.C");
     gROOT->ProcessLine("setTDRStyle()");
