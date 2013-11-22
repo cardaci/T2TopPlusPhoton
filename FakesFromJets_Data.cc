@@ -88,7 +88,9 @@ void FakesFromJets_Data()
        int PT_N_bins = 100;
 
 
-       float pT_subranges[6] = {0 ,30, 316, 352, 396, 1100};
+       float pT_subranges[6] = {0 ,30, 33, 47, 105, 1200};
+       float pT_Gluon_subranges[6] = {0 ,30, 33, 38, 90, 1200};
+       float pT_Quark_subranges[6] = {0 ,30, 33, 56, 120, 1200};
 
 
        TH1F * Inclusive_QGTagsMLP_Matched_FO = new TH1F ("Inclusive_QGTagsMLP_Matched_FO","Inclusive_QGTagsMLP_Matched_FO", 100, -2, 2);
@@ -837,7 +839,7 @@ void FakesFromJets_Data()
 		      if(
  		         PhotonInfo.Eta[P_Index_FO[g]] >= (Eta_Min + i * (Eta_Max - Eta_Min)/ 5) && PhotonInfo.Eta[P_Index_FO[g]] < (Eta_Min + (i+1) * (Eta_Max - Eta_Min) / 5) &&
                  //PhotonInfo.Pt[P_Index_FO[g]] >= (PT_Min + k * (PT_Max - PT_Min)/ 5) && PhotonInfo.Pt[P_Index_FO[g]] < (PT_Min + (k+1) * (PT_Max - PT_Min) / 5)
-                 PhotonInfo.Pt[P_Index_FO[g]] >= pT_subranges[k] && PhotonInfo.Pt[P_Index_FO[g]] < pT_subranges[k+1] 		      		         
+                 PhotonInfo.Pt[P_Index_FO[g]] >= pT_Quark_subranges[k] && PhotonInfo.Pt[P_Index_FO[g]] < pT_Quark_subranges[k+1] 		      		         
 			    ) h_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark[i][k]->Fill(PhotonInfo.SigmaIetaIeta[P_Index_FO[g]]);
 		    }
 		  }
@@ -851,7 +853,7 @@ void FakesFromJets_Data()
 		        if(
  		           PhotonInfo.Eta[P_Index_FO[g]] >= (Eta_Min + i * (Eta_Max - Eta_Min)/ 5) && PhotonInfo.Eta[P_Index_FO[g]] < (Eta_Min + (i+1) * (Eta_Max - Eta_Min) / 5) &&
                    //PhotonInfo.Pt[P_Index_FO[g]] >= (PT_Min + k * (PT_Max - PT_Min)/ 5) && PhotonInfo.Pt[P_Index_FO[g]] < (PT_Min + (k+1) * (PT_Max - PT_Min) / 5)
-                   PhotonInfo.Pt[P_Index_FO[g]] >= pT_subranges[k] && PhotonInfo.Pt[P_Index_FO[g]] < pT_subranges[k+1] 
+                   PhotonInfo.Pt[P_Index_FO[g]] >= pT_Quark_subranges[k] && PhotonInfo.Pt[P_Index_FO[g]] < pT_Quark_subranges[k+1] 
 			      ) h_Sigma_Ieta_Ieta_FO_Quark[i][k]->Fill(PhotonInfo.SigmaIetaIeta[P_Index_FO[g]]);
 		       }
 		     }
@@ -872,7 +874,7 @@ void FakesFromJets_Data()
 		      if(
  		         PhotonInfo.Eta[P_Index_FO[g]] >= (Eta_Min + i * (Eta_Max - Eta_Min)/ 5) && PhotonInfo.Eta[P_Index_FO[g]] < (Eta_Min + (i+1) * (Eta_Max - Eta_Min) / 5) &&
                  //PhotonInfo.Pt[P_Index_FO[g]] >= (PT_Min + k * (PT_Max - PT_Min)/ 5) && PhotonInfo.Pt[P_Index_FO[g]] < (PT_Min + (k+1) * (PT_Max - PT_Min) / 5)
-                 PhotonInfo.Pt[P_Index_FO[g]] >= pT_subranges[k] && PhotonInfo.Pt[P_Index_FO[g]] < pT_subranges[k+1] 
+                 PhotonInfo.Pt[P_Index_FO[g]] >= pT_Gluon_subranges[k] && PhotonInfo.Pt[P_Index_FO[g]] < pT_Gluon_subranges[k+1] 
 		        ) h_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon[i][k]->Fill(PhotonInfo.SigmaIetaIeta[P_Index_FO[g]]);
 		    }
 		  }
@@ -886,7 +888,7 @@ void FakesFromJets_Data()
 		        if(
    		           PhotonInfo.Eta[P_Index_FO[g]] >= (Eta_Min + i * (Eta_Max - Eta_Min)/ 5) && PhotonInfo.Eta[P_Index_FO[g]] < (Eta_Min + (i+1) * (Eta_Max - Eta_Min) / 5) &&
                    //PhotonInfo.Pt[P_Index_FO[g]] >= (PT_Min + k * (PT_Max - PT_Min)/ 5) && PhotonInfo.Pt[P_Index_FO[g]] < (PT_Min + (k+1) * (PT_Max - PT_Min) / 5)
-                   PhotonInfo.Pt[P_Index_FO[g]] >= pT_subranges[k] && PhotonInfo.Pt[P_Index_FO[g]] < pT_subranges[k+1] 
+                   PhotonInfo.Pt[P_Index_FO[g]] >= pT_Gluon_subranges[k] && PhotonInfo.Pt[P_Index_FO[g]] < pT_Gluon_subranges[k+1] 
 			      ) h_Sigma_Ieta_Ieta_FO_Gluon[i][k]->Fill(PhotonInfo.SigmaIetaIeta[P_Index_FO[g]]);
 		       }
 		     }
@@ -969,7 +971,7 @@ void FakesFromJets_Data()
 		      if(
 		         PhotonInfo.Eta[P_Index_TIGHT[g]] >= (Eta_Min + i * (Eta_Max - Eta_Min)/ 5) && PhotonInfo.Eta[P_Index_TIGHT[g]] < (Eta_Min + (i+1) * (Eta_Max - Eta_Min) / 5) &&
                  //PhotonInfo.Pt[P_Index_TIGHT[g]] >= (PT_Min + k * (PT_Max - PT_Min)/ 5) && PhotonInfo.Pt[P_Index_TIGHT[g]] < (PT_Min + (k+1) * (PT_Max - PT_Min) / 5)
-                 PhotonInfo.Pt[P_Index_TIGHT[g]] >= pT_subranges[k] && PhotonInfo.Pt[P_Index_TIGHT[g]] < pT_subranges[k+1] 
+                 PhotonInfo.Pt[P_Index_TIGHT[g]] >= pT_Quark_subranges[k] && PhotonInfo.Pt[P_Index_TIGHT[g]] < pT_Quark_subranges[k+1] 
 			 ) h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark[i][k]->Fill(PhotonInfo.SigmaIetaIeta[P_Index_TIGHT[g]]);
 		     }
 		  }
@@ -983,7 +985,7 @@ void FakesFromJets_Data()
 		        if(
   		           PhotonInfo.Eta[P_Index_TIGHT[g]] >= (Eta_Min + i * (Eta_Max - Eta_Min)/ 5) && PhotonInfo.Eta[P_Index_TIGHT[g]] < (Eta_Min + (i+1) * (Eta_Max - Eta_Min) / 5) &&
                    //PhotonInfo.Pt[P_Index_TIGHT[g]] >= (PT_Min + k * (PT_Max - PT_Min)/ 5) && PhotonInfo.Pt[P_Index_TIGHT[g]] < (PT_Min + (k+1) * (PT_Max - PT_Min) / 5)
-                   PhotonInfo.Pt[P_Index_TIGHT[g]] >= pT_subranges[k] && PhotonInfo.Pt[P_Index_TIGHT[g]] < pT_subranges[k+1] 
+                   PhotonInfo.Pt[P_Index_TIGHT[g]] >= pT_Quark_subranges[k] && PhotonInfo.Pt[P_Index_TIGHT[g]] < pT_Quark_subranges[k+1] 
 			      ) h_Sigma_Ieta_Ieta_TIGHT_Quark[i][k]->Fill(PhotonInfo.SigmaIetaIeta[P_Index_TIGHT[g]]);
 		       }
 		     }
@@ -1003,7 +1005,7 @@ void FakesFromJets_Data()
 		      if(
 		         PhotonInfo.Eta[P_Index_TIGHT[g]] >= (Eta_Min + i * (Eta_Max - Eta_Min)/ 5) && PhotonInfo.Eta[P_Index_TIGHT[g]] < (Eta_Min + (i+1) * (Eta_Max - Eta_Min) / 5) &&
                  //PhotonInfo.Pt[P_Index_TIGHT[g]] >= (PT_Min + k * (PT_Max - PT_Min)/ 5) && PhotonInfo.Pt[P_Index_TIGHT[g]] < (PT_Min + (k+1) * (PT_Max - PT_Min) / 5)
-                 PhotonInfo.Pt[P_Index_TIGHT[g]] >= pT_subranges[k] && PhotonInfo.Pt[P_Index_TIGHT[g]] < pT_subranges[k+1] 
+                 PhotonInfo.Pt[P_Index_TIGHT[g]] >= pT_Gluon_subranges[k] && PhotonInfo.Pt[P_Index_TIGHT[g]] < pT_Gluon_subranges[k+1] 
 			    ) h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon[i][k]->Fill(PhotonInfo.SigmaIetaIeta[P_Index_TIGHT[g]]);
 		    }
 		  }
@@ -1017,7 +1019,7 @@ void FakesFromJets_Data()
 		        if(
  		           PhotonInfo.Eta[P_Index_TIGHT[g]] >= (Eta_Min + i * (Eta_Max - Eta_Min)/ 5) && PhotonInfo.Eta[P_Index_TIGHT[g]] < (Eta_Min + (i+1) * (Eta_Max - Eta_Min) / 5) &&
                    //PhotonInfo.Pt[P_Index_TIGHT[g]] >= (PT_Min + k * (PT_Max - PT_Min)/ 5) && PhotonInfo.Pt[P_Index_TIGHT[g]] < (PT_Min + (k+1) * (PT_Max - PT_Min) / 5)
-                   PhotonInfo.Pt[P_Index_TIGHT[g]] >= pT_subranges[k] && PhotonInfo.Pt[P_Index_TIGHT[g]] < pT_subranges[k+1] 
+                   PhotonInfo.Pt[P_Index_TIGHT[g]] >= pT_Gluon_subranges[k] && PhotonInfo.Pt[P_Index_TIGHT[g]] < pT_Gluon_subranges[k+1] 
 			      ) h_Sigma_Ieta_Ieta_TIGHT_Gluon[i][k]->Fill(PhotonInfo.SigmaIetaIeta[P_Index_TIGHT[g]]);
 		       }
 		     }
