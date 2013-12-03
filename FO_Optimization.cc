@@ -36,6 +36,25 @@ void FO_Optimization()
     }
 
 
+    root[0]->Add("/BprimeKitNtuples/Production_CMSSW5311/CMSSW5_3_11_MC_AOD_v3/v4/QCD_Pt_20_30_EMEnriched_TuneZ2star_8TeV_pythia6_Summer12_DR53X-PU_S10_START53_V7A-v1/*.root");
+    root[1]->Add("/BprimeKitNtuples/Production_CMSSW5311/CMSSW5_3_11_MC_AOD_v3/v4/QCD_Pt_80_170_EMEnriched_TuneZ2star_8TeV_pythia6_Summer12_DR53X-PU_S10_START53_V7A-v1/*.root");
+    root[2]->Add("/BprimeKitNtuples/Production_CMSSW5311/CMSSW5_3_11_MC_AOD_v3/v4/QCD_Pt_170_250_EMEnriched_TuneZ2star_8TeV_pythia6_Summer12_DR53X-PU_S10_START53_V7A-v1/*.root");
+    root[3]->Add("/BprimeKitNtuples/Production_CMSSW5311/CMSSW5_3_11_MC_AOD_v3/v4/QCD_Pt_250_350_EMEnriched_TuneZ2star_8TeV_pythia6_Summer12_DR53X-PU_S10_START53_V7A-v1/*.root");
+    root[4]->Add("/BprimeKitNtuples/Production_CMSSW5311/CMSSW5_3_11_MC_AOD_v3/v4/QCD_Pt_350_EMEnriched_TuneZ2star_8TeV_pythia6_Summer12_DR53X-PU_S10_START53_V7A-v1/*.root");
+    //root[5]->Add("/BprimeKitNtuples/Production_CMSSW5311/CMSSW5_3_11_MC_AOD_v3/v4/QCD_Pt_30_80_EMEnriched_TuneZ2star_8TeV_pythia6_Summer12_DR53X-PU_S10_START53_V7A-v1/*.root
+    root[5]->Add("/data4/cardaci/stableQCD_Pt_30_80_EMEnriched_TuneZ2star_8TeV_pythia6_Summer12_DR53X-PU_S10_START53_V7A-v1/*.root");
+
+
+
+    
+    root[6]->Add("/BprimeKitNtuples/Production_CMSSW5311/CMSSW5_3_11_MC_AOD_v3/sync/GJets_HT-40To100_8TeV-madgraph_Summer12_DR53X-PU_S10_START53_V19-v1/*.root");
+    root[7]->Add("/BprimeKitNtuples/Production_CMSSW5311/CMSSW5_3_11_MC_AOD_v3/sync/GJets_HT-100To200_8TeV-madgraph_Summer12_DR53X-PU_S10_START53_V19-v1/*.root");
+    root[8]->Add("/BprimeKitNtuples/Production_CMSSW5311/CMSSW5_3_11_MC_AOD_v3/sync/GJets_HT-200To400_8TeV-madgraph_v2_Summer12_DR53X-PU_S10_START53_V7A-v1/*.root");
+    root[9]->Add("/BprimeKitNtuples/Production_CMSSW5311/CMSSW5_3_11_MC_AOD_v3/sync/GJets_HT-400ToInf_8TeV-madgraph_v3_Summer12_DR53X-PU_S10_START53_V7C-v1/*.root");
+
+
+  /*
+
     root[0]->Add("/data4/cardaci/skimmingFromJacky2/test/REDUCE_DATA2/reduce_noSigmaIetaIeta_QCD_Pt_20_30_EMEnriched_TuneZ2star_8TeV_pythia6_Summer12_DR53X-PU_S10_START53_V7A-v1.root");
     root[1]->Add("/data4/cardaci/skimmingFromJacky2/test/REDUCE_DATA2/reduce_noSigmaIetaIeta_QCD_Pt_80_170_EMEnriched_TuneZ2star_8TeV_pythia6_Summer12_DR53X-PU_S10_START53_V7A-v1.root");
     root[2]->Add("/data4/cardaci/skimmingFromJacky2/test/REDUCE_DATA2/reduce_noSigmaIetaIeta_QCD_Pt_170_250_EMEnriched_TuneZ2star_8TeV_pythia6_Summer12_DR53X-PU_S10_START53_V7A-v1.root");
@@ -46,6 +65,9 @@ void FO_Optimization()
     root[7]->Add("/data4/cardaci/skimmingFromJacky2/test/REDUCE_DATA2/reduce_noSigmaIetaIeta_GJets_HT-100To200_8TeV-madgraph_Summer12_DR53X-PU_S10_START53_V19-v1.root");
     root[8]->Add("/data4/cardaci/skimmingFromJacky2/test/REDUCE_DATA2/reduce_noSigmaIetaIeta_GJets_HT-200To400_8TeV-madgraph_v2_Summer12_DR53X-PU_S10_START53_V7A-v1.root");
     root[9]->Add("/data4/cardaci/skimmingFromJacky2/test/REDUCE_DATA2/reduce_noSigmaIetaIeta_GJets_HT-400ToInf_8TeV-madgraph_v3_Summer12_DR53X-PU_S10_START53_V7C-v1.root");
+
+    */
+
     root[10]->Add("/BprimeKitNtuples/Production_CMSSW5311/CMSSW5_3_11_MC_AOD_v3/TprimeTprimeToTgammaTgammainc_M-450_TuneZ2star_8TeV-madgraph_Summer12_DR53X-PU_S10_START53_V7A-v1/*.root");
     root[11]->Add("/BprimeKitNtuples/Production_CMSSW5311/CMSSW5_3_11_MC_AOD_v3/TprimeTprimeToTgammaTgammainc_M-475_TuneZ2star_8TeV-madgraph_Summer12_DR53X-PU_S10_START53_V7A-v1/*.root");
     root[12]->Add("/BprimeKitNtuples/Production_CMSSW5311/CMSSW5_3_11_MC_AOD_v3/TprimeTprimeToTgammaTgammainc_M-500_TuneZ2star_8TeV-madgraph_Summer12_DR53X-PU_S10_START53_V7A-v1/*.root");
@@ -120,6 +142,7 @@ void FO_Optimization()
     float set_of_filter_efficiency[34]={0.0101, 0.1539, 0.148, 0.131, 0.11, 0.0621, 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.};
 
     float set_of_number_of_events[34] = {0};
+/*
     // QCD
     set_of_number_of_events[0] = 27212467;
     set_of_number_of_events[1] = 12557989;
@@ -133,7 +156,9 @@ void FO_Optimization()
     set_of_number_of_events[8] = 42365645;
     set_of_number_of_events[9] = 36215351;
     // Tprime
-    for(int sample_index=10;sample_index<34;sample_index++){
+*/
+
+    for(int sample_index=0;sample_index<34;sample_index++){
      set_of_number_of_events[sample_index] = root[sample_index]->GetEntries();
     }
 
@@ -303,7 +328,7 @@ void FO_Optimization()
 
        	RecoLeptonSelection(EvtInfo, LepInfo, NMuons, M_Index, NElectrons, E_Index, NLeptons, L_Index);
        	RecoJetSelection(LepInfo, JetInfo, PhotonInfo, NMuons, M_Index, NElectrons, E_Index, NJets, J_Index, NPhotons, P_Index);
-	RecoPhotonSelectionFONoSigmaIetaIeta(LepInfo, PhotonInfo, NMuons, M_Index, NElectrons, E_Index, NPhotons_FO, P_Index_FO, EvtInfo.RhoPU[0]);
+	RecoPhotonSelectionFONoSigmaIetaIeta(LepInfo, PhotonInfo, JetInfo, NJets, J_Index, NMuons, M_Index, NElectrons, E_Index, NPhotons_FO, P_Index_FO, EvtInfo.RhoPU[0]);
 
         int NVertices=0;
         int V_Index[50];
@@ -359,10 +384,10 @@ void FO_Optimization()
 
 
   	  	   if(
-		     PhotonInfo.hadTowOverEm[P_Index_FO[g]] > i * 0.01 &&
-                    (max(PhotonInfo.phoPFChIsoDR03[P_Index_FO[g]]-EffectiveAreaPhoton(PhotonInfo.Eta[P_Index_FO[g]],0)*RhoPU,(float)0.) > j * 0.7) &&
-                    (max(PhotonInfo.phoPFNeuIsoDR03[P_Index_FO[g]]-EffectiveAreaPhoton(PhotonInfo.Eta[P_Index_FO[g]],1)*RhoPU,(float)0.)> k * (0.4+0.04*PhotonInfo.Pt[P_Index_FO[g]])) &&
-                    (max(PhotonInfo.phoPFPhoIsoDR03[P_Index_FO[g]]-EffectiveAreaPhoton(PhotonInfo.Eta[P_Index_FO[g]],2)*RhoPU,(float)0.)> l * (0.5+0.005*PhotonInfo.Pt[P_Index_FO[g]]))
+		     PhotonInfo.hadTowOverEm[P_Index_FO[g]] > 2 * i * 0.01 &&
+                    (max(PhotonInfo.phoPFChIsoDR03[P_Index_FO[g]]-EffectiveAreaPhoton(PhotonInfo.Eta[P_Index_FO[g]],0)*RhoPU,(float)0.) > 2 * j * 0.7) &&
+                    (max(PhotonInfo.phoPFNeuIsoDR03[P_Index_FO[g]]-EffectiveAreaPhoton(PhotonInfo.Eta[P_Index_FO[g]],1)*RhoPU,(float)0.)> 2 * k * (0.4+0.04*PhotonInfo.Pt[P_Index_FO[g]])) &&
+                    (max(PhotonInfo.phoPFPhoIsoDR03[P_Index_FO[g]]-EffectiveAreaPhoton(PhotonInfo.Eta[P_Index_FO[g]],2)*RhoPU,(float)0.)> 2 * l * (0.5+0.005*PhotonInfo.Pt[P_Index_FO[g]]))
                     ){
 
 
@@ -398,9 +423,9 @@ void FO_Optimization()
 
   	  	   if(
 		     PhotonInfo.hadTowOverEm[P_Index_FO[g]]> i * 0.01 &&
-                    (max(PhotonInfo.phoPFChIsoDR03[P_Index_FO[g]]-EffectiveAreaPhoton(PhotonInfo.Eta[P_Index_FO[g]],0)*RhoPU,(float)0.) > j * 0.5) &&
-                    (max(PhotonInfo.phoPFNeuIsoDR03[P_Index_FO[g]]-EffectiveAreaPhoton(PhotonInfo.Eta[P_Index_FO[g]],1)*RhoPU,(float)0.)> k * (1.5+0.04*PhotonInfo.Pt[P_Index_FO[g]])) &&
-                    (max(PhotonInfo.phoPFPhoIsoDR03[P_Index_FO[g]]-EffectiveAreaPhoton(PhotonInfo.Eta[P_Index_FO[g]],2)*RhoPU,(float)0.)> l * (1.0+0.005*PhotonInfo.Pt[P_Index_FO[g]]))
+                    (max(PhotonInfo.phoPFChIsoDR03[P_Index_FO[g]]-EffectiveAreaPhoton(PhotonInfo.Eta[P_Index_FO[g]],0)*RhoPU,(float)0.) > 2 * j * 0.5) &&
+                    (max(PhotonInfo.phoPFNeuIsoDR03[P_Index_FO[g]]-EffectiveAreaPhoton(PhotonInfo.Eta[P_Index_FO[g]],1)*RhoPU,(float)0.)> 2 * k * (1.5+0.04*PhotonInfo.Pt[P_Index_FO[g]])) &&
+                    (max(PhotonInfo.phoPFPhoIsoDR03[P_Index_FO[g]]-EffectiveAreaPhoton(PhotonInfo.Eta[P_Index_FO[g]],2)*RhoPU,(float)0.)> 2 * l * (1.0+0.005*PhotonInfo.Pt[P_Index_FO[g]]))
                     ){
 
 
