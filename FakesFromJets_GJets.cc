@@ -812,7 +812,7 @@ void FakesFromJets_GJets()
                  
                }
 
-		 if( (dR_aux2 == 0.5) || (GenInfo.PhotonFlag[mindex]!=1) ) continue;
+		 if( (dR_aux2 == 0.5) || (GenInfo.PhotonFlag[mindex]!=0) ) continue;
 //              cout<<"GenInfo.PhotonFlag[mindex]:"<<GenInfo.PhotonFlag[mindex] <<endl;
 
 
@@ -940,7 +940,7 @@ void FakesFromJets_GJets()
 
               }
 
-              if( (dR_aux2 == 0.5) || (GenInfo.PhotonFlag[mindex]!=1)  ) continue;//end matching
+              if( (dR_aux2 == 0.5) || (GenInfo.PhotonFlag[mindex]!=0)  ) continue;//end matching
 //              cout<<"GenInfo.PhotonFlag[mindex]:"<<GenInfo.PhotonFlag[mindex] <<endl;
 
 
