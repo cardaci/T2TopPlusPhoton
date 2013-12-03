@@ -822,9 +822,6 @@ cout << "R^{lg/ll}=  " << N_anti_electron_veto_AND_fo_g / N_2_anti_electron_veto
     cout << "R^{qq/qg}=  " << N_2_fo_q / N_fo_q_AND_fo_g << " +/- " << (sqrt(err_N_2_fo_q) + sqrt(err_N_fo_q_AND_fo_g) * N_2_fo_q / N_fo_q_AND_fo_g) / N_fo_q_AND_fo_g << endl;
     cout << "R^{gg/qg}=  " << N_2_fo_g / N_fo_q_AND_fo_g << " +/- " << (sqrt(err_N_2_fo_g) + sqrt(err_N_fo_q_AND_fo_g) * N_2_fo_g / N_fo_q_AND_fo_g) / N_fo_q_AND_fo_g << endl; cout << endl;
 
-    cout << "R^{sg/sq}=  " << N_tight_AND_fo_g / N_tight_AND_fo_g << " +/- " << (sqrt(err_N_tight_AND_fo_g) + sqrt(err_N_tight_AND_fo_g) * N_tight_AND_fo_g / N_tight_AND_fo_g) / N_tight_AND_fo_g << endl;
-    cout << "R^{sl/sq}=  " << N_tight_AND_anti_electron_veto / N_tight_AND_fo_q << " +/- " << (sqrt(err_N_tight_AND_anti_electron_veto) + sqrt(err_N_tight_AND_fo_q) * N_tight_AND_anti_electron_veto / N_tight_AND_fo_q) / N_tight_AND_fo_q << endl; cout << endl;
-
     cout << "R^{sg/sq}=  " << N_tight_AND_fo_g / N_tight_AND_fo_q << " +/- " << (sqrt(err_N_tight_AND_fo_g) + sqrt(err_N_tight_AND_fo_q) * N_anti_electron_veto_AND_fo_g / N_2_fo_g) / N_2_fo_g << endl;
     cout << "R^{sl/sq}=  " << N_tight_AND_anti_electron_veto / N_tight_AND_fo_q << " +/- " << (sqrt(err_N_tight_AND_anti_electron_veto) + sqrt(err_N_tight_AND_fo_q) * N_tight_AND_anti_electron_veto / N_tight_AND_fo_q) / N_tight_AND_fo_q << endl; cout << endl;
 
@@ -888,10 +885,6 @@ cout << "R^{lg/ll}=  " << N_anti_electron_veto_AND_fo_g_j4 / N_2_anti_electron_v
     cout << "R^{ll/qg}=  " << N_2_anti_electron_veto_j4 / N_fo_q_AND_fo_g_j4 << " +/- " << (sqrt(err_N_2_anti_electron_veto_j4) + sqrt(err_N_fo_q_AND_fo_g_j4) * N_2_anti_electron_veto_j4 / N_fo_q_AND_fo_g_j4) / N_fo_q_AND_fo_g_j4 << endl;
     cout << "R^{qq/qg}=  " << N_2_fo_q_j4 / N_fo_q_AND_fo_g_j4 << " +/- " << (sqrt(err_N_2_fo_q_j4) + sqrt(err_N_fo_q_AND_fo_g_j4) * N_2_fo_q_j4 / N_fo_q_AND_fo_g_j4) / N_fo_q_AND_fo_g_j4 << endl;
     cout << "R^{gg/qg}=  " << N_2_fo_g_j4 / N_fo_q_AND_fo_g_j4 << " +/- " << (sqrt(err_N_2_fo_g_j4) + sqrt(err_N_fo_q_AND_fo_g_j4) * N_2_fo_g_j4 / N_fo_q_AND_fo_g_j4) / N_fo_q_AND_fo_g_j4 << endl; cout << endl;
-
-    cout << "R^{sg/sq}=  " << N_tight_AND_fo_g_j4 / N_tight_AND_fo_g_j4 << " +/- " << (sqrt(err_N_tight_AND_fo_g_j4) + sqrt(err_N_tight_AND_fo_g_j4) * N_tight_AND_fo_g_j4 / N_tight_AND_fo_g_j4) / N_tight_AND_fo_g_j4 << endl;
-    cout << "R^{sl/sq}=  " << N_tight_AND_anti_electron_veto_j4 / N_tight_AND_fo_q_j4 << " +/- " << (sqrt(err_N_tight_AND_anti_electron_veto_j4) + sqrt(err_N_tight_AND_fo_q_j4) * N_tight_AND_anti_electron_veto_j4 / N_tight_AND_fo_q_j4) / N_tight_AND_fo_q_j4 << endl; cout << endl;
-
     cout << "R^{sg/sq}=  " << N_tight_AND_fo_g_j4 / N_tight_AND_fo_q_j4 << " +/- " << (sqrt(err_N_tight_AND_fo_g_j4) + sqrt(err_N_tight_AND_fo_q_j4) * N_anti_electron_veto_AND_fo_g_j4 / N_2_fo_g_j4) / N_2_fo_g_j4 << endl;
     cout << "R^{sl/sq}=  " << N_tight_AND_anti_electron_veto_j4 / N_tight_AND_fo_q_j4 << " +/- " << (sqrt(err_N_tight_AND_anti_electron_veto_j4) + sqrt(err_N_tight_AND_fo_q_j4) * N_tight_AND_anti_electron_veto_j4 / N_tight_AND_fo_q_j4) / N_tight_AND_fo_q_j4 << endl; cout << endl;
 
@@ -951,10 +944,6 @@ cout << "R^{lg/ll}=  " << N_anti_electron_veto_AND_fo_g_j4_l / N_2_anti_electron
     cout << "R^{ll/qg}=  " << N_2_anti_electron_veto_j4_l / N_fo_q_AND_fo_g_j4_l << " +/- " << (sqrt(err_N_2_anti_electron_veto_j4_l) + sqrt(err_N_fo_q_AND_fo_g_j4_l) * N_2_anti_electron_veto_j4_l / N_fo_q_AND_fo_g_j4_l) / N_fo_q_AND_fo_g_j4_l << endl;
     cout << "R^{qq/qg}=  " << N_2_fo_q_j4_l / N_fo_q_AND_fo_g_j4_l << " +/- " << (sqrt(err_N_2_fo_q_j4_l) + sqrt(err_N_fo_q_AND_fo_g_j4_l) * N_2_fo_q_j4_l / N_fo_q_AND_fo_g_j4_l) / N_fo_q_AND_fo_g_j4_l << endl;
     cout << "R^{gg/qg}=  " << N_2_fo_g_j4_l / N_fo_q_AND_fo_g_j4_l << " +/- " << (sqrt(err_N_2_fo_g_j4_l) + sqrt(err_N_fo_q_AND_fo_g_j4_l) * N_2_fo_g_j4_l / N_fo_q_AND_fo_g_j4_l) / N_fo_q_AND_fo_g_j4_l << endl; cout << endl;
-
-    cout << "R^{sg/sq}=  " << N_tight_AND_fo_g_j4_l / N_tight_AND_fo_g_j4_l << " +/- " << (sqrt(err_N_tight_AND_fo_g_j4_l) + sqrt(err_N_tight_AND_fo_g_j4_l) * N_tight_AND_fo_g_j4_l / N_tight_AND_fo_g_j4_l) / N_tight_AND_fo_g_j4_l << endl;
-    cout << "R^{sl/sq}=  " << N_tight_AND_anti_electron_veto_j4_l / N_tight_AND_fo_q_j4_l << " +/- " << (sqrt(err_N_tight_AND_anti_electron_veto_j4_l) + sqrt(err_N_tight_AND_fo_q_j4_l) * N_tight_AND_anti_electron_veto_j4_l / N_tight_AND_fo_q_j4_l) / N_tight_AND_fo_q_j4_l << endl; cout << endl;
-
     cout << "R^{sg/sq}=  " << N_tight_AND_fo_g_j4_l / N_tight_AND_fo_q_j4_l << " +/- " << (sqrt(err_N_tight_AND_fo_g_j4_l) + sqrt(err_N_tight_AND_fo_q_j4_l) * N_anti_electron_veto_AND_fo_g_j4_l / N_2_fo_g_j4_l) / N_2_fo_g_j4_l << endl;
     cout << "R^{sl/sq}=  " << N_tight_AND_anti_electron_veto_j4_l / N_tight_AND_fo_q_j4_l << " +/- " << (sqrt(err_N_tight_AND_anti_electron_veto_j4_l) + sqrt(err_N_tight_AND_fo_q_j4_l) * N_tight_AND_anti_electron_veto_j4_l / N_tight_AND_fo_q_j4_l) / N_tight_AND_fo_q_j4_l << endl; cout << endl;
 
@@ -963,6 +952,15 @@ cout << "R^{lg/ll}=  " << N_anti_electron_veto_AND_fo_g_j4_l / N_2_anti_electron
 
     cout << "R^{sq/sl}=  " << N_tight_AND_fo_q_j4_l / N_tight_AND_anti_electron_veto_j4_l << " +/- " << (sqrt(err_N_tight_AND_fo_q_j4_l) + sqrt(err_N_tight_AND_anti_electron_veto_j4_l) * N_tight_AND_fo_q_j4_l / N_tight_AND_anti_electron_veto_j4_l) / N_tight_AND_anti_electron_veto_j4_l << endl;
     cout << "R^{sg/sl}=  " << N_tight_AND_fo_g_j4_l / N_tight_AND_anti_electron_veto_j4_l << " +/- " <<  (sqrt(err_N_tight_AND_fo_g_j4_l) + sqrt(err_N_tight_AND_anti_electron_veto_j4_l) *  N_tight_AND_fo_g_j4_l / N_tight_AND_anti_electron_veto_j4_l) / N_tight_AND_anti_electron_veto_j4_l  << endl; cout << endl;   cout << "R^{lg/lq}=  " << N_anti_electron_veto_AND_fo_g_j4_l / N_anti_electron_veto_AND_fo_q_j4_l << " +/- " << (sqrt(err_N_anti_electron_veto_AND_fo_g_j4_l) + sqrt(err_N_anti_electron_veto_AND_fo_q_j4_l) * N_anti_electron_veto_AND_fo_g_j4_l / N_anti_electron_veto_AND_fo_q_j4_l) / N_anti_electron_veto_AND_fo_q_j4_l  << endl;
+
+
+
+
+
+
+
+
+
     cout << "R^{ll/lq}=  " << N_2_anti_electron_veto_j4_l / N_anti_electron_veto_AND_fo_q_j4_l << " +/- " << (sqrt(err_N_2_anti_electron_veto_j4_l) + sqrt(err_N_anti_electron_veto_AND_fo_q_j4_l) * N_2_anti_electron_veto_j4_l / N_anti_electron_veto_AND_fo_q_j4_l) / N_anti_electron_veto_AND_fo_q_j4_l << endl;
     cout << "R^{qq/lq}=  " << N_2_fo_q_j4_l / N_anti_electron_veto_AND_fo_q_j4_l << " +/- " << (sqrt(err_N_2_fo_q_j4_l) + sqrt(err_N_anti_electron_veto_AND_fo_q_j4_l) * N_2_fo_q_j4_l / N_anti_electron_veto_AND_fo_q_j4_l) / N_anti_electron_veto_AND_fo_q_j4_l << endl;
     cout << "R^{gg/lq}=  " << N_2_fo_g_j4_l / N_anti_electron_veto_AND_fo_q_j4_l << " +/- " << (sqrt(err_N_2_fo_g_j4_l) + sqrt(err_N_anti_electron_veto_AND_fo_q_j4_l) * N_2_fo_g_j4_l / N_anti_electron_veto_AND_fo_q_j4_l) / N_anti_electron_veto_AND_fo_q_j4_l << endl;
@@ -997,9 +995,6 @@ cout << "R^{lg/ll}=  " << N_anti_electron_veto_AND_fo_g_j4_l / N_2_anti_electron
     cout << "R^{ll/qg}=  " << N_2_anti_electron_veto_j4_l / N_fo_q_AND_fo_g_j4_l << " +/- " << (sqrt(err_N_2_anti_electron_veto_j4_l) + sqrt(err_N_fo_q_AND_fo_g_j4_l) * N_2_anti_electron_veto_j4_l / N_fo_q_AND_fo_g_j4_l) / N_fo_q_AND_fo_g_j4_l << endl;
     cout << "R^{qq/qg}=  " << N_2_fo_q_j4_l / N_fo_q_AND_fo_g_j4_l << " +/- " << (sqrt(err_N_2_fo_q_j4_l) + sqrt(err_N_fo_q_AND_fo_g_j4_l) * N_2_fo_q_j4_l / N_fo_q_AND_fo_g_j4_l) / N_fo_q_AND_fo_g_j4_l << endl;
     cout << "R^{gg/qg}=  " << N_2_fo_g_j4_l / N_fo_q_AND_fo_g_j4_l << " +/- " << (sqrt(err_N_2_fo_g_j4_l) + sqrt(err_N_fo_q_AND_fo_g_j4_l) * N_2_fo_g_j4_l / N_fo_q_AND_fo_g_j4_l) / N_fo_q_AND_fo_g_j4_l << endl; cout << endl;
-
-    cout << "R^{sg/sq}=  " << N_tight_AND_fo_g_j4_l / N_tight_AND_fo_g_j4_l << " +/- " << (sqrt(err_N_tight_AND_fo_g_j4_l) + sqrt(err_N_tight_AND_fo_g_j4_l) * N_tight_AND_fo_g_j4_l / N_tight_AND_fo_g_j4_l) / N_tight_AND_fo_g_j4_l << endl;
-    cout << "R^{sl/sq}=  " << N_tight_AND_anti_electron_veto_j4_l / N_tight_AND_fo_q_j4_l << " +/- " << (sqrt(err_N_tight_AND_anti_electron_veto_j4_l) + sqrt(err_N_tight_AND_fo_q_j4_l) * N_tight_AND_anti_electron_veto_j4_l / N_tight_AND_fo_q_j4_l) / N_tight_AND_fo_q_j4_l << endl; cout << endl;
 
     cout << "R^{sg/sq}=  " << N_tight_AND_fo_g_j4_l / N_tight_AND_fo_q_j4_l << " +/- " << (sqrt(err_N_tight_AND_fo_g_j4_l) + sqrt(err_N_tight_AND_fo_q_j4_l) * N_anti_electron_veto_AND_fo_g_j4_l / N_2_fo_g_j4_l) / N_2_fo_g_j4_l << endl;
     cout << "R^{sl/sq}=  " << N_tight_AND_anti_electron_veto_j4_l / N_tight_AND_fo_q_j4_l << " +/- " << (sqrt(err_N_tight_AND_anti_electron_veto_j4_l) + sqrt(err_N_tight_AND_fo_q_j4_l) * N_tight_AND_anti_electron_veto_j4_l / N_tight_AND_fo_q_j4_l) / N_tight_AND_fo_q_j4_l << endl; cout << endl;
