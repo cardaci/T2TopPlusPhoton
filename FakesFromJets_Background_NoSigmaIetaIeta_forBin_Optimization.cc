@@ -3,18 +3,18 @@
 #include "TStyle.h"
 #include "TH1F.h"
 #include "TH2F.h"
-#include "../interface/format.h"
+#include "interface/format.h"
 #include "TChain.h"
 #include "TCanvas.h"
-//#include "../interface/TriggerBooking.h"
-#include "../interface/DPHI.h"
-#include "../interface/RecoLeptonSelection.h"
-#include "../interface/RecoPhotonSelectionFONoSigmaIetaIeta.h"
-#include "../interface/RecoPhotonSelectionNoSigmaIetaIeta.h"
-#include "../interface/RecoJetSelection.h"
+//#include "interface/TriggerBooking.h"
+#include "interface/DPHI.h"
+#include "interface/RecoLeptonSelection.h"
+#include "interface/RecoPhotonSelectionFONoSigmaIetaIeta.h"
+#include "interface/RecoPhotonSelection.h"
+#include "interface/RecoJetSelection.h"
 //#include "interface/SolutionOfWNeutrino.h"
 //#include "Math.h"
-#include "../interface/ConstantNumbers.h"
+#include "interface/ConstantNumbers.h"
 #include "TLorentzVector.h"
 #include <string>
 #include <iostream>
@@ -28,24 +28,21 @@ void FakesFromJets_Background_NoSigmaIetaIeta_forBin_Optimization()
     gROOT->ProcessLine("setTDRStyle()");
     gStyle->SetPalette(1);
 
-    TChain * root[6]; 
+    TChain * root[1]; 
 
     root[0] = new TChain("bprimeKit/root");
-    root[1] = new TChain("bprimeKit/root");
-    root[2] = new TChain("bprimeKit/root");
-    root[3] = new TChain("bprimeKit/root");
-    root[4] = new TChain("bprimeKit/root");
-    root[5] = new TChain("bprimeKit/root");
+
+    root[0]->Add("/data3/cardaci/skimmingFromJacky2/test/REDUCE_DATA2/reduce_noSigmaIetaIeta_MultiJet_*.root");
+    root[0]->Add("/data3/cardaci/skimmingFromJacky2/test/REDUCE_DATA2/reduce_noSigmaIetaIeta_JetHT_*.root");
+
 
     //root->Add("/afs/cern.ch/work/c/cardaci/SingleElectron_Run2012A-22Jan2013-v1_190456-193686/*");
-     root[0]->Add("/data4/cardaci/skimmingFromJacky2/test/REDUCE_DATA2/reduce_noSigmaIetaIeta_QCD_Pt_20_30_EMEnriched_TuneZ2star_8TeV_pythia6_Summer12_DR53X-PU_S10_START53_V7A-v1.root");
-     root[1]->Add("/data4/cardaci/skimmingFromJacky2/test/REDUCE_DATA2/reduce_noSigmaIetaIeta_QCD_Pt_80_170_EMEnriched_TuneZ2star_8TeV_pythia6_Summer12_DR53X-PU_S10_START53_V7A-v1.root");
-     root[2]->Add("/data4/cardaci/skimmingFromJacky2/test/REDUCE_DATA2/reduce_noSigmaIetaIeta_QCD_Pt_170_250_EMEnriched_TuneZ2star_8TeV_pythia6_Summer12_DR53X-PU_S10_START53_V7A-v1.root");
-     root[3]->Add("/data4/cardaci/skimmingFromJacky2/test/REDUCE_DATA2/reduce_noSigmaIetaIeta_QCD_Pt_250_350_EMEnriched_TuneZ2star_8TeV_pythia6_Summer12_DR53X-PU_S10_START53_V7A-v1.root");
-     root[4]->Add("/data4/cardaci/skimmingFromJacky2/test/REDUCE_DATA2/reduce_noSigmaIetaIeta_QCD_Pt_350_EMEnriched_TuneZ2star_8TeV_pythia6_Summer12_DR53X-PU_S10_START53_V7A-v1.root");
-     root[5]->Add("/data4/cardaci/skimmingFromJacky2/test/REDUCE_DATA2/reduce_noSigmaIetaIeta_QCD_Pt_30_80_EMEnriched_TuneZ2star_8TeV_pythia6_Summer12_DR53X-PU_S10_START53_V7A-v1.root");
-
-
+    //root[0]->Add("/data4/cardaci/skimmingFromJacky2/test/REDUCE_DATA2/reduce_QCD_Pt_20_30_EMEnriched_TuneZ2star_8TeV_pythia6_Summer12_DR53X-PU_S10_START53_V7A-v1.root");
+    //root[1]->Add("/data4/cardaci/skimmingFromJacky2/test/REDUCE_DATA2/reduce_QCD_Pt_80_170_EMEnriched_TuneZ2star_8TeV_pythia6_Summer12_DR53X-PU_S10_START53_V7A-v1.root");
+    //root[2]->Add("/data4/cardaci/skimmingFromJacky2/test/REDUCE_DATA2/reduce_QCD_Pt_170_250_EMEnriched_TuneZ2star_8TeV_pythia6_Summer12_DR53X-PU_S10_START53_V7A-v1.root");
+    //root[3]->Add("/data4/cardaci/skimmingFromJacky2/test/REDUCE_DATA2/reduce_QCD_Pt_250_350_EMEnriched_TuneZ2star_8TeV_pythia6_Summer12_DR53X-PU_S10_START53_V7A-v1.root");
+    //root[4]->Add("/data4/cardaci/skimmingFromJacky2/test/REDUCE_DATA2/reduce_QCD_Pt_350_EMEnriched_TuneZ2star_8TeV_pythia6_Summer12_DR53X-PU_S10_START53_V7A-v1.root");
+    //root[5]->Add("/data4/cardaci/skimmingFromJacky2/test/REDUCE_DATA2/reduce_QCD_Pt_30_80_EMEnriched_TuneZ2star_8TeV_pythia6_Summer12_DR53X-PU_S10_START53_V7A-v1.root");
     //root->Add("/afs/cern.ch/work/c/cardaci/MultiJet_Run2012A-13Jul2012-v1_190456-193686/*");
     //root->Add("/afs/cern.ch/work/y/ymtzeng/public/1photon1lepton_DYJetsToLL_M-50_TuneZ2Star_8TeV-madgraph-tarball_Summer12_DR53X-PU_S10_START53_V7A-v1.root ");
     //root->Add("/afs/cern.ch/work/c/cardaci/REDUCE_DATA_Summer12_1lepton4jets_id_vtx_recover/1lepton4jets_DYJetsToLL_M-50_TuneZ2Star_8TeV-madgraph-tarball_Summer12_DR53X-PU_S10_START53_V7A-v1.root");
@@ -99,6 +96,7 @@ void FakesFromJets_Background_NoSigmaIetaIeta_forBin_Optimization()
        float PT_Min =   30;
        float PT_Max = 1200;
        int PT_N_bins = 10000;
+
 
        float pT_subranges[6] = {0 ,30, 33, 47, 105, 1200};
        float pT_Gluon_subranges[6] = {0 ,30, 33, 38, 90, 1200};
@@ -738,17 +736,18 @@ void FakesFromJets_Background_NoSigmaIetaIeta_forBin_Optimization()
 
     // QCD PtHat 30-80 is put as last and not used given that the weight is much larger than 1 (about 46).
     // Cross check if the number of events for QCD PtHat 170-250 is that or the double as found by Yu-hsiang some time ago
-    float set_of_number_of_events[6] = {27212467, 12557989, 2705404, 1506866, 26292910, 99935};
-    float set_of_xsections[6]={288600000, 1191000, 30990, 4250, 810, 74330000};
-    float set_of_filter_efficiency[6]={0.0101, 0.1539, 0.148, 0.131, 0.11, 0.0621};
-    float set_of_weights[6] = {0};
+    //    float set_of_number_of_events[6] = {27212467, 12557989, 2705404, 1506866, 26292910, 99935};
+    //    float set_of_xsections[6]={288600000, 1191000, 30990, 4250, 810, 74330000};
+    //    float set_of_filter_efficiency[6]={0.0101, 0.1539, 0.148, 0.131, 0.11, 0.0621};
+    float set_of_weights[1] = {0};
 
 
     // sample_index up to 4, becauuse QCD PtHat 30-80 is not used
-    for(int sample_index=0;sample_index<5;sample_index++){
+    for(int sample_index=0;sample_index<1;sample_index++){
 
 
-      set_of_weights[sample_index] = set_of_xsections[sample_index] * set_of_filter_efficiency[sample_index] / set_of_number_of_events[sample_index];
+      //      set_of_weights[sample_index] = set_of_xsections[sample_index] * set_of_filter_efficiency[sample_index] / set_of_number_of_events[sample_index];     
+      set_of_weights[sample_index] = 1.;
 
      cout<<"sample_index:"<<sample_index<<endl;
 
@@ -806,8 +805,8 @@ void FakesFromJets_Background_NoSigmaIetaIeta_forBin_Optimization()
 
        	RecoLeptonSelection(EvtInfo, LepInfo, NMuons, M_Index, NElectrons, E_Index, NLeptons, L_Index);
        	RecoJetSelection(LepInfo, JetInfo, PhotonInfo, NMuons, M_Index, NElectrons, E_Index, NJets, J_Index, NPhotons, P_Index);
-	RecoPhotonSelectionFONoSigmaIetaIeta(LepInfo, PhotonInfo, NMuons, M_Index, NElectrons, E_Index, NPhotons_FO, P_Index_FO, EvtInfo.RhoPU[0]);
-	RecoPhotonSelectionNoSigmaIetaIeta(LepInfo, PhotonInfo, NMuons, M_Index, NElectrons, E_Index, NPhotons_TIGHT, P_Index_TIGHT, EvtInfo.RhoPU[0]);
+	RecoPhotonSelectionFONoSigmaIetaIeta(LepInfo, PhotonInfo, JetInfo, NJets, J_Index, NMuons, M_Index, NElectrons, E_Index, NPhotons_FO, P_Index_FO, EvtInfo.RhoPU[0]);
+	RecoPhotonSelection(LepInfo, PhotonInfo, NMuons, M_Index, NElectrons, E_Index, NPhotons_TIGHT, P_Index_TIGHT, EvtInfo.RhoPU[0]);
 
         int NVertices=0;
         int V_Index[50];
@@ -854,7 +853,7 @@ void FakesFromJets_Background_NoSigmaIetaIeta_forBin_Optimization()
                  
                }
 
-		 if( (dR_aux2 == 0.5) || (GenInfo.PhotonFlag[mindex]!=1)  ) continue;
+	       //		 if( (dR_aux2 == 0.5) || (GenInfo.PhotonFlag[mindex]!=1)  ) continue;
 //              cout<<"GenInfo.PhotonFlag[mindex]:"<<GenInfo.PhotonFlag[mindex] <<endl;
 
 
@@ -945,7 +944,7 @@ void FakesFromJets_Background_NoSigmaIetaIeta_forBin_Optimization()
 		        if(
    		           PhotonInfo.Eta[P_Index_FO[g]] >= (Eta_Min + i * (Eta_Max - Eta_Min)/ 5) && PhotonInfo.Eta[P_Index_FO[g]] < (Eta_Min + (i+1) * (Eta_Max - Eta_Min) / 5) &&
                    //PhotonInfo.Pt[P_Index_FO[g]] >= (PT_Min + k * (PT_Max - PT_Min)/ 5) && PhotonInfo.Pt[P_Index_FO[g]] < (PT_Min + (k+1) * (PT_Max - PT_Min) / 5)
-			   PhotonInfo.Pt[P_Index_FO[g]] >= pT_Gluon_subranges[k] && PhotonInfo.Pt[P_Index_FO[g]] < pT_Gluon_subranges[k+1] 
+                   PhotonInfo.Pt[P_Index_FO[g]] >= pT_Gluon_subranges[k] && PhotonInfo.Pt[P_Index_FO[g]] < pT_Gluon_subranges[k+1] 
 			      ) h_Sigma_Ieta_Ieta_FO_Gluon[i][k]->Fill(PhotonInfo.SigmaIetaIeta[P_Index_FO[g]],set_of_weights[sample_index]);
 		       }
 		     }
@@ -987,7 +986,7 @@ void FakesFromJets_Background_NoSigmaIetaIeta_forBin_Optimization()
 
               }
 
-              if( (dR_aux2 == 0.5) || (GenInfo.PhotonFlag[mindex]!=1)  ) continue;//end matching
+	      //              if( (dR_aux2 == 0.5) || (GenInfo.PhotonFlag[mindex]!=1)  ) continue;//end matching
 //              cout<<"GenInfo.PhotonFlag[mindex]:"<<GenInfo.PhotonFlag[mindex] <<endl;
 
 
@@ -1029,7 +1028,7 @@ void FakesFromJets_Background_NoSigmaIetaIeta_forBin_Optimization()
 		      if(
 		         PhotonInfo.Eta[P_Index_TIGHT[g]] >= (Eta_Min + i * (Eta_Max - Eta_Min)/ 5) && PhotonInfo.Eta[P_Index_TIGHT[g]] < (Eta_Min + (i+1) * (Eta_Max - Eta_Min) / 5) &&
                  //PhotonInfo.Pt[P_Index_TIGHT[g]] >= (PT_Min + k * (PT_Max - PT_Min)/ 5) && PhotonInfo.Pt[P_Index_TIGHT[g]] < (PT_Min + (k+1) * (PT_Max - PT_Min) / 5)
-			 PhotonInfo.Pt[P_Index_TIGHT[g]] >= pT_Quark_subranges[k] && PhotonInfo.Pt[P_Index_TIGHT[g]] < pT_Quark_subranges[k+1] 
+                 PhotonInfo.Pt[P_Index_TIGHT[g]] >= pT_Quark_subranges[k] && PhotonInfo.Pt[P_Index_TIGHT[g]] < pT_Quark_subranges[k+1] 
 			 ) h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark[i][k]->Fill(PhotonInfo.SigmaIetaIeta[P_Index_TIGHT[g]],set_of_weights[sample_index]);
 		     }
 		  }
@@ -1065,7 +1064,7 @@ void FakesFromJets_Background_NoSigmaIetaIeta_forBin_Optimization()
 		      if(
 		         PhotonInfo.Eta[P_Index_TIGHT[g]] >= (Eta_Min + i * (Eta_Max - Eta_Min)/ 5) && PhotonInfo.Eta[P_Index_TIGHT[g]] < (Eta_Min + (i+1) * (Eta_Max - Eta_Min) / 5) &&
                  //PhotonInfo.Pt[P_Index_TIGHT[g]] >= (PT_Min + k * (PT_Max - PT_Min)/ 5) && PhotonInfo.Pt[P_Index_TIGHT[g]] < (PT_Min + (k+1) * (PT_Max - PT_Min) / 5)
-			 PhotonInfo.Pt[P_Index_TIGHT[g]] >= pT_Gluon_subranges[k] && PhotonInfo.Pt[P_Index_TIGHT[g]] < pT_Gluon_subranges[k+1] 
+                 PhotonInfo.Pt[P_Index_TIGHT[g]] >= pT_Gluon_subranges[k] && PhotonInfo.Pt[P_Index_TIGHT[g]] < pT_Gluon_subranges[k+1] 
 			    ) h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon[i][k]->Fill(PhotonInfo.SigmaIetaIeta[P_Index_TIGHT[g]],set_of_weights[sample_index]);
 		    }
 		  }
@@ -1120,7 +1119,7 @@ void FakesFromJets_Background_NoSigmaIetaIeta_forBin_Optimization()
        ////////////////////////////
 
 
-       TFile* file_TPResults = new TFile("FakesFromJetsResults_Background_NoSigmaIetaIeta_forBin_Optimization.root","RECREATE");
+       TFile* file_TPResults = new TFile("FakesFromJetsResults_Background_forBin_Optimization.root","RECREATE");
        file_TPResults->cd();
 
 
