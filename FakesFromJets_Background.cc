@@ -43,7 +43,7 @@ void FakesFromJets_Background()
     root[2]->Add("/data4/cardaci/skimmingFromJacky2/test/REDUCE_DATA2/reduce_QCD_Pt_170_250_EMEnriched_TuneZ2star_8TeV_pythia6_Summer12_DR53X-PU_S10_START53_V7A-v1.root");
     root[3]->Add("/data4/cardaci/skimmingFromJacky2/test/REDUCE_DATA2/reduce_QCD_Pt_250_350_EMEnriched_TuneZ2star_8TeV_pythia6_Summer12_DR53X-PU_S10_START53_V7A-v1.root");
     root[4]->Add("/data4/cardaci/skimmingFromJacky2/test/REDUCE_DATA2/reduce_QCD_Pt_350_EMEnriched_TuneZ2star_8TeV_pythia6_Summer12_DR53X-PU_S10_START53_V7A-v1.root");
-    root[5]->Add("/data4/cardaci/skimmingFromJacky2/test/REDUCE_DATA2/reduce_QCD_Pt_30_80_EMEnriched_TuneZ2star_8TeV_pythia6_Summer12_DR53X-PU_S10_START53_V7A-v1.root");
+    root[5]->Add("/data4/cardaci/skimmingFromJacky2/test/REDUCE_DATA2/reduce_stableQCD_Pt_30_80_EMEnriched_TuneZ2star_8TeV_pythia6_Summer12_DR53X-PU_S10_START53_V7A-v1.root");
 
     //root->Add("/afs/cern.ch/work/c/cardaci/MultiJet_Run2012A-13Jul2012-v1_190456-193686/*");
     //root->Add("/afs/cern.ch/work/y/ymtzeng/public/1photon1lepton_DYJetsToLL_M-50_TuneZ2Star_8TeV-madgraph-tarball_Summer12_DR53X-PU_S10_START53_V7A-v1.root ");
@@ -709,14 +709,14 @@ void FakesFromJets_Background()
 
     // QCD PtHat 30-80 is put as last and not used given that the weight is much larger than 1 (about 46).
     // Cross check if the number of events for QCD PtHat 170-250 is that or the double as found by Yu-hsiang some time ago
-    float set_of_number_of_events[6] = {27212467, 12557989, 2705404, 1506866, 26292910, 99935};
+    float set_of_number_of_events[6] = {27212467, 12557989, 2705404, 1506866, 26292910, 16867284};
     float set_of_xsections[6]={288600000, 1191000, 30990, 4250, 810, 74330000};
     float set_of_filter_efficiency[6]={0.0101, 0.1539, 0.148, 0.131, 0.11, 0.0621};
     float set_of_weights[6] = {0};
 
 
     // sample_index up to 4, becauuse QCD PtHat 30-80 is not used
-    for(int sample_index=0;sample_index<5;sample_index++){
+    for(int sample_index=0;sample_index<6;sample_index++){
 
 
       set_of_weights[sample_index] = set_of_xsections[sample_index] * set_of_filter_efficiency[sample_index] / set_of_number_of_events[sample_index];
@@ -1082,7 +1082,7 @@ void FakesFromJets_Background()
        ////////////////////////////
 
 
-       TFile* file_TPResults = new TFile("FakesFromJetsResults_Background.root","RECREATE");
+       TFile* file_TPResults = new TFile("FakesFromJetsResults_Background_with_QCD_PtHat_30_80.root","RECREATE");
        file_TPResults->cd();
 
 
