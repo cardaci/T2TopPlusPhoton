@@ -35,10 +35,10 @@ void FakesFromJets_GJets_NoSigmaIetaIeta()
     }
 
 
-    root[0]->Add("/data4/cardaci/skimmingFromJacky2/test/REDUCE_DATA2/reduce_GJets_HT-40To100_8TeV-madgraph_Summer12_DR53X-PU_S10_START53_V19-v1.root");
-    root[1]->Add("/data4/cardaci/skimmingFromJacky2/test/REDUCE_DATA2/reduce_GJets_HT-100To200_8TeV-madgraph_Summer12_DR53X-PU_S10_START53_V19-v1.root");
-    root[2]->Add("/data4/cardaci/skimmingFromJacky2/test/REDUCE_DATA2/reduce_GJets_HT-200To400_8TeV-madgraph_v2_Summer12_DR53X-PU_S10_START53_V7A-v1.root");
-    root[3]->Add("/data4/cardaci/skimmingFromJacky2/test/REDUCE_DATA2/reduce_GJets_HT-400ToInf_8TeV-madgraph_v3_Summer12_DR53X-PU_S10_START53_V7C-v1.root");
+    root[0]->Add("/data3/cardaci/skimmingFromJacky2/test/REDUCE_DATA2/reduce_noSigmaIetaIeta_GJets_HT-40To100_8TeV-madgraph_Summer12_DR53X-PU_S10_START53_V19-v1.root");
+    root[1]->Add("/data3/cardaci/skimmingFromJacky2/test/REDUCE_DATA2/reduce_noSigmaIetaIeta_GJets_HT-100To200_8TeV-madgraph_Summer12_DR53X-PU_S10_START53_V19-v1.root");
+    root[2]->Add("/data3/cardaci/skimmingFromJacky2/test/REDUCE_DATA2/reduce_noSigmaIetaIeta_GJets_HT-200To400_8TeV-madgraph_v2_Summer12_DR53X-PU_S10_START53_V7A-v1.root");
+    root[3]->Add("/data3/cardaci/skimmingFromJacky2/test/REDUCE_DATA2/reduce_noSigmaIetaIeta_GJets_HT-400ToInf_8TeV-madgraph_v3_Summer12_DR53X-PU_S10_START53_V7C-v1.root");
 
 
     //root->Add("/afs/cern.ch/work/c/cardaci/MultiJet_Run2012A-13Jul2012-v1_190456-193686/*");
@@ -96,68 +96,63 @@ void FakesFromJets_GJets_NoSigmaIetaIeta()
        int PT_N_bins = 100;
 
 
-       float pT_subranges[6] = {0 ,30, 33, 47, 105, 1200};
-       float pT_Gluon_subranges[6] = {0 ,30, 33, 38, 90, 1200};
-       float pT_Quark_subranges[6] = {0 ,30, 33, 56, 120, 1200};
+       float pT_subranges[6] = {0 ,30, 99, 133, 173, 1200};
+       float pT_Gluon_subranges[6] = {0 ,30, 90, 125, 160, 1200};
+       float pT_Quark_subranges[6] = {0 ,30, 108, 140, 186, 1200};
 
-
-       TH1F * Inclusive_QGTagsMLP_Matched_FO = new TH1F ("Inclusive_QGTagsMLP_Matched_FO","Inclusive_QGTagsMLP_Matched_FO", 100, -2, 2);
+       TH1F * Inclusive_QGTagsMLP_Matched_FO = new TH1F ("Inclusive_QGTagsMLP_Matched_FO","Inclusive_QGTagsMLP_Matched_FO", 40000, -2, 2);
        Inclusive_QGTagsMLP_Matched_FO->Sumw2();
-       TH1F * Inclusive_QGTagsLikelihood_Matched_FO = new TH1F ("Inclusive_QGTagsLikelihood_Matched_FO","Inclusive_QGTagsLikelihood_Matched_FO", 100, -2, 2);
+       TH1F * Inclusive_QGTagsLikelihood_Matched_FO = new TH1F ("Inclusive_QGTagsLikelihood_Matched_FO","Inclusive_QGTagsLikelihood_Matched_FO", 40000, -2, 2);
        Inclusive_QGTagsLikelihood_Matched_FO->Sumw2();
-       TH1F * Inclusive_QGTagsMLP_Matched_TIGHT = new TH1F ("Inclusive_QGTagsMLP_Matched_TIGHT","Inclusive_QGTagsMLP_Matched_TIGHT", 100, -2, 2);
+       TH1F * Inclusive_QGTagsMLP_Matched_TIGHT = new TH1F ("Inclusive_QGTagsMLP_Matched_TIGHT","Inclusive_QGTagsMLP_Matched_TIGHT", 40000, -2, 2);
        Inclusive_QGTagsMLP_Matched_TIGHT->Sumw2();
-       TH1F * Inclusive_QGTagsLikelihood_Matched_TIGHT = new TH1F ("Inclusive_QGTagsLikelihood_Matched_TIGHT","Inclusive_QGTagsLikelihood_Matched_TIGHT", 100, -2, 2);
+       TH1F * Inclusive_QGTagsLikelihood_Matched_TIGHT = new TH1F ("Inclusive_QGTagsLikelihood_Matched_TIGHT","Inclusive_QGTagsLikelihood_Matched_TIGHT", 40000, -2, 2);
        Inclusive_QGTagsLikelihood_Matched_TIGHT->Sumw2();
 
-//       TH1F * Inclusive_Sigma_Ieta_Ieta_TIGHT_Gluon = new TH1F ("Inclusive_Sigma_Ieta_Ieta_TIGHT_Gluon","Inclusive_Sigma_Ieta_Ieta_TIGHT_Gluon", 2000, -1, 1);
-//       TH1F * Inclusive_Sigma_Ieta_Ieta_FO_Gluon = new TH1F ("Inclusive_Sigma_Ieta_Ieta_FO_Gluon","Inclusive_Sigma_Ieta_Ieta_FO_Gluon", 2000, -1, 1);
-//       TH1F * Inclusive_Sigma_Ieta_Ieta_TIGHT_Quark = new TH1F ("Inclusive_Sigma_Ieta_Ieta_TIGHT_Quark","Inclusive_Sigma_Ieta_Ieta_TIGHT_Quark", 2000, -1, 1);
-//       TH1F * Inclusive_Sigma_Ieta_Ieta_FO_Quark = new TH1F ("Inclusive_Sigma_Ieta_Ieta_FO_Quark","Inclusive_Sigma_Ieta_Ieta_FO_Quark", 2000, -1, 1);
 
-       TH1F * Inclusive_Sigma_Ieta_Ieta_TIGHT_Gluon = new TH1F ("Inclusive_Sigma_Ieta_Ieta_TIGHT_Gluon","Inclusive_Sigma_Ieta_Ieta_TIGHT_Gluon", 50, 0, 0.05);//Add by Yuhsiang
+       TH1F * Inclusive_Sigma_Ieta_Ieta_TIGHT_Gluon = new TH1F ("Inclusive_Sigma_Ieta_Ieta_TIGHT_Gluon","Inclusive_Sigma_Ieta_Ieta_TIGHT_Gluon", 20000, -1, 1);//Add by Yuhsiang
        Inclusive_Sigma_Ieta_Ieta_TIGHT_Gluon->Sumw2();
-       TH1F * Inclusive_Sigma_Ieta_Ieta_FO_Gluon = new TH1F ("Inclusive_Sigma_Ieta_Ieta_FO_Gluon","Inclusive_Sigma_Ieta_Ieta_FO_Gluon",  50, 0, 0.05);//Add by Yuhsiang
+       TH1F * Inclusive_Sigma_Ieta_Ieta_FO_Gluon = new TH1F ("Inclusive_Sigma_Ieta_Ieta_FO_Gluon","Inclusive_Sigma_Ieta_Ieta_FO_Gluon",  20000, -1, 1);//Add by Yuhsiang
        Inclusive_Sigma_Ieta_Ieta_FO_Gluon->Sumw2();
-       TH1F * Inclusive_Sigma_Ieta_Ieta_TIGHT_Quark = new TH1F ("Inclusive_Sigma_Ieta_Ieta_TIGHT_Quark","Inclusive_Sigma_Ieta_Ieta_TIGHT_Quark",  50, 0, 0.05);//Add by Yuhsiang
+       TH1F * Inclusive_Sigma_Ieta_Ieta_TIGHT_Quark = new TH1F ("Inclusive_Sigma_Ieta_Ieta_TIGHT_Quark","Inclusive_Sigma_Ieta_Ieta_TIGHT_Quark",  20000, -1, 1);//Add by Yuhsiang
        Inclusive_Sigma_Ieta_Ieta_TIGHT_Quark->Sumw2();
-       TH1F * Inclusive_Sigma_Ieta_Ieta_FO_Quark = new TH1F ("Inclusive_Sigma_Ieta_Ieta_FO_Quark","Inclusive_Sigma_Ieta_Ieta_FO_Quark",  50, 0, 0.05);//Add by Yuhsiang
+       TH1F * Inclusive_Sigma_Ieta_Ieta_FO_Quark = new TH1F ("Inclusive_Sigma_Ieta_Ieta_FO_Quark","Inclusive_Sigma_Ieta_Ieta_FO_Quark",  20000, -1, 1);//Add by Yuhsiang
        Inclusive_Sigma_Ieta_Ieta_FO_Quark->Sumw2();
 
-       TH1F * Inclusive_Barrel_Sigma_Ieta_Ieta_TIGHT_Gluon = new TH1F ("Inclusive_Barrel_Sigma_Ieta_Ieta_TIGHT_Gluon","Inclusive_Barrel_Sigma_Ieta_Ieta_TIGHT_Gluon", 2000, -1, 1);
+       TH1F * Inclusive_Barrel_Sigma_Ieta_Ieta_TIGHT_Gluon = new TH1F ("Inclusive_Barrel_Sigma_Ieta_Ieta_TIGHT_Gluon","Inclusive_Barrel_Sigma_Ieta_Ieta_TIGHT_Gluon", 20000, -1, 1);
        Inclusive_Barrel_Sigma_Ieta_Ieta_TIGHT_Gluon->Sumw2();
-       TH1F * Inclusive_Barrel_Sigma_Ieta_Ieta_FO_Gluon = new TH1F ("Inclusive_Barrel_Sigma_Ieta_Ieta_FO_Gluon","Inclusive_Barrel_Sigma_Ieta_Ieta_FO_Gluon", 2000, -1, 1);
+       TH1F * Inclusive_Barrel_Sigma_Ieta_Ieta_FO_Gluon = new TH1F ("Inclusive_Barrel_Sigma_Ieta_Ieta_FO_Gluon","Inclusive_Barrel_Sigma_Ieta_Ieta_FO_Gluon", 20000, -1, 1);
        Inclusive_Barrel_Sigma_Ieta_Ieta_FO_Gluon->Sumw2();
-       TH1F * Inclusive_Barrel_Sigma_Ieta_Ieta_TIGHT_Quark = new TH1F ("Inclusive_Barrel_Sigma_Ieta_Ieta_TIGHT_Quark","Inclusive_Barrel_Sigma_Ieta_Ieta_TIGHT_Quark", 2000, -1, 1);
+       TH1F * Inclusive_Barrel_Sigma_Ieta_Ieta_TIGHT_Quark = new TH1F ("Inclusive_Barrel_Sigma_Ieta_Ieta_TIGHT_Quark","Inclusive_Barrel_Sigma_Ieta_Ieta_TIGHT_Quark", 20000, -1, 1);
        Inclusive_Barrel_Sigma_Ieta_Ieta_TIGHT_Quark->Sumw2();
-       TH1F * Inclusive_Barrel_Sigma_Ieta_Ieta_FO_Quark = new TH1F ("Inclusive_Barrel_Sigma_Ieta_Ieta_FO_Quark","Inclusive_Barrel_Sigma_Ieta_Ieta_FO_Quark", 2000, -1, 1);
+       TH1F * Inclusive_Barrel_Sigma_Ieta_Ieta_FO_Quark = new TH1F ("Inclusive_Barrel_Sigma_Ieta_Ieta_FO_Quark","Inclusive_Barrel_Sigma_Ieta_Ieta_FO_Quark", 20000, -1, 1);
        Inclusive_Barrel_Sigma_Ieta_Ieta_FO_Quark->Sumw2();
 
-       TH1F * Inclusive_Endcap_Sigma_Ieta_Ieta_TIGHT_Gluon = new TH1F ("Inclusive_Endcap_Sigma_Ieta_Ieta_TIGHT_Gluon","Inclusive_Endcap_Sigma_Ieta_Ieta_TIGHT_Gluon", 2000, -1, 1);
+       TH1F * Inclusive_Endcap_Sigma_Ieta_Ieta_TIGHT_Gluon = new TH1F ("Inclusive_Endcap_Sigma_Ieta_Ieta_TIGHT_Gluon","Inclusive_Endcap_Sigma_Ieta_Ieta_TIGHT_Gluon", 20000, -1, 1);
        Inclusive_Endcap_Sigma_Ieta_Ieta_TIGHT_Gluon->Sumw2();
-       TH1F * Inclusive_Endcap_Sigma_Ieta_Ieta_FO_Gluon = new TH1F ("Inclusive_Endcap_Sigma_Ieta_Ieta_FO_Gluon","Inclusive_Endcap_Sigma_Ieta_Ieta_FO_Gluon", 2000, -1, 1);
+       TH1F * Inclusive_Endcap_Sigma_Ieta_Ieta_FO_Gluon = new TH1F ("Inclusive_Endcap_Sigma_Ieta_Ieta_FO_Gluon","Inclusive_Endcap_Sigma_Ieta_Ieta_FO_Gluon", 20000, -1, 1);
        Inclusive_Endcap_Sigma_Ieta_Ieta_FO_Gluon->Sumw2();
-       TH1F * Inclusive_Endcap_Sigma_Ieta_Ieta_TIGHT_Quark = new TH1F ("Inclusive_Endcap_Sigma_Ieta_Ieta_TIGHT_Quark","Inclusive_Endcap_Sigma_Ieta_Ieta_TIGHT_Quark", 2000, -1, 1);
+       TH1F * Inclusive_Endcap_Sigma_Ieta_Ieta_TIGHT_Quark = new TH1F ("Inclusive_Endcap_Sigma_Ieta_Ieta_TIGHT_Quark","Inclusive_Endcap_Sigma_Ieta_Ieta_TIGHT_Quark", 20000, -1, 1);
        Inclusive_Endcap_Sigma_Ieta_Ieta_TIGHT_Quark->Sumw2();
-       TH1F * Inclusive_Endcap_Sigma_Ieta_Ieta_FO_Quark = new TH1F ("Inclusive_Endcap_Sigma_Ieta_Ieta_FO_Quark","Inclusive_Endcap_Sigma_Ieta_Ieta_FO_Quark", 2000, -1, 1);
+       TH1F * Inclusive_Endcap_Sigma_Ieta_Ieta_FO_Quark = new TH1F ("Inclusive_Endcap_Sigma_Ieta_Ieta_FO_Quark","Inclusive_Endcap_Sigma_Ieta_Ieta_FO_Quark", 20000, -1, 1);
        Inclusive_Endcap_Sigma_Ieta_Ieta_FO_Quark->Sumw2();
 
-       TH1F * Inclusive_noNJetsCut_QGTagsMLP_Matched_FO = new TH1F ("Inclusive_noNJetsCut_QGTagsMLP_Matched_FO","Inclusive_noNJetsCut_QGTagsMLP_Matched_FO", 100, -2, 2);
+       TH1F * Inclusive_noNJetsCut_QGTagsMLP_Matched_FO = new TH1F ("Inclusive_noNJetsCut_QGTagsMLP_Matched_FO","Inclusive_noNJetsCut_QGTagsMLP_Matched_FO", 40000, -2, 2);
        Inclusive_noNJetsCut_QGTagsMLP_Matched_FO->Sumw2();
-       TH1F * Inclusive_noNJetsCut_QGTagsLikelihood_Matched_FO = new TH1F ("Inclusive_noNJetsCut_QGTagsLikelihood_Matched_FO","Inclusive_noNJetsCut_QGTagsLikelihood_Matched_FO", 100, -2, 2);
+       TH1F * Inclusive_noNJetsCut_QGTagsLikelihood_Matched_FO = new TH1F ("Inclusive_noNJetsCut_QGTagsLikelihood_Matched_FO","Inclusive_noNJetsCut_QGTagsLikelihood_Matched_FO", 40000, -2, 2);
        Inclusive_noNJetsCut_QGTagsLikelihood_Matched_FO->Sumw2();
-       TH1F * Inclusive_noNJetsCut_QGTagsMLP_Matched_TIGHT = new TH1F ("Inclusive_noNJetsCut_QGTagsMLP_Matched_TIGHT","Inclusive_noNJetsCut_QGTagsMLP_Matched_TIGHT", 100, -2, 2);
+       TH1F * Inclusive_noNJetsCut_QGTagsMLP_Matched_TIGHT = new TH1F ("Inclusive_noNJetsCut_QGTagsMLP_Matched_TIGHT","Inclusive_noNJetsCut_QGTagsMLP_Matched_TIGHT", 40000, -2, 2);
        Inclusive_noNJetsCut_QGTagsMLP_Matched_TIGHT->Sumw2();
-       TH1F * Inclusive_noNJetsCut_QGTagsLikelihood_Matched_TIGHT = new TH1F ("Inclusive_noNJetsCut_QGTagsLikelihood_Matched_TIGHT","Inclusive_noNJetsCut_QGTagsLikelihood_Matched_TIGHT", 100, -2, 2);
+       TH1F * Inclusive_noNJetsCut_QGTagsLikelihood_Matched_TIGHT = new TH1F ("Inclusive_noNJetsCut_QGTagsLikelihood_Matched_TIGHT","Inclusive_noNJetsCut_QGTagsLikelihood_Matched_TIGHT", 40000, -2, 2);
        Inclusive_noNJetsCut_QGTagsLikelihood_Matched_TIGHT->Sumw2();
 
-       TH1F * Inclusive_noNJetsCut_Sigma_Ieta_Ieta_TIGHT_Gluon = new TH1F ("Inclusive_noNJetsCut_Sigma_Ieta_Ieta_TIGHT_Gluon","Inclusive_noNJetsCut_Sigma_Ieta_Ieta_TIGHT_Gluon", 2000, -1, 1);
+       TH1F * Inclusive_noNJetsCut_Sigma_Ieta_Ieta_TIGHT_Gluon = new TH1F ("Inclusive_noNJetsCut_Sigma_Ieta_Ieta_TIGHT_Gluon","Inclusive_noNJetsCut_Sigma_Ieta_Ieta_TIGHT_Gluon", 20000, -1, 1);
        Inclusive_noNJetsCut_Sigma_Ieta_Ieta_TIGHT_Gluon->Sumw2();
-       TH1F * Inclusive_noNJetsCut_Sigma_Ieta_Ieta_FO_Gluon = new TH1F ("Inclusive_noNJetsCut_Sigma_Ieta_Ieta_FO_Gluon","Inclusive_noNJetsCut_Sigma_Ieta_Ieta_FO_Gluon", 2000, -1, 1);
+       TH1F * Inclusive_noNJetsCut_Sigma_Ieta_Ieta_FO_Gluon = new TH1F ("Inclusive_noNJetsCut_Sigma_Ieta_Ieta_FO_Gluon","Inclusive_noNJetsCut_Sigma_Ieta_Ieta_FO_Gluon", 20000, -1, 1);
        Inclusive_noNJetsCut_Sigma_Ieta_Ieta_FO_Gluon->Sumw2();
-       TH1F * Inclusive_noNJetsCut_Sigma_Ieta_Ieta_TIGHT_Quark = new TH1F ("Inclusive_noNJetsCut_Sigma_Ieta_Ieta_TIGHT_Quark","Inclusive_noNJetsCut_Sigma_Ieta_Ieta_TIGHT_Quark", 2000, -1, 1);
+       TH1F * Inclusive_noNJetsCut_Sigma_Ieta_Ieta_TIGHT_Quark = new TH1F ("Inclusive_noNJetsCut_Sigma_Ieta_Ieta_TIGHT_Quark","Inclusive_noNJetsCut_Sigma_Ieta_Ieta_TIGHT_Quark", 20000, -1, 1);
        Inclusive_noNJetsCut_Sigma_Ieta_Ieta_TIGHT_Quark->Sumw2();
-       TH1F * Inclusive_noNJetsCut_Sigma_Ieta_Ieta_FO_Quark = new TH1F ("Inclusive_noNJetsCut_Sigma_Ieta_Ieta_FO_Quark","Inclusive_noNJetsCut_Sigma_Ieta_Ieta_FO_Quark", 2000, -1, 1);
+       TH1F * Inclusive_noNJetsCut_Sigma_Ieta_Ieta_FO_Quark = new TH1F ("Inclusive_noNJetsCut_Sigma_Ieta_Ieta_FO_Quark","Inclusive_noNJetsCut_Sigma_Ieta_Ieta_FO_Quark", 20000, -1, 1);
        Inclusive_noNJetsCut_Sigma_Ieta_Ieta_FO_Quark->Sumw2();
 
 
@@ -169,198 +164,198 @@ void FakesFromJets_GJets_NoSigmaIetaIeta()
        TH1F * h_Sigma_Ieta_Ieta_FO_Quark[5][5];
 
 
-       h_QGTagsMLP_Matched_FO[0][0] = new TH1F("Eta_0_PT_0_QGTagsMLP_Matched_FO", "Eta_0_PT_0_QGTagsMLP_Matched_FO",100, -2, 2);
-       h_QGTagsMLP_Matched_FO[1][0] = new TH1F("Eta_1_PT_0_QGTagsMLP_Matched_FO", "Eta_1_PT_0_QGTagsMLP_Matched_FO",100, -2, 2);
-       h_QGTagsMLP_Matched_FO[2][0] = new TH1F("Eta_2_PT_0_QGTagsMLP_Matched_FO", "Eta_2_PT_0_QGTagsMLP_Matched_FO",100, -2, 2);
-       h_QGTagsMLP_Matched_FO[3][0] = new TH1F("Eta_3_PT_0_QGTagsMLP_Matched_FO", "Eta_3_PT_0_QGTagsMLP_Matched_FO",100, -2, 2);
-       h_QGTagsMLP_Matched_FO[4][0] = new TH1F("Eta_4_PT_0_QGTagsMLP_Matched_FO", "Eta_4_PT_0_QGTagsMLP_Matched_FO",100, -2, 2);
+       h_QGTagsMLP_Matched_FO[0][0] = new TH1F("Eta_0_PT_0_QGTagsMLP_Matched_FO", "Eta_0_PT_0_QGTagsMLP_Matched_FO",40000, -2, 2);
+       h_QGTagsMLP_Matched_FO[1][0] = new TH1F("Eta_1_PT_0_QGTagsMLP_Matched_FO", "Eta_1_PT_0_QGTagsMLP_Matched_FO",40000, -2, 2);
+       h_QGTagsMLP_Matched_FO[2][0] = new TH1F("Eta_2_PT_0_QGTagsMLP_Matched_FO", "Eta_2_PT_0_QGTagsMLP_Matched_FO",40000, -2, 2);
+       h_QGTagsMLP_Matched_FO[3][0] = new TH1F("Eta_3_PT_0_QGTagsMLP_Matched_FO", "Eta_3_PT_0_QGTagsMLP_Matched_FO",40000, -2, 2);
+       h_QGTagsMLP_Matched_FO[4][0] = new TH1F("Eta_4_PT_0_QGTagsMLP_Matched_FO", "Eta_4_PT_0_QGTagsMLP_Matched_FO",40000, -2, 2);
 
-       h_QGTagsMLP_Matched_FO[0][1] = new TH1F("Eta_0_PT_1_QGTagsMLP_Matched_FO", "Eta_0_PT_1_QGTagsMLP_Matched_FO",100, -2, 2);
-       h_QGTagsMLP_Matched_FO[1][1] = new TH1F("Eta_1_PT_1_QGTagsMLP_Matched_FO", "Eta_1_PT_1_QGTagsMLP_Matched_FO",100, -2, 2);
-       h_QGTagsMLP_Matched_FO[2][1] = new TH1F("Eta_2_PT_1_QGTagsMLP_Matched_FO", "Eta_2_PT_1_QGTagsMLP_Matched_FO",100, -2, 2);
-       h_QGTagsMLP_Matched_FO[3][1] = new TH1F("Eta_3_PT_1_QGTagsMLP_Matched_FO", "Eta_3_PT_1_QGTagsMLP_Matched_FO",100, -2, 2);
-       h_QGTagsMLP_Matched_FO[4][1] = new TH1F("Eta_4_PT_1_QGTagsMLP_Matched_FO", "Eta_4_PT_1_QGTagsMLP_Matched_FO",100, -2, 2);
+       h_QGTagsMLP_Matched_FO[0][1] = new TH1F("Eta_0_PT_1_QGTagsMLP_Matched_FO", "Eta_0_PT_1_QGTagsMLP_Matched_FO",40000, -2, 2);
+       h_QGTagsMLP_Matched_FO[1][1] = new TH1F("Eta_1_PT_1_QGTagsMLP_Matched_FO", "Eta_1_PT_1_QGTagsMLP_Matched_FO",40000, -2, 2);
+       h_QGTagsMLP_Matched_FO[2][1] = new TH1F("Eta_2_PT_1_QGTagsMLP_Matched_FO", "Eta_2_PT_1_QGTagsMLP_Matched_FO",40000, -2, 2);
+       h_QGTagsMLP_Matched_FO[3][1] = new TH1F("Eta_3_PT_1_QGTagsMLP_Matched_FO", "Eta_3_PT_1_QGTagsMLP_Matched_FO",40000, -2, 2);
+       h_QGTagsMLP_Matched_FO[4][1] = new TH1F("Eta_4_PT_1_QGTagsMLP_Matched_FO", "Eta_4_PT_1_QGTagsMLP_Matched_FO",40000, -2, 2);
 
-       h_QGTagsMLP_Matched_FO[0][2] = new TH1F("Eta_0_PT_2_QGTagsMLP_Matched_FO", "Eta_0_PT_2_QGTagsMLP_Matched_FO",100, -2, 2);
-       h_QGTagsMLP_Matched_FO[1][2] = new TH1F("Eta_1_PT_2_QGTagsMLP_Matched_FO", "Eta_1_PT_2_QGTagsMLP_Matched_FO",100, -2, 2);
-       h_QGTagsMLP_Matched_FO[2][2] = new TH1F("Eta_2_PT_2_QGTagsMLP_Matched_FO", "Eta_2_PT_2_QGTagsMLP_Matched_FO",100, -2, 2);
-       h_QGTagsMLP_Matched_FO[3][2] = new TH1F("Eta_3_PT_2_QGTagsMLP_Matched_FO", "Eta_3_PT_2_QGTagsMLP_Matched_FO",100, -2, 2);
-       h_QGTagsMLP_Matched_FO[4][2] = new TH1F("Eta_4_PT_2_QGTagsMLP_Matched_FO", "Eta_4_PT_2_QGTagsMLP_Matched_FO",100, -2, 2);
+       h_QGTagsMLP_Matched_FO[0][2] = new TH1F("Eta_0_PT_2_QGTagsMLP_Matched_FO", "Eta_0_PT_2_QGTagsMLP_Matched_FO",40000, -2, 2);
+       h_QGTagsMLP_Matched_FO[1][2] = new TH1F("Eta_1_PT_2_QGTagsMLP_Matched_FO", "Eta_1_PT_2_QGTagsMLP_Matched_FO",40000, -2, 2);
+       h_QGTagsMLP_Matched_FO[2][2] = new TH1F("Eta_2_PT_2_QGTagsMLP_Matched_FO", "Eta_2_PT_2_QGTagsMLP_Matched_FO",40000, -2, 2);
+       h_QGTagsMLP_Matched_FO[3][2] = new TH1F("Eta_3_PT_2_QGTagsMLP_Matched_FO", "Eta_3_PT_2_QGTagsMLP_Matched_FO",40000, -2, 2);
+       h_QGTagsMLP_Matched_FO[4][2] = new TH1F("Eta_4_PT_2_QGTagsMLP_Matched_FO", "Eta_4_PT_2_QGTagsMLP_Matched_FO",40000, -2, 2);
 
-       h_QGTagsMLP_Matched_FO[0][3] = new TH1F("Eta_0_PT_3_QGTagsMLP_Matched_FO", "Eta_0_PT_3_QGTagsMLP_Matched_FO",100, -2, 2);
-       h_QGTagsMLP_Matched_FO[1][3] = new TH1F("Eta_1_PT_3_QGTagsMLP_Matched_FO", "Eta_1_PT_3_QGTagsMLP_Matched_FO",100, -2, 2);
-       h_QGTagsMLP_Matched_FO[2][3] = new TH1F("Eta_2_PT_3_QGTagsMLP_Matched_FO", "Eta_2_PT_3_QGTagsMLP_Matched_FO",100, -2, 2);
-       h_QGTagsMLP_Matched_FO[3][3] = new TH1F("Eta_3_PT_3_QGTagsMLP_Matched_FO", "Eta_3_PT_3_QGTagsMLP_Matched_FO",100, -2, 2);
-       h_QGTagsMLP_Matched_FO[4][3] = new TH1F("Eta_4_PT_3_QGTagsMLP_Matched_FO", "Eta_4_PT_3_QGTagsMLP_Matched_FO",100, -2, 2);
+       h_QGTagsMLP_Matched_FO[0][3] = new TH1F("Eta_0_PT_3_QGTagsMLP_Matched_FO", "Eta_0_PT_3_QGTagsMLP_Matched_FO",40000, -2, 2);
+       h_QGTagsMLP_Matched_FO[1][3] = new TH1F("Eta_1_PT_3_QGTagsMLP_Matched_FO", "Eta_1_PT_3_QGTagsMLP_Matched_FO",40000, -2, 2);
+       h_QGTagsMLP_Matched_FO[2][3] = new TH1F("Eta_2_PT_3_QGTagsMLP_Matched_FO", "Eta_2_PT_3_QGTagsMLP_Matched_FO",40000, -2, 2);
+       h_QGTagsMLP_Matched_FO[3][3] = new TH1F("Eta_3_PT_3_QGTagsMLP_Matched_FO", "Eta_3_PT_3_QGTagsMLP_Matched_FO",40000, -2, 2);
+       h_QGTagsMLP_Matched_FO[4][3] = new TH1F("Eta_4_PT_3_QGTagsMLP_Matched_FO", "Eta_4_PT_3_QGTagsMLP_Matched_FO",40000, -2, 2);
 
-       h_QGTagsMLP_Matched_FO[0][4] = new TH1F("Eta_0_PT_4_QGTagsMLP_Matched_FO", "Eta_0_PT_4_QGTagsMLP_Matched_FO",100, -2, 2);
-       h_QGTagsMLP_Matched_FO[1][4] = new TH1F("Eta_1_PT_4_QGTagsMLP_Matched_FO", "Eta_1_PT_4_QGTagsMLP_Matched_FO",100, -2, 2);
-       h_QGTagsMLP_Matched_FO[2][4] = new TH1F("Eta_2_PT_4_QGTagsMLP_Matched_FO", "Eta_2_PT_4_QGTagsMLP_Matched_FO",100, -2, 2);
-       h_QGTagsMLP_Matched_FO[3][4] = new TH1F("Eta_3_PT_4_QGTagsMLP_Matched_FO", "Eta_3_PT_4_QGTagsMLP_Matched_FO",100, -2, 2);
-       h_QGTagsMLP_Matched_FO[4][4] = new TH1F("Eta_4_PT_4_QGTagsMLP_Matched_FO", "Eta_4_PT_4_QGTagsMLP_Matched_FO",100, -2, 2);
-
-
-
-       h_QGTagsMLP_Matched_TIGHT[0][0] = new TH1F("Eta_0_PT_0_QGTagsMLP_Matched_TIGHT", "Eta_0_PT_0_QGTagsMLP_Matched_TIGHT",100, -2, 2);
-       h_QGTagsMLP_Matched_TIGHT[1][0] = new TH1F("Eta_1_PT_0_QGTagsMLP_Matched_TIGHT", "Eta_1_PT_0_QGTagsMLP_Matched_TIGHT",100, -2, 2);
-       h_QGTagsMLP_Matched_TIGHT[2][0] = new TH1F("Eta_2_PT_0_QGTagsMLP_Matched_TIGHT", "Eta_2_PT_0_QGTagsMLP_Matched_TIGHT",100, -2, 2);
-       h_QGTagsMLP_Matched_TIGHT[3][0] = new TH1F("Eta_3_PT_0_QGTagsMLP_Matched_TIGHT", "Eta_3_PT_0_QGTagsMLP_Matched_TIGHT",100, -2, 2);
-       h_QGTagsMLP_Matched_TIGHT[4][0] = new TH1F("Eta_4_PT_0_QGTagsMLP_Matched_TIGHT", "Eta_4_PT_0_QGTagsMLP_Matched_TIGHT",100, -2, 2);
-
-       h_QGTagsMLP_Matched_TIGHT[0][1] = new TH1F("Eta_0_PT_1_QGTagsMLP_Matched_TIGHT", "Eta_0_PT_1_QGTagsMLP_Matched_TIGHT",100, -2, 2);
-       h_QGTagsMLP_Matched_TIGHT[1][1] = new TH1F("Eta_1_PT_1_QGTagsMLP_Matched_TIGHT", "Eta_1_PT_1_QGTagsMLP_Matched_TIGHT",100, -2, 2);
-       h_QGTagsMLP_Matched_TIGHT[2][1] = new TH1F("Eta_2_PT_1_QGTagsMLP_Matched_TIGHT", "Eta_2_PT_1_QGTagsMLP_Matched_TIGHT",100, -2, 2);
-       h_QGTagsMLP_Matched_TIGHT[3][1] = new TH1F("Eta_3_PT_1_QGTagsMLP_Matched_TIGHT", "Eta_3_PT_1_QGTagsMLP_Matched_TIGHT",100, -2, 2);
-       h_QGTagsMLP_Matched_TIGHT[4][1] = new TH1F("Eta_4_PT_1_QGTagsMLP_Matched_TIGHT", "Eta_4_PT_1_QGTagsMLP_Matched_TIGHT",100, -2, 2);
-
-       h_QGTagsMLP_Matched_TIGHT[0][2] = new TH1F("Eta_0_PT_2_QGTagsMLP_Matched_TIGHT", "Eta_0_PT_2_QGTagsMLP_Matched_TIGHT",100, -2, 2);
-       h_QGTagsMLP_Matched_TIGHT[1][2] = new TH1F("Eta_1_PT_2_QGTagsMLP_Matched_TIGHT", "Eta_1_PT_2_QGTagsMLP_Matched_TIGHT",100, -2, 2);
-       h_QGTagsMLP_Matched_TIGHT[2][2] = new TH1F("Eta_2_PT_2_QGTagsMLP_Matched_TIGHT", "Eta_2_PT_2_QGTagsMLP_Matched_TIGHT",100, -2, 2);
-       h_QGTagsMLP_Matched_TIGHT[3][2] = new TH1F("Eta_3_PT_2_QGTagsMLP_Matched_TIGHT", "Eta_3_PT_2_QGTagsMLP_Matched_TIGHT",100, -2, 2);
-       h_QGTagsMLP_Matched_TIGHT[4][2] = new TH1F("Eta_4_PT_2_QGTagsMLP_Matched_TIGHT", "Eta_4_PT_2_QGTagsMLP_Matched_TIGHT",100, -2, 2);
-
-       h_QGTagsMLP_Matched_TIGHT[0][3] = new TH1F("Eta_0_PT_3_QGTagsMLP_Matched_TIGHT", "Eta_0_PT_3_QGTagsMLP_Matched_TIGHT",100, -2, 2);
-       h_QGTagsMLP_Matched_TIGHT[1][3] = new TH1F("Eta_1_PT_3_QGTagsMLP_Matched_TIGHT", "Eta_1_PT_3_QGTagsMLP_Matched_TIGHT",100, -2, 2);
-       h_QGTagsMLP_Matched_TIGHT[2][3] = new TH1F("Eta_2_PT_3_QGTagsMLP_Matched_TIGHT", "Eta_2_PT_3_QGTagsMLP_Matched_TIGHT",100, -2, 2);
-       h_QGTagsMLP_Matched_TIGHT[3][3] = new TH1F("Eta_3_PT_3_QGTagsMLP_Matched_TIGHT", "Eta_3_PT_3_QGTagsMLP_Matched_TIGHT",100, -2, 2);
-       h_QGTagsMLP_Matched_TIGHT[4][3] = new TH1F("Eta_4_PT_3_QGTagsMLP_Matched_TIGHT", "Eta_4_PT_3_QGTagsMLP_Matched_TIGHT",100, -2, 2);
-
-       h_QGTagsMLP_Matched_TIGHT[0][4] = new TH1F("Eta_0_PT_4_QGTagsMLP_Matched_TIGHT", "Eta_0_PT_4_QGTagsMLP_Matched_TIGHT",100, -2, 2);
-       h_QGTagsMLP_Matched_TIGHT[1][4] = new TH1F("Eta_1_PT_4_QGTagsMLP_Matched_TIGHT", "Eta_1_PT_4_QGTagsMLP_Matched_TIGHT",100, -2, 2);
-       h_QGTagsMLP_Matched_TIGHT[2][4] = new TH1F("Eta_2_PT_4_QGTagsMLP_Matched_TIGHT", "Eta_2_PT_4_QGTagsMLP_Matched_TIGHT",100, -2, 2);
-       h_QGTagsMLP_Matched_TIGHT[3][4] = new TH1F("Eta_3_PT_4_QGTagsMLP_Matched_TIGHT", "Eta_3_PT_4_QGTagsMLP_Matched_TIGHT",100, -2, 2);
-       h_QGTagsMLP_Matched_TIGHT[4][4] = new TH1F("Eta_4_PT_4_QGTagsMLP_Matched_TIGHT", "Eta_4_PT_4_QGTagsMLP_Matched_TIGHT",100, -2, 2);
+       h_QGTagsMLP_Matched_FO[0][4] = new TH1F("Eta_0_PT_4_QGTagsMLP_Matched_FO", "Eta_0_PT_4_QGTagsMLP_Matched_FO",40000, -2, 2);
+       h_QGTagsMLP_Matched_FO[1][4] = new TH1F("Eta_1_PT_4_QGTagsMLP_Matched_FO", "Eta_1_PT_4_QGTagsMLP_Matched_FO",40000, -2, 2);
+       h_QGTagsMLP_Matched_FO[2][4] = new TH1F("Eta_2_PT_4_QGTagsMLP_Matched_FO", "Eta_2_PT_4_QGTagsMLP_Matched_FO",40000, -2, 2);
+       h_QGTagsMLP_Matched_FO[3][4] = new TH1F("Eta_3_PT_4_QGTagsMLP_Matched_FO", "Eta_3_PT_4_QGTagsMLP_Matched_FO",40000, -2, 2);
+       h_QGTagsMLP_Matched_FO[4][4] = new TH1F("Eta_4_PT_4_QGTagsMLP_Matched_FO", "Eta_4_PT_4_QGTagsMLP_Matched_FO",40000, -2, 2);
 
 
 
-       h_Sigma_Ieta_Ieta_TIGHT_Gluon[0][0] = new TH1F("Eta_0_PT_0_Sigma_Ieta_Ieta_TIGHT_Gluon", "Eta_0_PT_0_Sigma_Ieta_Ieta_TIGHT_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_TIGHT_Gluon[1][0] = new TH1F("Eta_1_PT_0_Sigma_Ieta_Ieta_TIGHT_Gluon", "Eta_1_PT_0_Sigma_Ieta_Ieta_TIGHT_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_TIGHT_Gluon[2][0] = new TH1F("Eta_2_PT_0_Sigma_Ieta_Ieta_TIGHT_Gluon", "Eta_2_PT_0_Sigma_Ieta_Ieta_TIGHT_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_TIGHT_Gluon[3][0] = new TH1F("Eta_3_PT_0_Sigma_Ieta_Ieta_TIGHT_Gluon", "Eta_3_PT_0_Sigma_Ieta_Ieta_TIGHT_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_TIGHT_Gluon[4][0] = new TH1F("Eta_4_PT_0_Sigma_Ieta_Ieta_TIGHT_Gluon", "Eta_4_PT_0_Sigma_Ieta_Ieta_TIGHT_Gluon",2000, -1, 1);
+       h_QGTagsMLP_Matched_TIGHT[0][0] = new TH1F("Eta_0_PT_0_QGTagsMLP_Matched_TIGHT", "Eta_0_PT_0_QGTagsMLP_Matched_TIGHT",40000, -2, 2);
+       h_QGTagsMLP_Matched_TIGHT[1][0] = new TH1F("Eta_1_PT_0_QGTagsMLP_Matched_TIGHT", "Eta_1_PT_0_QGTagsMLP_Matched_TIGHT",40000, -2, 2);
+       h_QGTagsMLP_Matched_TIGHT[2][0] = new TH1F("Eta_2_PT_0_QGTagsMLP_Matched_TIGHT", "Eta_2_PT_0_QGTagsMLP_Matched_TIGHT",40000, -2, 2);
+       h_QGTagsMLP_Matched_TIGHT[3][0] = new TH1F("Eta_3_PT_0_QGTagsMLP_Matched_TIGHT", "Eta_3_PT_0_QGTagsMLP_Matched_TIGHT",40000, -2, 2);
+       h_QGTagsMLP_Matched_TIGHT[4][0] = new TH1F("Eta_4_PT_0_QGTagsMLP_Matched_TIGHT", "Eta_4_PT_0_QGTagsMLP_Matched_TIGHT",40000, -2, 2);
 
-       h_Sigma_Ieta_Ieta_TIGHT_Gluon[0][1] = new TH1F("Eta_0_PT_1_Sigma_Ieta_Ieta_TIGHT_Gluon", "Eta_0_PT_1_Sigma_Ieta_Ieta_TIGHT_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_TIGHT_Gluon[1][1] = new TH1F("Eta_1_PT_1_Sigma_Ieta_Ieta_TIGHT_Gluon", "Eta_1_PT_1_Sigma_Ieta_Ieta_TIGHT_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_TIGHT_Gluon[2][1] = new TH1F("Eta_2_PT_1_Sigma_Ieta_Ieta_TIGHT_Gluon", "Eta_2_PT_1_Sigma_Ieta_Ieta_TIGHT_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_TIGHT_Gluon[3][1] = new TH1F("Eta_3_PT_1_Sigma_Ieta_Ieta_TIGHT_Gluon", "Eta_3_PT_1_Sigma_Ieta_Ieta_TIGHT_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_TIGHT_Gluon[4][1] = new TH1F("Eta_4_PT_1_Sigma_Ieta_Ieta_TIGHT_Gluon", "Eta_4_PT_1_Sigma_Ieta_Ieta_TIGHT_Gluon",2000, -1, 1);
+       h_QGTagsMLP_Matched_TIGHT[0][1] = new TH1F("Eta_0_PT_1_QGTagsMLP_Matched_TIGHT", "Eta_0_PT_1_QGTagsMLP_Matched_TIGHT",40000, -2, 2);
+       h_QGTagsMLP_Matched_TIGHT[1][1] = new TH1F("Eta_1_PT_1_QGTagsMLP_Matched_TIGHT", "Eta_1_PT_1_QGTagsMLP_Matched_TIGHT",40000, -2, 2);
+       h_QGTagsMLP_Matched_TIGHT[2][1] = new TH1F("Eta_2_PT_1_QGTagsMLP_Matched_TIGHT", "Eta_2_PT_1_QGTagsMLP_Matched_TIGHT",40000, -2, 2);
+       h_QGTagsMLP_Matched_TIGHT[3][1] = new TH1F("Eta_3_PT_1_QGTagsMLP_Matched_TIGHT", "Eta_3_PT_1_QGTagsMLP_Matched_TIGHT",40000, -2, 2);
+       h_QGTagsMLP_Matched_TIGHT[4][1] = new TH1F("Eta_4_PT_1_QGTagsMLP_Matched_TIGHT", "Eta_4_PT_1_QGTagsMLP_Matched_TIGHT",40000, -2, 2);
 
-       h_Sigma_Ieta_Ieta_TIGHT_Gluon[0][2] = new TH1F("Eta_0_PT_2_Sigma_Ieta_Ieta_TIGHT_Gluon", "Eta_0_PT_2_Sigma_Ieta_Ieta_TIGHT_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_TIGHT_Gluon[1][2] = new TH1F("Eta_1_PT_2_Sigma_Ieta_Ieta_TIGHT_Gluon", "Eta_1_PT_2_Sigma_Ieta_Ieta_TIGHT_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_TIGHT_Gluon[2][2] = new TH1F("Eta_2_PT_2_Sigma_Ieta_Ieta_TIGHT_Gluon", "Eta_2_PT_2_Sigma_Ieta_Ieta_TIGHT_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_TIGHT_Gluon[3][2] = new TH1F("Eta_3_PT_2_Sigma_Ieta_Ieta_TIGHT_Gluon", "Eta_3_PT_2_Sigma_Ieta_Ieta_TIGHT_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_TIGHT_Gluon[4][2] = new TH1F("Eta_4_PT_2_Sigma_Ieta_Ieta_TIGHT_Gluon", "Eta_4_PT_2_Sigma_Ieta_Ieta_TIGHT_Gluon",2000, -1, 1);
+       h_QGTagsMLP_Matched_TIGHT[0][2] = new TH1F("Eta_0_PT_2_QGTagsMLP_Matched_TIGHT", "Eta_0_PT_2_QGTagsMLP_Matched_TIGHT",40000, -2, 2);
+       h_QGTagsMLP_Matched_TIGHT[1][2] = new TH1F("Eta_1_PT_2_QGTagsMLP_Matched_TIGHT", "Eta_1_PT_2_QGTagsMLP_Matched_TIGHT",40000, -2, 2);
+       h_QGTagsMLP_Matched_TIGHT[2][2] = new TH1F("Eta_2_PT_2_QGTagsMLP_Matched_TIGHT", "Eta_2_PT_2_QGTagsMLP_Matched_TIGHT",40000, -2, 2);
+       h_QGTagsMLP_Matched_TIGHT[3][2] = new TH1F("Eta_3_PT_2_QGTagsMLP_Matched_TIGHT", "Eta_3_PT_2_QGTagsMLP_Matched_TIGHT",40000, -2, 2);
+       h_QGTagsMLP_Matched_TIGHT[4][2] = new TH1F("Eta_4_PT_2_QGTagsMLP_Matched_TIGHT", "Eta_4_PT_2_QGTagsMLP_Matched_TIGHT",40000, -2, 2);
 
-       h_Sigma_Ieta_Ieta_TIGHT_Gluon[0][3] = new TH1F("Eta_0_PT_3_Sigma_Ieta_Ieta_TIGHT_Gluon", "Eta_0_PT_3_Sigma_Ieta_Ieta_TIGHT_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_TIGHT_Gluon[1][3] = new TH1F("Eta_1_PT_3_Sigma_Ieta_Ieta_TIGHT_Gluon", "Eta_1_PT_3_Sigma_Ieta_Ieta_TIGHT_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_TIGHT_Gluon[2][3] = new TH1F("Eta_2_PT_3_Sigma_Ieta_Ieta_TIGHT_Gluon", "Eta_2_PT_3_Sigma_Ieta_Ieta_TIGHT_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_TIGHT_Gluon[3][3] = new TH1F("Eta_3_PT_3_Sigma_Ieta_Ieta_TIGHT_Gluon", "Eta_3_PT_3_Sigma_Ieta_Ieta_TIGHT_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_TIGHT_Gluon[4][3] = new TH1F("Eta_4_PT_3_Sigma_Ieta_Ieta_TIGHT_Gluon", "Eta_4_PT_3_Sigma_Ieta_Ieta_TIGHT_Gluon",2000, -1, 1);
+       h_QGTagsMLP_Matched_TIGHT[0][3] = new TH1F("Eta_0_PT_3_QGTagsMLP_Matched_TIGHT", "Eta_0_PT_3_QGTagsMLP_Matched_TIGHT",40000, -2, 2);
+       h_QGTagsMLP_Matched_TIGHT[1][3] = new TH1F("Eta_1_PT_3_QGTagsMLP_Matched_TIGHT", "Eta_1_PT_3_QGTagsMLP_Matched_TIGHT",40000, -2, 2);
+       h_QGTagsMLP_Matched_TIGHT[2][3] = new TH1F("Eta_2_PT_3_QGTagsMLP_Matched_TIGHT", "Eta_2_PT_3_QGTagsMLP_Matched_TIGHT",40000, -2, 2);
+       h_QGTagsMLP_Matched_TIGHT[3][3] = new TH1F("Eta_3_PT_3_QGTagsMLP_Matched_TIGHT", "Eta_3_PT_3_QGTagsMLP_Matched_TIGHT",40000, -2, 2);
+       h_QGTagsMLP_Matched_TIGHT[4][3] = new TH1F("Eta_4_PT_3_QGTagsMLP_Matched_TIGHT", "Eta_4_PT_3_QGTagsMLP_Matched_TIGHT",40000, -2, 2);
 
-       h_Sigma_Ieta_Ieta_TIGHT_Gluon[0][4] = new TH1F("Eta_0_PT_4_Sigma_Ieta_Ieta_TIGHT_Gluon", "Eta_0_PT_4_Sigma_Ieta_Ieta_TIGHT_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_TIGHT_Gluon[1][4] = new TH1F("Eta_1_PT_4_Sigma_Ieta_Ieta_TIGHT_Gluon", "Eta_1_PT_4_Sigma_Ieta_Ieta_TIGHT_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_TIGHT_Gluon[2][4] = new TH1F("Eta_2_PT_4_Sigma_Ieta_Ieta_TIGHT_Gluon", "Eta_2_PT_4_Sigma_Ieta_Ieta_TIGHT_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_TIGHT_Gluon[3][4] = new TH1F("Eta_3_PT_4_Sigma_Ieta_Ieta_TIGHT_Gluon", "Eta_3_PT_4_Sigma_Ieta_Ieta_TIGHT_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_TIGHT_Gluon[4][4] = new TH1F("Eta_4_PT_4_Sigma_Ieta_Ieta_TIGHT_Gluon", "Eta_4_PT_4_Sigma_Ieta_Ieta_TIGHT_Gluon",2000, -1, 1);
-
-
-
-       h_Sigma_Ieta_Ieta_TIGHT_Quark[0][0] = new TH1F("Eta_0_PT_0_Sigma_Ieta_Ieta_TIGHT_Quark", "Eta_0_PT_0_Sigma_Ieta_Ieta_TIGHT_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_TIGHT_Quark[1][0] = new TH1F("Eta_1_PT_0_Sigma_Ieta_Ieta_TIGHT_Quark", "Eta_1_PT_0_Sigma_Ieta_Ieta_TIGHT_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_TIGHT_Quark[2][0] = new TH1F("Eta_2_PT_0_Sigma_Ieta_Ieta_TIGHT_Quark", "Eta_2_PT_0_Sigma_Ieta_Ieta_TIGHT_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_TIGHT_Quark[3][0] = new TH1F("Eta_3_PT_0_Sigma_Ieta_Ieta_TIGHT_Quark", "Eta_3_PT_0_Sigma_Ieta_Ieta_TIGHT_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_TIGHT_Quark[4][0] = new TH1F("Eta_4_PT_0_Sigma_Ieta_Ieta_TIGHT_Quark", "Eta_4_PT_0_Sigma_Ieta_Ieta_TIGHT_Quark",2000, -1, 1);
-
-       h_Sigma_Ieta_Ieta_TIGHT_Quark[0][1] = new TH1F("Eta_0_PT_1_Sigma_Ieta_Ieta_TIGHT_Quark", "Eta_0_PT_1_Sigma_Ieta_Ieta_TIGHT_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_TIGHT_Quark[1][1] = new TH1F("Eta_1_PT_1_Sigma_Ieta_Ieta_TIGHT_Quark", "Eta_1_PT_1_Sigma_Ieta_Ieta_TIGHT_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_TIGHT_Quark[2][1] = new TH1F("Eta_2_PT_1_Sigma_Ieta_Ieta_TIGHT_Quark", "Eta_2_PT_1_Sigma_Ieta_Ieta_TIGHT_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_TIGHT_Quark[3][1] = new TH1F("Eta_3_PT_1_Sigma_Ieta_Ieta_TIGHT_Quark", "Eta_3_PT_1_Sigma_Ieta_Ieta_TIGHT_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_TIGHT_Quark[4][1] = new TH1F("Eta_4_PT_1_Sigma_Ieta_Ieta_TIGHT_Quark", "Eta_4_PT_1_Sigma_Ieta_Ieta_TIGHT_Quark",2000, -1, 1);
-
-       h_Sigma_Ieta_Ieta_TIGHT_Quark[0][2] = new TH1F("Eta_0_PT_2_Sigma_Ieta_Ieta_TIGHT_Quark", "Eta_0_PT_2_Sigma_Ieta_Ieta_TIGHT_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_TIGHT_Quark[1][2] = new TH1F("Eta_1_PT_2_Sigma_Ieta_Ieta_TIGHT_Quark", "Eta_1_PT_2_Sigma_Ieta_Ieta_TIGHT_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_TIGHT_Quark[2][2] = new TH1F("Eta_2_PT_2_Sigma_Ieta_Ieta_TIGHT_Quark", "Eta_2_PT_2_Sigma_Ieta_Ieta_TIGHT_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_TIGHT_Quark[3][2] = new TH1F("Eta_3_PT_2_Sigma_Ieta_Ieta_TIGHT_Quark", "Eta_3_PT_2_Sigma_Ieta_Ieta_TIGHT_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_TIGHT_Quark[4][2] = new TH1F("Eta_4_PT_2_Sigma_Ieta_Ieta_TIGHT_Quark", "Eta_4_PT_2_Sigma_Ieta_Ieta_TIGHT_Quark",2000, -1, 1);
-
-       h_Sigma_Ieta_Ieta_TIGHT_Quark[0][3] = new TH1F("Eta_0_PT_3_Sigma_Ieta_Ieta_TIGHT_Quark", "Eta_0_PT_3_Sigma_Ieta_Ieta_TIGHT_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_TIGHT_Quark[1][3] = new TH1F("Eta_1_PT_3_Sigma_Ieta_Ieta_TIGHT_Quark", "Eta_1_PT_3_Sigma_Ieta_Ieta_TIGHT_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_TIGHT_Quark[2][3] = new TH1F("Eta_2_PT_3_Sigma_Ieta_Ieta_TIGHT_Quark", "Eta_2_PT_3_Sigma_Ieta_Ieta_TIGHT_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_TIGHT_Quark[3][3] = new TH1F("Eta_3_PT_3_Sigma_Ieta_Ieta_TIGHT_Quark", "Eta_3_PT_3_Sigma_Ieta_Ieta_TIGHT_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_TIGHT_Quark[4][3] = new TH1F("Eta_4_PT_3_Sigma_Ieta_Ieta_TIGHT_Quark", "Eta_4_PT_3_Sigma_Ieta_Ieta_TIGHT_Quark",2000, -1, 1);
-
-       h_Sigma_Ieta_Ieta_TIGHT_Quark[0][4] = new TH1F("Eta_0_PT_4_Sigma_Ieta_Ieta_TIGHT_Quark", "Eta_0_PT_4_Sigma_Ieta_Ieta_TIGHT_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_TIGHT_Quark[1][4] = new TH1F("Eta_1_PT_4_Sigma_Ieta_Ieta_TIGHT_Quark", "Eta_1_PT_4_Sigma_Ieta_Ieta_TIGHT_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_TIGHT_Quark[2][4] = new TH1F("Eta_2_PT_4_Sigma_Ieta_Ieta_TIGHT_Quark", "Eta_2_PT_4_Sigma_Ieta_Ieta_TIGHT_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_TIGHT_Quark[3][4] = new TH1F("Eta_3_PT_4_Sigma_Ieta_Ieta_TIGHT_Quark", "Eta_3_PT_4_Sigma_Ieta_Ieta_TIGHT_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_TIGHT_Quark[4][4] = new TH1F("Eta_4_PT_4_Sigma_Ieta_Ieta_TIGHT_Quark", "Eta_4_PT_4_Sigma_Ieta_Ieta_TIGHT_Quark",2000, -1, 1);
+       h_QGTagsMLP_Matched_TIGHT[0][4] = new TH1F("Eta_0_PT_4_QGTagsMLP_Matched_TIGHT", "Eta_0_PT_4_QGTagsMLP_Matched_TIGHT",40000, -2, 2);
+       h_QGTagsMLP_Matched_TIGHT[1][4] = new TH1F("Eta_1_PT_4_QGTagsMLP_Matched_TIGHT", "Eta_1_PT_4_QGTagsMLP_Matched_TIGHT",40000, -2, 2);
+       h_QGTagsMLP_Matched_TIGHT[2][4] = new TH1F("Eta_2_PT_4_QGTagsMLP_Matched_TIGHT", "Eta_2_PT_4_QGTagsMLP_Matched_TIGHT",40000, -2, 2);
+       h_QGTagsMLP_Matched_TIGHT[3][4] = new TH1F("Eta_3_PT_4_QGTagsMLP_Matched_TIGHT", "Eta_3_PT_4_QGTagsMLP_Matched_TIGHT",40000, -2, 2);
+       h_QGTagsMLP_Matched_TIGHT[4][4] = new TH1F("Eta_4_PT_4_QGTagsMLP_Matched_TIGHT", "Eta_4_PT_4_QGTagsMLP_Matched_TIGHT",40000, -2, 2);
 
 
+
+       h_Sigma_Ieta_Ieta_TIGHT_Gluon[0][0] = new TH1F("Eta_0_PT_0_Sigma_Ieta_Ieta_TIGHT_Gluon", "Eta_0_PT_0_Sigma_Ieta_Ieta_TIGHT_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_TIGHT_Gluon[1][0] = new TH1F("Eta_1_PT_0_Sigma_Ieta_Ieta_TIGHT_Gluon", "Eta_1_PT_0_Sigma_Ieta_Ieta_TIGHT_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_TIGHT_Gluon[2][0] = new TH1F("Eta_2_PT_0_Sigma_Ieta_Ieta_TIGHT_Gluon", "Eta_2_PT_0_Sigma_Ieta_Ieta_TIGHT_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_TIGHT_Gluon[3][0] = new TH1F("Eta_3_PT_0_Sigma_Ieta_Ieta_TIGHT_Gluon", "Eta_3_PT_0_Sigma_Ieta_Ieta_TIGHT_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_TIGHT_Gluon[4][0] = new TH1F("Eta_4_PT_0_Sigma_Ieta_Ieta_TIGHT_Gluon", "Eta_4_PT_0_Sigma_Ieta_Ieta_TIGHT_Gluon",20000, -1, 1);
+
+       h_Sigma_Ieta_Ieta_TIGHT_Gluon[0][1] = new TH1F("Eta_0_PT_1_Sigma_Ieta_Ieta_TIGHT_Gluon", "Eta_0_PT_1_Sigma_Ieta_Ieta_TIGHT_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_TIGHT_Gluon[1][1] = new TH1F("Eta_1_PT_1_Sigma_Ieta_Ieta_TIGHT_Gluon", "Eta_1_PT_1_Sigma_Ieta_Ieta_TIGHT_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_TIGHT_Gluon[2][1] = new TH1F("Eta_2_PT_1_Sigma_Ieta_Ieta_TIGHT_Gluon", "Eta_2_PT_1_Sigma_Ieta_Ieta_TIGHT_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_TIGHT_Gluon[3][1] = new TH1F("Eta_3_PT_1_Sigma_Ieta_Ieta_TIGHT_Gluon", "Eta_3_PT_1_Sigma_Ieta_Ieta_TIGHT_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_TIGHT_Gluon[4][1] = new TH1F("Eta_4_PT_1_Sigma_Ieta_Ieta_TIGHT_Gluon", "Eta_4_PT_1_Sigma_Ieta_Ieta_TIGHT_Gluon",20000, -1, 1);
+
+       h_Sigma_Ieta_Ieta_TIGHT_Gluon[0][2] = new TH1F("Eta_0_PT_2_Sigma_Ieta_Ieta_TIGHT_Gluon", "Eta_0_PT_2_Sigma_Ieta_Ieta_TIGHT_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_TIGHT_Gluon[1][2] = new TH1F("Eta_1_PT_2_Sigma_Ieta_Ieta_TIGHT_Gluon", "Eta_1_PT_2_Sigma_Ieta_Ieta_TIGHT_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_TIGHT_Gluon[2][2] = new TH1F("Eta_2_PT_2_Sigma_Ieta_Ieta_TIGHT_Gluon", "Eta_2_PT_2_Sigma_Ieta_Ieta_TIGHT_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_TIGHT_Gluon[3][2] = new TH1F("Eta_3_PT_2_Sigma_Ieta_Ieta_TIGHT_Gluon", "Eta_3_PT_2_Sigma_Ieta_Ieta_TIGHT_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_TIGHT_Gluon[4][2] = new TH1F("Eta_4_PT_2_Sigma_Ieta_Ieta_TIGHT_Gluon", "Eta_4_PT_2_Sigma_Ieta_Ieta_TIGHT_Gluon",20000, -1, 1);
+
+       h_Sigma_Ieta_Ieta_TIGHT_Gluon[0][3] = new TH1F("Eta_0_PT_3_Sigma_Ieta_Ieta_TIGHT_Gluon", "Eta_0_PT_3_Sigma_Ieta_Ieta_TIGHT_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_TIGHT_Gluon[1][3] = new TH1F("Eta_1_PT_3_Sigma_Ieta_Ieta_TIGHT_Gluon", "Eta_1_PT_3_Sigma_Ieta_Ieta_TIGHT_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_TIGHT_Gluon[2][3] = new TH1F("Eta_2_PT_3_Sigma_Ieta_Ieta_TIGHT_Gluon", "Eta_2_PT_3_Sigma_Ieta_Ieta_TIGHT_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_TIGHT_Gluon[3][3] = new TH1F("Eta_3_PT_3_Sigma_Ieta_Ieta_TIGHT_Gluon", "Eta_3_PT_3_Sigma_Ieta_Ieta_TIGHT_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_TIGHT_Gluon[4][3] = new TH1F("Eta_4_PT_3_Sigma_Ieta_Ieta_TIGHT_Gluon", "Eta_4_PT_3_Sigma_Ieta_Ieta_TIGHT_Gluon",20000, -1, 1);
+
+       h_Sigma_Ieta_Ieta_TIGHT_Gluon[0][4] = new TH1F("Eta_0_PT_4_Sigma_Ieta_Ieta_TIGHT_Gluon", "Eta_0_PT_4_Sigma_Ieta_Ieta_TIGHT_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_TIGHT_Gluon[1][4] = new TH1F("Eta_1_PT_4_Sigma_Ieta_Ieta_TIGHT_Gluon", "Eta_1_PT_4_Sigma_Ieta_Ieta_TIGHT_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_TIGHT_Gluon[2][4] = new TH1F("Eta_2_PT_4_Sigma_Ieta_Ieta_TIGHT_Gluon", "Eta_2_PT_4_Sigma_Ieta_Ieta_TIGHT_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_TIGHT_Gluon[3][4] = new TH1F("Eta_3_PT_4_Sigma_Ieta_Ieta_TIGHT_Gluon", "Eta_3_PT_4_Sigma_Ieta_Ieta_TIGHT_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_TIGHT_Gluon[4][4] = new TH1F("Eta_4_PT_4_Sigma_Ieta_Ieta_TIGHT_Gluon", "Eta_4_PT_4_Sigma_Ieta_Ieta_TIGHT_Gluon",20000, -1, 1);
+
+
+
+       h_Sigma_Ieta_Ieta_TIGHT_Quark[0][0] = new TH1F("Eta_0_PT_0_Sigma_Ieta_Ieta_TIGHT_Quark", "Eta_0_PT_0_Sigma_Ieta_Ieta_TIGHT_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_TIGHT_Quark[1][0] = new TH1F("Eta_1_PT_0_Sigma_Ieta_Ieta_TIGHT_Quark", "Eta_1_PT_0_Sigma_Ieta_Ieta_TIGHT_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_TIGHT_Quark[2][0] = new TH1F("Eta_2_PT_0_Sigma_Ieta_Ieta_TIGHT_Quark", "Eta_2_PT_0_Sigma_Ieta_Ieta_TIGHT_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_TIGHT_Quark[3][0] = new TH1F("Eta_3_PT_0_Sigma_Ieta_Ieta_TIGHT_Quark", "Eta_3_PT_0_Sigma_Ieta_Ieta_TIGHT_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_TIGHT_Quark[4][0] = new TH1F("Eta_4_PT_0_Sigma_Ieta_Ieta_TIGHT_Quark", "Eta_4_PT_0_Sigma_Ieta_Ieta_TIGHT_Quark",20000, -1, 1);
+
+       h_Sigma_Ieta_Ieta_TIGHT_Quark[0][1] = new TH1F("Eta_0_PT_1_Sigma_Ieta_Ieta_TIGHT_Quark", "Eta_0_PT_1_Sigma_Ieta_Ieta_TIGHT_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_TIGHT_Quark[1][1] = new TH1F("Eta_1_PT_1_Sigma_Ieta_Ieta_TIGHT_Quark", "Eta_1_PT_1_Sigma_Ieta_Ieta_TIGHT_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_TIGHT_Quark[2][1] = new TH1F("Eta_2_PT_1_Sigma_Ieta_Ieta_TIGHT_Quark", "Eta_2_PT_1_Sigma_Ieta_Ieta_TIGHT_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_TIGHT_Quark[3][1] = new TH1F("Eta_3_PT_1_Sigma_Ieta_Ieta_TIGHT_Quark", "Eta_3_PT_1_Sigma_Ieta_Ieta_TIGHT_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_TIGHT_Quark[4][1] = new TH1F("Eta_4_PT_1_Sigma_Ieta_Ieta_TIGHT_Quark", "Eta_4_PT_1_Sigma_Ieta_Ieta_TIGHT_Quark",20000, -1, 1);
+
+       h_Sigma_Ieta_Ieta_TIGHT_Quark[0][2] = new TH1F("Eta_0_PT_2_Sigma_Ieta_Ieta_TIGHT_Quark", "Eta_0_PT_2_Sigma_Ieta_Ieta_TIGHT_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_TIGHT_Quark[1][2] = new TH1F("Eta_1_PT_2_Sigma_Ieta_Ieta_TIGHT_Quark", "Eta_1_PT_2_Sigma_Ieta_Ieta_TIGHT_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_TIGHT_Quark[2][2] = new TH1F("Eta_2_PT_2_Sigma_Ieta_Ieta_TIGHT_Quark", "Eta_2_PT_2_Sigma_Ieta_Ieta_TIGHT_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_TIGHT_Quark[3][2] = new TH1F("Eta_3_PT_2_Sigma_Ieta_Ieta_TIGHT_Quark", "Eta_3_PT_2_Sigma_Ieta_Ieta_TIGHT_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_TIGHT_Quark[4][2] = new TH1F("Eta_4_PT_2_Sigma_Ieta_Ieta_TIGHT_Quark", "Eta_4_PT_2_Sigma_Ieta_Ieta_TIGHT_Quark",20000, -1, 1);
+
+       h_Sigma_Ieta_Ieta_TIGHT_Quark[0][3] = new TH1F("Eta_0_PT_3_Sigma_Ieta_Ieta_TIGHT_Quark", "Eta_0_PT_3_Sigma_Ieta_Ieta_TIGHT_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_TIGHT_Quark[1][3] = new TH1F("Eta_1_PT_3_Sigma_Ieta_Ieta_TIGHT_Quark", "Eta_1_PT_3_Sigma_Ieta_Ieta_TIGHT_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_TIGHT_Quark[2][3] = new TH1F("Eta_2_PT_3_Sigma_Ieta_Ieta_TIGHT_Quark", "Eta_2_PT_3_Sigma_Ieta_Ieta_TIGHT_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_TIGHT_Quark[3][3] = new TH1F("Eta_3_PT_3_Sigma_Ieta_Ieta_TIGHT_Quark", "Eta_3_PT_3_Sigma_Ieta_Ieta_TIGHT_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_TIGHT_Quark[4][3] = new TH1F("Eta_4_PT_3_Sigma_Ieta_Ieta_TIGHT_Quark", "Eta_4_PT_3_Sigma_Ieta_Ieta_TIGHT_Quark",20000, -1, 1);
+
+       h_Sigma_Ieta_Ieta_TIGHT_Quark[0][4] = new TH1F("Eta_0_PT_4_Sigma_Ieta_Ieta_TIGHT_Quark", "Eta_0_PT_4_Sigma_Ieta_Ieta_TIGHT_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_TIGHT_Quark[1][4] = new TH1F("Eta_1_PT_4_Sigma_Ieta_Ieta_TIGHT_Quark", "Eta_1_PT_4_Sigma_Ieta_Ieta_TIGHT_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_TIGHT_Quark[2][4] = new TH1F("Eta_2_PT_4_Sigma_Ieta_Ieta_TIGHT_Quark", "Eta_2_PT_4_Sigma_Ieta_Ieta_TIGHT_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_TIGHT_Quark[3][4] = new TH1F("Eta_3_PT_4_Sigma_Ieta_Ieta_TIGHT_Quark", "Eta_3_PT_4_Sigma_Ieta_Ieta_TIGHT_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_TIGHT_Quark[4][4] = new TH1F("Eta_4_PT_4_Sigma_Ieta_Ieta_TIGHT_Quark", "Eta_4_PT_4_Sigma_Ieta_Ieta_TIGHT_Quark",20000, -1, 1);
 
 
 
 
-       h_Sigma_Ieta_Ieta_FO_Gluon[0][0] = new TH1F("Eta_0_PT_0_Sigma_Ieta_Ieta_FO_Gluon", "Eta_0_PT_0_Sigma_Ieta_Ieta_FO_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_FO_Gluon[1][0] = new TH1F("Eta_1_PT_0_Sigma_Ieta_Ieta_FO_Gluon", "Eta_1_PT_0_Sigma_Ieta_Ieta_FO_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_FO_Gluon[2][0] = new TH1F("Eta_2_PT_0_Sigma_Ieta_Ieta_FO_Gluon", "Eta_2_PT_0_Sigma_Ieta_Ieta_FO_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_FO_Gluon[3][0] = new TH1F("Eta_3_PT_0_Sigma_Ieta_Ieta_FO_Gluon", "Eta_3_PT_0_Sigma_Ieta_Ieta_FO_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_FO_Gluon[4][0] = new TH1F("Eta_4_PT_0_Sigma_Ieta_Ieta_FO_Gluon", "Eta_4_PT_0_Sigma_Ieta_Ieta_FO_Gluon",2000, -1, 1);
-
-       h_Sigma_Ieta_Ieta_FO_Gluon[0][1] = new TH1F("Eta_0_PT_1_Sigma_Ieta_Ieta_FO_Gluon", "Eta_0_PT_1_Sigma_Ieta_Ieta_FO_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_FO_Gluon[1][1] = new TH1F("Eta_1_PT_1_Sigma_Ieta_Ieta_FO_Gluon", "Eta_1_PT_1_Sigma_Ieta_Ieta_FO_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_FO_Gluon[2][1] = new TH1F("Eta_2_PT_1_Sigma_Ieta_Ieta_FO_Gluon", "Eta_2_PT_1_Sigma_Ieta_Ieta_FO_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_FO_Gluon[3][1] = new TH1F("Eta_3_PT_1_Sigma_Ieta_Ieta_FO_Gluon", "Eta_3_PT_1_Sigma_Ieta_Ieta_FO_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_FO_Gluon[4][1] = new TH1F("Eta_4_PT_1_Sigma_Ieta_Ieta_FO_Gluon", "Eta_4_PT_1_Sigma_Ieta_Ieta_FO_Gluon",2000, -1, 1);
-
-       h_Sigma_Ieta_Ieta_FO_Gluon[0][2] = new TH1F("Eta_0_PT_2_Sigma_Ieta_Ieta_FO_Gluon", "Eta_0_PT_2_Sigma_Ieta_Ieta_FO_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_FO_Gluon[1][2] = new TH1F("Eta_1_PT_2_Sigma_Ieta_Ieta_FO_Gluon", "Eta_1_PT_2_Sigma_Ieta_Ieta_FO_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_FO_Gluon[2][2] = new TH1F("Eta_2_PT_2_Sigma_Ieta_Ieta_FO_Gluon", "Eta_2_PT_2_Sigma_Ieta_Ieta_FO_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_FO_Gluon[3][2] = new TH1F("Eta_3_PT_2_Sigma_Ieta_Ieta_FO_Gluon", "Eta_3_PT_2_Sigma_Ieta_Ieta_FO_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_FO_Gluon[4][2] = new TH1F("Eta_4_PT_2_Sigma_Ieta_Ieta_FO_Gluon", "Eta_4_PT_2_Sigma_Ieta_Ieta_FO_Gluon",2000, -1, 1);
-
-       h_Sigma_Ieta_Ieta_FO_Gluon[0][3] = new TH1F("Eta_0_PT_3_Sigma_Ieta_Ieta_FO_Gluon", "Eta_0_PT_3_Sigma_Ieta_Ieta_FO_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_FO_Gluon[1][3] = new TH1F("Eta_1_PT_3_Sigma_Ieta_Ieta_FO_Gluon", "Eta_1_PT_3_Sigma_Ieta_Ieta_FO_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_FO_Gluon[2][3] = new TH1F("Eta_2_PT_3_Sigma_Ieta_Ieta_FO_Gluon", "Eta_2_PT_3_Sigma_Ieta_Ieta_FO_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_FO_Gluon[3][3] = new TH1F("Eta_3_PT_3_Sigma_Ieta_Ieta_FO_Gluon", "Eta_3_PT_3_Sigma_Ieta_Ieta_FO_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_FO_Gluon[4][3] = new TH1F("Eta_4_PT_3_Sigma_Ieta_Ieta_FO_Gluon", "Eta_4_PT_3_Sigma_Ieta_Ieta_FO_Gluon",2000, -1, 1);
-
-       h_Sigma_Ieta_Ieta_FO_Gluon[0][4] = new TH1F("Eta_0_PT_4_Sigma_Ieta_Ieta_FO_Gluon", "Eta_0_PT_4_Sigma_Ieta_Ieta_FO_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_FO_Gluon[1][4] = new TH1F("Eta_1_PT_4_Sigma_Ieta_Ieta_FO_Gluon", "Eta_1_PT_4_Sigma_Ieta_Ieta_FO_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_FO_Gluon[2][4] = new TH1F("Eta_2_PT_4_Sigma_Ieta_Ieta_FO_Gluon", "Eta_2_PT_4_Sigma_Ieta_Ieta_FO_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_FO_Gluon[3][4] = new TH1F("Eta_3_PT_4_Sigma_Ieta_Ieta_FO_Gluon", "Eta_3_PT_4_Sigma_Ieta_Ieta_FO_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_FO_Gluon[4][4] = new TH1F("Eta_4_PT_4_Sigma_Ieta_Ieta_FO_Gluon", "Eta_4_PT_4_Sigma_Ieta_Ieta_FO_Gluon",2000, -1, 1);
 
 
+       h_Sigma_Ieta_Ieta_FO_Gluon[0][0] = new TH1F("Eta_0_PT_0_Sigma_Ieta_Ieta_FO_Gluon", "Eta_0_PT_0_Sigma_Ieta_Ieta_FO_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_FO_Gluon[1][0] = new TH1F("Eta_1_PT_0_Sigma_Ieta_Ieta_FO_Gluon", "Eta_1_PT_0_Sigma_Ieta_Ieta_FO_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_FO_Gluon[2][0] = new TH1F("Eta_2_PT_0_Sigma_Ieta_Ieta_FO_Gluon", "Eta_2_PT_0_Sigma_Ieta_Ieta_FO_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_FO_Gluon[3][0] = new TH1F("Eta_3_PT_0_Sigma_Ieta_Ieta_FO_Gluon", "Eta_3_PT_0_Sigma_Ieta_Ieta_FO_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_FO_Gluon[4][0] = new TH1F("Eta_4_PT_0_Sigma_Ieta_Ieta_FO_Gluon", "Eta_4_PT_0_Sigma_Ieta_Ieta_FO_Gluon",20000, -1, 1);
 
-       h_Sigma_Ieta_Ieta_FO_Quark[0][0] = new TH1F("Eta_0_PT_0_Sigma_Ieta_Ieta_FO_Quark", "Eta_0_PT_0_Sigma_Ieta_Ieta_FO_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_FO_Quark[1][0] = new TH1F("Eta_1_PT_0_Sigma_Ieta_Ieta_FO_Quark", "Eta_1_PT_0_Sigma_Ieta_Ieta_FO_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_FO_Quark[2][0] = new TH1F("Eta_2_PT_0_Sigma_Ieta_Ieta_FO_Quark", "Eta_2_PT_0_Sigma_Ieta_Ieta_FO_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_FO_Quark[3][0] = new TH1F("Eta_3_PT_0_Sigma_Ieta_Ieta_FO_Quark", "Eta_3_PT_0_Sigma_Ieta_Ieta_FO_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_FO_Quark[4][0] = new TH1F("Eta_4_PT_0_Sigma_Ieta_Ieta_FO_Quark", "Eta_4_PT_0_Sigma_Ieta_Ieta_FO_Quark",2000, -1, 1);
+       h_Sigma_Ieta_Ieta_FO_Gluon[0][1] = new TH1F("Eta_0_PT_1_Sigma_Ieta_Ieta_FO_Gluon", "Eta_0_PT_1_Sigma_Ieta_Ieta_FO_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_FO_Gluon[1][1] = new TH1F("Eta_1_PT_1_Sigma_Ieta_Ieta_FO_Gluon", "Eta_1_PT_1_Sigma_Ieta_Ieta_FO_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_FO_Gluon[2][1] = new TH1F("Eta_2_PT_1_Sigma_Ieta_Ieta_FO_Gluon", "Eta_2_PT_1_Sigma_Ieta_Ieta_FO_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_FO_Gluon[3][1] = new TH1F("Eta_3_PT_1_Sigma_Ieta_Ieta_FO_Gluon", "Eta_3_PT_1_Sigma_Ieta_Ieta_FO_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_FO_Gluon[4][1] = new TH1F("Eta_4_PT_1_Sigma_Ieta_Ieta_FO_Gluon", "Eta_4_PT_1_Sigma_Ieta_Ieta_FO_Gluon",20000, -1, 1);
 
-       h_Sigma_Ieta_Ieta_FO_Quark[0][1] = new TH1F("Eta_0_PT_1_Sigma_Ieta_Ieta_FO_Quark", "Eta_0_PT_1_Sigma_Ieta_Ieta_FO_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_FO_Quark[1][1] = new TH1F("Eta_1_PT_1_Sigma_Ieta_Ieta_FO_Quark", "Eta_1_PT_1_Sigma_Ieta_Ieta_FO_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_FO_Quark[2][1] = new TH1F("Eta_2_PT_1_Sigma_Ieta_Ieta_FO_Quark", "Eta_2_PT_1_Sigma_Ieta_Ieta_FO_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_FO_Quark[3][1] = new TH1F("Eta_3_PT_1_Sigma_Ieta_Ieta_FO_Quark", "Eta_3_PT_1_Sigma_Ieta_Ieta_FO_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_FO_Quark[4][1] = new TH1F("Eta_4_PT_1_Sigma_Ieta_Ieta_FO_Quark", "Eta_4_PT_1_Sigma_Ieta_Ieta_FO_Quark",2000, -1, 1);
+       h_Sigma_Ieta_Ieta_FO_Gluon[0][2] = new TH1F("Eta_0_PT_2_Sigma_Ieta_Ieta_FO_Gluon", "Eta_0_PT_2_Sigma_Ieta_Ieta_FO_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_FO_Gluon[1][2] = new TH1F("Eta_1_PT_2_Sigma_Ieta_Ieta_FO_Gluon", "Eta_1_PT_2_Sigma_Ieta_Ieta_FO_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_FO_Gluon[2][2] = new TH1F("Eta_2_PT_2_Sigma_Ieta_Ieta_FO_Gluon", "Eta_2_PT_2_Sigma_Ieta_Ieta_FO_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_FO_Gluon[3][2] = new TH1F("Eta_3_PT_2_Sigma_Ieta_Ieta_FO_Gluon", "Eta_3_PT_2_Sigma_Ieta_Ieta_FO_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_FO_Gluon[4][2] = new TH1F("Eta_4_PT_2_Sigma_Ieta_Ieta_FO_Gluon", "Eta_4_PT_2_Sigma_Ieta_Ieta_FO_Gluon",20000, -1, 1);
 
-       h_Sigma_Ieta_Ieta_FO_Quark[0][2] = new TH1F("Eta_0_PT_2_Sigma_Ieta_Ieta_FO_Quark", "Eta_0_PT_2_Sigma_Ieta_Ieta_FO_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_FO_Quark[1][2] = new TH1F("Eta_1_PT_2_Sigma_Ieta_Ieta_FO_Quark", "Eta_1_PT_2_Sigma_Ieta_Ieta_FO_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_FO_Quark[2][2] = new TH1F("Eta_2_PT_2_Sigma_Ieta_Ieta_FO_Quark", "Eta_2_PT_2_Sigma_Ieta_Ieta_FO_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_FO_Quark[3][2] = new TH1F("Eta_3_PT_2_Sigma_Ieta_Ieta_FO_Quark", "Eta_3_PT_2_Sigma_Ieta_Ieta_FO_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_FO_Quark[4][2] = new TH1F("Eta_4_PT_2_Sigma_Ieta_Ieta_FO_Quark", "Eta_4_PT_2_Sigma_Ieta_Ieta_FO_Quark",2000, -1, 1);
+       h_Sigma_Ieta_Ieta_FO_Gluon[0][3] = new TH1F("Eta_0_PT_3_Sigma_Ieta_Ieta_FO_Gluon", "Eta_0_PT_3_Sigma_Ieta_Ieta_FO_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_FO_Gluon[1][3] = new TH1F("Eta_1_PT_3_Sigma_Ieta_Ieta_FO_Gluon", "Eta_1_PT_3_Sigma_Ieta_Ieta_FO_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_FO_Gluon[2][3] = new TH1F("Eta_2_PT_3_Sigma_Ieta_Ieta_FO_Gluon", "Eta_2_PT_3_Sigma_Ieta_Ieta_FO_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_FO_Gluon[3][3] = new TH1F("Eta_3_PT_3_Sigma_Ieta_Ieta_FO_Gluon", "Eta_3_PT_3_Sigma_Ieta_Ieta_FO_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_FO_Gluon[4][3] = new TH1F("Eta_4_PT_3_Sigma_Ieta_Ieta_FO_Gluon", "Eta_4_PT_3_Sigma_Ieta_Ieta_FO_Gluon",20000, -1, 1);
 
-       h_Sigma_Ieta_Ieta_FO_Quark[0][3] = new TH1F("Eta_0_PT_3_Sigma_Ieta_Ieta_FO_Quark", "Eta_0_PT_3_Sigma_Ieta_Ieta_FO_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_FO_Quark[1][3] = new TH1F("Eta_1_PT_3_Sigma_Ieta_Ieta_FO_Quark", "Eta_1_PT_3_Sigma_Ieta_Ieta_FO_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_FO_Quark[2][3] = new TH1F("Eta_2_PT_3_Sigma_Ieta_Ieta_FO_Quark", "Eta_2_PT_3_Sigma_Ieta_Ieta_FO_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_FO_Quark[3][3] = new TH1F("Eta_3_PT_3_Sigma_Ieta_Ieta_FO_Quark", "Eta_3_PT_3_Sigma_Ieta_Ieta_FO_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_FO_Quark[4][3] = new TH1F("Eta_4_PT_3_Sigma_Ieta_Ieta_FO_Quark", "Eta_4_PT_3_Sigma_Ieta_Ieta_FO_Quark",2000, -1, 1);
+       h_Sigma_Ieta_Ieta_FO_Gluon[0][4] = new TH1F("Eta_0_PT_4_Sigma_Ieta_Ieta_FO_Gluon", "Eta_0_PT_4_Sigma_Ieta_Ieta_FO_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_FO_Gluon[1][4] = new TH1F("Eta_1_PT_4_Sigma_Ieta_Ieta_FO_Gluon", "Eta_1_PT_4_Sigma_Ieta_Ieta_FO_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_FO_Gluon[2][4] = new TH1F("Eta_2_PT_4_Sigma_Ieta_Ieta_FO_Gluon", "Eta_2_PT_4_Sigma_Ieta_Ieta_FO_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_FO_Gluon[3][4] = new TH1F("Eta_3_PT_4_Sigma_Ieta_Ieta_FO_Gluon", "Eta_3_PT_4_Sigma_Ieta_Ieta_FO_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_FO_Gluon[4][4] = new TH1F("Eta_4_PT_4_Sigma_Ieta_Ieta_FO_Gluon", "Eta_4_PT_4_Sigma_Ieta_Ieta_FO_Gluon",20000, -1, 1);
 
-       h_Sigma_Ieta_Ieta_FO_Quark[0][4] = new TH1F("Eta_0_PT_4_Sigma_Ieta_Ieta_FO_Quark", "Eta_0_PT_4_Sigma_Ieta_Ieta_FO_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_FO_Quark[1][4] = new TH1F("Eta_1_PT_4_Sigma_Ieta_Ieta_FO_Quark", "Eta_1_PT_4_Sigma_Ieta_Ieta_FO_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_FO_Quark[2][4] = new TH1F("Eta_2_PT_4_Sigma_Ieta_Ieta_FO_Quark", "Eta_2_PT_4_Sigma_Ieta_Ieta_FO_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_FO_Quark[3][4] = new TH1F("Eta_3_PT_4_Sigma_Ieta_Ieta_FO_Quark", "Eta_3_PT_4_Sigma_Ieta_Ieta_FO_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_FO_Quark[4][4] = new TH1F("Eta_4_PT_4_Sigma_Ieta_Ieta_FO_Quark", "Eta_4_PT_4_Sigma_Ieta_Ieta_FO_Quark",2000, -1, 1);
+
+
+       h_Sigma_Ieta_Ieta_FO_Quark[0][0] = new TH1F("Eta_0_PT_0_Sigma_Ieta_Ieta_FO_Quark", "Eta_0_PT_0_Sigma_Ieta_Ieta_FO_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_FO_Quark[1][0] = new TH1F("Eta_1_PT_0_Sigma_Ieta_Ieta_FO_Quark", "Eta_1_PT_0_Sigma_Ieta_Ieta_FO_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_FO_Quark[2][0] = new TH1F("Eta_2_PT_0_Sigma_Ieta_Ieta_FO_Quark", "Eta_2_PT_0_Sigma_Ieta_Ieta_FO_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_FO_Quark[3][0] = new TH1F("Eta_3_PT_0_Sigma_Ieta_Ieta_FO_Quark", "Eta_3_PT_0_Sigma_Ieta_Ieta_FO_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_FO_Quark[4][0] = new TH1F("Eta_4_PT_0_Sigma_Ieta_Ieta_FO_Quark", "Eta_4_PT_0_Sigma_Ieta_Ieta_FO_Quark",20000, -1, 1);
+
+       h_Sigma_Ieta_Ieta_FO_Quark[0][1] = new TH1F("Eta_0_PT_1_Sigma_Ieta_Ieta_FO_Quark", "Eta_0_PT_1_Sigma_Ieta_Ieta_FO_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_FO_Quark[1][1] = new TH1F("Eta_1_PT_1_Sigma_Ieta_Ieta_FO_Quark", "Eta_1_PT_1_Sigma_Ieta_Ieta_FO_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_FO_Quark[2][1] = new TH1F("Eta_2_PT_1_Sigma_Ieta_Ieta_FO_Quark", "Eta_2_PT_1_Sigma_Ieta_Ieta_FO_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_FO_Quark[3][1] = new TH1F("Eta_3_PT_1_Sigma_Ieta_Ieta_FO_Quark", "Eta_3_PT_1_Sigma_Ieta_Ieta_FO_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_FO_Quark[4][1] = new TH1F("Eta_4_PT_1_Sigma_Ieta_Ieta_FO_Quark", "Eta_4_PT_1_Sigma_Ieta_Ieta_FO_Quark",20000, -1, 1);
+
+       h_Sigma_Ieta_Ieta_FO_Quark[0][2] = new TH1F("Eta_0_PT_2_Sigma_Ieta_Ieta_FO_Quark", "Eta_0_PT_2_Sigma_Ieta_Ieta_FO_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_FO_Quark[1][2] = new TH1F("Eta_1_PT_2_Sigma_Ieta_Ieta_FO_Quark", "Eta_1_PT_2_Sigma_Ieta_Ieta_FO_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_FO_Quark[2][2] = new TH1F("Eta_2_PT_2_Sigma_Ieta_Ieta_FO_Quark", "Eta_2_PT_2_Sigma_Ieta_Ieta_FO_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_FO_Quark[3][2] = new TH1F("Eta_3_PT_2_Sigma_Ieta_Ieta_FO_Quark", "Eta_3_PT_2_Sigma_Ieta_Ieta_FO_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_FO_Quark[4][2] = new TH1F("Eta_4_PT_2_Sigma_Ieta_Ieta_FO_Quark", "Eta_4_PT_2_Sigma_Ieta_Ieta_FO_Quark",20000, -1, 1);
+
+       h_Sigma_Ieta_Ieta_FO_Quark[0][3] = new TH1F("Eta_0_PT_3_Sigma_Ieta_Ieta_FO_Quark", "Eta_0_PT_3_Sigma_Ieta_Ieta_FO_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_FO_Quark[1][3] = new TH1F("Eta_1_PT_3_Sigma_Ieta_Ieta_FO_Quark", "Eta_1_PT_3_Sigma_Ieta_Ieta_FO_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_FO_Quark[2][3] = new TH1F("Eta_2_PT_3_Sigma_Ieta_Ieta_FO_Quark", "Eta_2_PT_3_Sigma_Ieta_Ieta_FO_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_FO_Quark[3][3] = new TH1F("Eta_3_PT_3_Sigma_Ieta_Ieta_FO_Quark", "Eta_3_PT_3_Sigma_Ieta_Ieta_FO_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_FO_Quark[4][3] = new TH1F("Eta_4_PT_3_Sigma_Ieta_Ieta_FO_Quark", "Eta_4_PT_3_Sigma_Ieta_Ieta_FO_Quark",20000, -1, 1);
+
+       h_Sigma_Ieta_Ieta_FO_Quark[0][4] = new TH1F("Eta_0_PT_4_Sigma_Ieta_Ieta_FO_Quark", "Eta_0_PT_4_Sigma_Ieta_Ieta_FO_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_FO_Quark[1][4] = new TH1F("Eta_1_PT_4_Sigma_Ieta_Ieta_FO_Quark", "Eta_1_PT_4_Sigma_Ieta_Ieta_FO_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_FO_Quark[2][4] = new TH1F("Eta_2_PT_4_Sigma_Ieta_Ieta_FO_Quark", "Eta_2_PT_4_Sigma_Ieta_Ieta_FO_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_FO_Quark[3][4] = new TH1F("Eta_3_PT_4_Sigma_Ieta_Ieta_FO_Quark", "Eta_3_PT_4_Sigma_Ieta_Ieta_FO_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_FO_Quark[4][4] = new TH1F("Eta_4_PT_4_Sigma_Ieta_Ieta_FO_Quark", "Eta_4_PT_4_Sigma_Ieta_Ieta_FO_Quark",20000, -1, 1);
 
 
 
@@ -373,198 +368,198 @@ void FakesFromJets_GJets_NoSigmaIetaIeta()
        TH1F * h_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark[5][5];
 
 
-       h_QGTagsMLP_noNJetsCut_Matched_FO[0][0] = new TH1F("Eta_0_PT_0_QGTagsMLP_noNJetsCut_Matched_FO", "Eta_0_PT_0_QGTagsMLP_noNJetsCut_Matched_FO",100, -2, 2);
-       h_QGTagsMLP_noNJetsCut_Matched_FO[1][0] = new TH1F("Eta_1_PT_0_QGTagsMLP_noNJetsCut_Matched_FO", "Eta_1_PT_0_QGTagsMLP_noNJetsCut_Matched_FO",100, -2, 2);
-       h_QGTagsMLP_noNJetsCut_Matched_FO[2][0] = new TH1F("Eta_2_PT_0_QGTagsMLP_noNJetsCut_Matched_FO", "Eta_2_PT_0_QGTagsMLP_noNJetsCut_Matched_FO",100, -2, 2);
-       h_QGTagsMLP_noNJetsCut_Matched_FO[3][0] = new TH1F("Eta_3_PT_0_QGTagsMLP_noNJetsCut_Matched_FO", "Eta_3_PT_0_QGTagsMLP_noNJetsCut_Matched_FO",100, -2, 2);
-       h_QGTagsMLP_noNJetsCut_Matched_FO[4][0] = new TH1F("Eta_4_PT_0_QGTagsMLP_noNJetsCut_Matched_FO", "Eta_4_PT_0_QGTagsMLP_noNJetsCut_Matched_FO",100, -2, 2);
+       h_QGTagsMLP_noNJetsCut_Matched_FO[0][0] = new TH1F("Eta_0_PT_0_QGTagsMLP_noNJetsCut_Matched_FO", "Eta_0_PT_0_QGTagsMLP_noNJetsCut_Matched_FO",40000, -2, 2);
+       h_QGTagsMLP_noNJetsCut_Matched_FO[1][0] = new TH1F("Eta_1_PT_0_QGTagsMLP_noNJetsCut_Matched_FO", "Eta_1_PT_0_QGTagsMLP_noNJetsCut_Matched_FO",40000, -2, 2);
+       h_QGTagsMLP_noNJetsCut_Matched_FO[2][0] = new TH1F("Eta_2_PT_0_QGTagsMLP_noNJetsCut_Matched_FO", "Eta_2_PT_0_QGTagsMLP_noNJetsCut_Matched_FO",40000, -2, 2);
+       h_QGTagsMLP_noNJetsCut_Matched_FO[3][0] = new TH1F("Eta_3_PT_0_QGTagsMLP_noNJetsCut_Matched_FO", "Eta_3_PT_0_QGTagsMLP_noNJetsCut_Matched_FO",40000, -2, 2);
+       h_QGTagsMLP_noNJetsCut_Matched_FO[4][0] = new TH1F("Eta_4_PT_0_QGTagsMLP_noNJetsCut_Matched_FO", "Eta_4_PT_0_QGTagsMLP_noNJetsCut_Matched_FO",40000, -2, 2);
 
-       h_QGTagsMLP_noNJetsCut_Matched_FO[0][1] = new TH1F("Eta_0_PT_1_QGTagsMLP_noNJetsCut_Matched_FO", "Eta_0_PT_1_QGTagsMLP_noNJetsCut_Matched_FO",100, -2, 2);
-       h_QGTagsMLP_noNJetsCut_Matched_FO[1][1] = new TH1F("Eta_1_PT_1_QGTagsMLP_noNJetsCut_Matched_FO", "Eta_1_PT_1_QGTagsMLP_noNJetsCut_Matched_FO",100, -2, 2);
-       h_QGTagsMLP_noNJetsCut_Matched_FO[2][1] = new TH1F("Eta_2_PT_1_QGTagsMLP_noNJetsCut_Matched_FO", "Eta_2_PT_1_QGTagsMLP_noNJetsCut_Matched_FO",100, -2, 2);
-       h_QGTagsMLP_noNJetsCut_Matched_FO[3][1] = new TH1F("Eta_3_PT_1_QGTagsMLP_noNJetsCut_Matched_FO", "Eta_3_PT_1_QGTagsMLP_noNJetsCut_Matched_FO",100, -2, 2);
-       h_QGTagsMLP_noNJetsCut_Matched_FO[4][1] = new TH1F("Eta_4_PT_1_QGTagsMLP_noNJetsCut_Matched_FO", "Eta_4_PT_1_QGTagsMLP_noNJetsCut_Matched_FO",100, -2, 2);
+       h_QGTagsMLP_noNJetsCut_Matched_FO[0][1] = new TH1F("Eta_0_PT_1_QGTagsMLP_noNJetsCut_Matched_FO", "Eta_0_PT_1_QGTagsMLP_noNJetsCut_Matched_FO",40000, -2, 2);
+       h_QGTagsMLP_noNJetsCut_Matched_FO[1][1] = new TH1F("Eta_1_PT_1_QGTagsMLP_noNJetsCut_Matched_FO", "Eta_1_PT_1_QGTagsMLP_noNJetsCut_Matched_FO",40000, -2, 2);
+       h_QGTagsMLP_noNJetsCut_Matched_FO[2][1] = new TH1F("Eta_2_PT_1_QGTagsMLP_noNJetsCut_Matched_FO", "Eta_2_PT_1_QGTagsMLP_noNJetsCut_Matched_FO",40000, -2, 2);
+       h_QGTagsMLP_noNJetsCut_Matched_FO[3][1] = new TH1F("Eta_3_PT_1_QGTagsMLP_noNJetsCut_Matched_FO", "Eta_3_PT_1_QGTagsMLP_noNJetsCut_Matched_FO",40000, -2, 2);
+       h_QGTagsMLP_noNJetsCut_Matched_FO[4][1] = new TH1F("Eta_4_PT_1_QGTagsMLP_noNJetsCut_Matched_FO", "Eta_4_PT_1_QGTagsMLP_noNJetsCut_Matched_FO",40000, -2, 2);
 
-       h_QGTagsMLP_noNJetsCut_Matched_FO[0][2] = new TH1F("Eta_0_PT_2_QGTagsMLP_noNJetsCut_Matched_FO", "Eta_0_PT_2_QGTagsMLP_noNJetsCut_Matched_FO",100, -2, 2);
-       h_QGTagsMLP_noNJetsCut_Matched_FO[1][2] = new TH1F("Eta_1_PT_2_QGTagsMLP_noNJetsCut_Matched_FO", "Eta_1_PT_2_QGTagsMLP_noNJetsCut_Matched_FO",100, -2, 2);
-       h_QGTagsMLP_noNJetsCut_Matched_FO[2][2] = new TH1F("Eta_2_PT_2_QGTagsMLP_noNJetsCut_Matched_FO", "Eta_2_PT_2_QGTagsMLP_noNJetsCut_Matched_FO",100, -2, 2);
-       h_QGTagsMLP_noNJetsCut_Matched_FO[3][2] = new TH1F("Eta_3_PT_2_QGTagsMLP_noNJetsCut_Matched_FO", "Eta_3_PT_2_QGTagsMLP_noNJetsCut_Matched_FO",100, -2, 2);
-       h_QGTagsMLP_noNJetsCut_Matched_FO[4][2] = new TH1F("Eta_4_PT_2_QGTagsMLP_noNJetsCut_Matched_FO", "Eta_4_PT_2_QGTagsMLP_noNJetsCut_Matched_FO",100, -2, 2);
+       h_QGTagsMLP_noNJetsCut_Matched_FO[0][2] = new TH1F("Eta_0_PT_2_QGTagsMLP_noNJetsCut_Matched_FO", "Eta_0_PT_2_QGTagsMLP_noNJetsCut_Matched_FO",40000, -2, 2);
+       h_QGTagsMLP_noNJetsCut_Matched_FO[1][2] = new TH1F("Eta_1_PT_2_QGTagsMLP_noNJetsCut_Matched_FO", "Eta_1_PT_2_QGTagsMLP_noNJetsCut_Matched_FO",40000, -2, 2);
+       h_QGTagsMLP_noNJetsCut_Matched_FO[2][2] = new TH1F("Eta_2_PT_2_QGTagsMLP_noNJetsCut_Matched_FO", "Eta_2_PT_2_QGTagsMLP_noNJetsCut_Matched_FO",40000, -2, 2);
+       h_QGTagsMLP_noNJetsCut_Matched_FO[3][2] = new TH1F("Eta_3_PT_2_QGTagsMLP_noNJetsCut_Matched_FO", "Eta_3_PT_2_QGTagsMLP_noNJetsCut_Matched_FO",40000, -2, 2);
+       h_QGTagsMLP_noNJetsCut_Matched_FO[4][2] = new TH1F("Eta_4_PT_2_QGTagsMLP_noNJetsCut_Matched_FO", "Eta_4_PT_2_QGTagsMLP_noNJetsCut_Matched_FO",40000, -2, 2);
 
-       h_QGTagsMLP_noNJetsCut_Matched_FO[0][3] = new TH1F("Eta_0_PT_3_QGTagsMLP_noNJetsCut_Matched_FO", "Eta_0_PT_3_QGTagsMLP_noNJetsCut_Matched_FO",100, -2, 2);
-       h_QGTagsMLP_noNJetsCut_Matched_FO[1][3] = new TH1F("Eta_1_PT_3_QGTagsMLP_noNJetsCut_Matched_FO", "Eta_1_PT_3_QGTagsMLP_noNJetsCut_Matched_FO",100, -2, 2);
-       h_QGTagsMLP_noNJetsCut_Matched_FO[2][3] = new TH1F("Eta_2_PT_3_QGTagsMLP_noNJetsCut_Matched_FO", "Eta_2_PT_3_QGTagsMLP_noNJetsCut_Matched_FO",100, -2, 2);
-       h_QGTagsMLP_noNJetsCut_Matched_FO[3][3] = new TH1F("Eta_3_PT_3_QGTagsMLP_noNJetsCut_Matched_FO", "Eta_3_PT_3_QGTagsMLP_noNJetsCut_Matched_FO",100, -2, 2);
-       h_QGTagsMLP_noNJetsCut_Matched_FO[4][3] = new TH1F("Eta_4_PT_3_QGTagsMLP_noNJetsCut_Matched_FO", "Eta_4_PT_3_QGTagsMLP_noNJetsCut_Matched_FO",100, -2, 2);
+       h_QGTagsMLP_noNJetsCut_Matched_FO[0][3] = new TH1F("Eta_0_PT_3_QGTagsMLP_noNJetsCut_Matched_FO", "Eta_0_PT_3_QGTagsMLP_noNJetsCut_Matched_FO",40000, -2, 2);
+       h_QGTagsMLP_noNJetsCut_Matched_FO[1][3] = new TH1F("Eta_1_PT_3_QGTagsMLP_noNJetsCut_Matched_FO", "Eta_1_PT_3_QGTagsMLP_noNJetsCut_Matched_FO",40000, -2, 2);
+       h_QGTagsMLP_noNJetsCut_Matched_FO[2][3] = new TH1F("Eta_2_PT_3_QGTagsMLP_noNJetsCut_Matched_FO", "Eta_2_PT_3_QGTagsMLP_noNJetsCut_Matched_FO",40000, -2, 2);
+       h_QGTagsMLP_noNJetsCut_Matched_FO[3][3] = new TH1F("Eta_3_PT_3_QGTagsMLP_noNJetsCut_Matched_FO", "Eta_3_PT_3_QGTagsMLP_noNJetsCut_Matched_FO",40000, -2, 2);
+       h_QGTagsMLP_noNJetsCut_Matched_FO[4][3] = new TH1F("Eta_4_PT_3_QGTagsMLP_noNJetsCut_Matched_FO", "Eta_4_PT_3_QGTagsMLP_noNJetsCut_Matched_FO",40000, -2, 2);
 
-       h_QGTagsMLP_noNJetsCut_Matched_FO[0][4] = new TH1F("Eta_0_PT_4_QGTagsMLP_noNJetsCut_Matched_FO", "Eta_0_PT_4_QGTagsMLP_noNJetsCut_Matched_FO",100, -2, 2);
-       h_QGTagsMLP_noNJetsCut_Matched_FO[1][4] = new TH1F("Eta_1_PT_4_QGTagsMLP_noNJetsCut_Matched_FO", "Eta_1_PT_4_QGTagsMLP_noNJetsCut_Matched_FO",100, -2, 2);
-       h_QGTagsMLP_noNJetsCut_Matched_FO[2][4] = new TH1F("Eta_2_PT_4_QGTagsMLP_noNJetsCut_Matched_FO", "Eta_2_PT_4_QGTagsMLP_noNJetsCut_Matched_FO",100, -2, 2);
-       h_QGTagsMLP_noNJetsCut_Matched_FO[3][4] = new TH1F("Eta_3_PT_4_QGTagsMLP_noNJetsCut_Matched_FO", "Eta_3_PT_4_QGTagsMLP_noNJetsCut_Matched_FO",100, -2, 2);
-       h_QGTagsMLP_noNJetsCut_Matched_FO[4][4] = new TH1F("Eta_4_PT_4_QGTagsMLP_noNJetsCut_Matched_FO", "Eta_4_PT_4_QGTagsMLP_noNJetsCut_Matched_FO",100, -2, 2);
-
-
-
-       h_QGTagsMLP_noNJetsCut_Matched_TIGHT[0][0] = new TH1F("Eta_0_PT_0_QGTagsMLP_noNJetsCut_Matched_TIGHT", "Eta_0_PT_0_QGTagsMLP_noNJetsCut_Matched_TIGHT",100, -2, 2);
-       h_QGTagsMLP_noNJetsCut_Matched_TIGHT[1][0] = new TH1F("Eta_1_PT_0_QGTagsMLP_noNJetsCut_Matched_TIGHT", "Eta_1_PT_0_QGTagsMLP_noNJetsCut_Matched_TIGHT",100, -2, 2);
-       h_QGTagsMLP_noNJetsCut_Matched_TIGHT[2][0] = new TH1F("Eta_2_PT_0_QGTagsMLP_noNJetsCut_Matched_TIGHT", "Eta_2_PT_0_QGTagsMLP_noNJetsCut_Matched_TIGHT",100, -2, 2);
-       h_QGTagsMLP_noNJetsCut_Matched_TIGHT[3][0] = new TH1F("Eta_3_PT_0_QGTagsMLP_noNJetsCut_Matched_TIGHT", "Eta_3_PT_0_QGTagsMLP_noNJetsCut_Matched_TIGHT",100, -2, 2);
-       h_QGTagsMLP_noNJetsCut_Matched_TIGHT[4][0] = new TH1F("Eta_4_PT_0_QGTagsMLP_noNJetsCut_Matched_TIGHT", "Eta_4_PT_0_QGTagsMLP_noNJetsCut_Matched_TIGHT",100, -2, 2);
-
-       h_QGTagsMLP_noNJetsCut_Matched_TIGHT[0][1] = new TH1F("Eta_0_PT_1_QGTagsMLP_noNJetsCut_Matched_TIGHT", "Eta_0_PT_1_QGTagsMLP_noNJetsCut_Matched_TIGHT",100, -2, 2);
-       h_QGTagsMLP_noNJetsCut_Matched_TIGHT[1][1] = new TH1F("Eta_1_PT_1_QGTagsMLP_noNJetsCut_Matched_TIGHT", "Eta_1_PT_1_QGTagsMLP_noNJetsCut_Matched_TIGHT",100, -2, 2);
-       h_QGTagsMLP_noNJetsCut_Matched_TIGHT[2][1] = new TH1F("Eta_2_PT_1_QGTagsMLP_noNJetsCut_Matched_TIGHT", "Eta_2_PT_1_QGTagsMLP_noNJetsCut_Matched_TIGHT",100, -2, 2);
-       h_QGTagsMLP_noNJetsCut_Matched_TIGHT[3][1] = new TH1F("Eta_3_PT_1_QGTagsMLP_noNJetsCut_Matched_TIGHT", "Eta_3_PT_1_QGTagsMLP_noNJetsCut_Matched_TIGHT",100, -2, 2);
-       h_QGTagsMLP_noNJetsCut_Matched_TIGHT[4][1] = new TH1F("Eta_4_PT_1_QGTagsMLP_noNJetsCut_Matched_TIGHT", "Eta_4_PT_1_QGTagsMLP_noNJetsCut_Matched_TIGHT",100, -2, 2);
-
-       h_QGTagsMLP_noNJetsCut_Matched_TIGHT[0][2] = new TH1F("Eta_0_PT_2_QGTagsMLP_noNJetsCut_Matched_TIGHT", "Eta_0_PT_2_QGTagsMLP_noNJetsCut_Matched_TIGHT",100, -2, 2);
-       h_QGTagsMLP_noNJetsCut_Matched_TIGHT[1][2] = new TH1F("Eta_1_PT_2_QGTagsMLP_noNJetsCut_Matched_TIGHT", "Eta_1_PT_2_QGTagsMLP_noNJetsCut_Matched_TIGHT",100, -2, 2);
-       h_QGTagsMLP_noNJetsCut_Matched_TIGHT[2][2] = new TH1F("Eta_2_PT_2_QGTagsMLP_noNJetsCut_Matched_TIGHT", "Eta_2_PT_2_QGTagsMLP_noNJetsCut_Matched_TIGHT",100, -2, 2);
-       h_QGTagsMLP_noNJetsCut_Matched_TIGHT[3][2] = new TH1F("Eta_3_PT_2_QGTagsMLP_noNJetsCut_Matched_TIGHT", "Eta_3_PT_2_QGTagsMLP_noNJetsCut_Matched_TIGHT",100, -2, 2);
-       h_QGTagsMLP_noNJetsCut_Matched_TIGHT[4][2] = new TH1F("Eta_4_PT_2_QGTagsMLP_noNJetsCut_Matched_TIGHT", "Eta_4_PT_2_QGTagsMLP_noNJetsCut_Matched_TIGHT",100, -2, 2);
-
-       h_QGTagsMLP_noNJetsCut_Matched_TIGHT[0][3] = new TH1F("Eta_0_PT_3_QGTagsMLP_noNJetsCut_Matched_TIGHT", "Eta_0_PT_3_QGTagsMLP_noNJetsCut_Matched_TIGHT",100, -2, 2);
-       h_QGTagsMLP_noNJetsCut_Matched_TIGHT[1][3] = new TH1F("Eta_1_PT_3_QGTagsMLP_noNJetsCut_Matched_TIGHT", "Eta_1_PT_3_QGTagsMLP_noNJetsCut_Matched_TIGHT",100, -2, 2);
-       h_QGTagsMLP_noNJetsCut_Matched_TIGHT[2][3] = new TH1F("Eta_2_PT_3_QGTagsMLP_noNJetsCut_Matched_TIGHT", "Eta_2_PT_3_QGTagsMLP_noNJetsCut_Matched_TIGHT",100, -2, 2);
-       h_QGTagsMLP_noNJetsCut_Matched_TIGHT[3][3] = new TH1F("Eta_3_PT_3_QGTagsMLP_noNJetsCut_Matched_TIGHT", "Eta_3_PT_3_QGTagsMLP_noNJetsCut_Matched_TIGHT",100, -2, 2);
-       h_QGTagsMLP_noNJetsCut_Matched_TIGHT[4][3] = new TH1F("Eta_4_PT_3_QGTagsMLP_noNJetsCut_Matched_TIGHT", "Eta_4_PT_3_QGTagsMLP_noNJetsCut_Matched_TIGHT",100, -2, 2);
-
-       h_QGTagsMLP_noNJetsCut_Matched_TIGHT[0][4] = new TH1F("Eta_0_PT_4_QGTagsMLP_noNJetsCut_Matched_TIGHT", "Eta_0_PT_4_QGTagsMLP_noNJetsCut_Matched_TIGHT",100, -2, 2);
-       h_QGTagsMLP_noNJetsCut_Matched_TIGHT[1][4] = new TH1F("Eta_1_PT_4_QGTagsMLP_noNJetsCut_Matched_TIGHT", "Eta_1_PT_4_QGTagsMLP_noNJetsCut_Matched_TIGHT",100, -2, 2);
-       h_QGTagsMLP_noNJetsCut_Matched_TIGHT[2][4] = new TH1F("Eta_2_PT_4_QGTagsMLP_noNJetsCut_Matched_TIGHT", "Eta_2_PT_4_QGTagsMLP_noNJetsCut_Matched_TIGHT",100, -2, 2);
-       h_QGTagsMLP_noNJetsCut_Matched_TIGHT[3][4] = new TH1F("Eta_3_PT_4_QGTagsMLP_noNJetsCut_Matched_TIGHT", "Eta_3_PT_4_QGTagsMLP_noNJetsCut_Matched_TIGHT",100, -2, 2);
-       h_QGTagsMLP_noNJetsCut_Matched_TIGHT[4][4] = new TH1F("Eta_4_PT_4_QGTagsMLP_noNJetsCut_Matched_TIGHT", "Eta_4_PT_4_QGTagsMLP_noNJetsCut_Matched_TIGHT",100, -2, 2);
+       h_QGTagsMLP_noNJetsCut_Matched_FO[0][4] = new TH1F("Eta_0_PT_4_QGTagsMLP_noNJetsCut_Matched_FO", "Eta_0_PT_4_QGTagsMLP_noNJetsCut_Matched_FO",40000, -2, 2);
+       h_QGTagsMLP_noNJetsCut_Matched_FO[1][4] = new TH1F("Eta_1_PT_4_QGTagsMLP_noNJetsCut_Matched_FO", "Eta_1_PT_4_QGTagsMLP_noNJetsCut_Matched_FO",40000, -2, 2);
+       h_QGTagsMLP_noNJetsCut_Matched_FO[2][4] = new TH1F("Eta_2_PT_4_QGTagsMLP_noNJetsCut_Matched_FO", "Eta_2_PT_4_QGTagsMLP_noNJetsCut_Matched_FO",40000, -2, 2);
+       h_QGTagsMLP_noNJetsCut_Matched_FO[3][4] = new TH1F("Eta_3_PT_4_QGTagsMLP_noNJetsCut_Matched_FO", "Eta_3_PT_4_QGTagsMLP_noNJetsCut_Matched_FO",40000, -2, 2);
+       h_QGTagsMLP_noNJetsCut_Matched_FO[4][4] = new TH1F("Eta_4_PT_4_QGTagsMLP_noNJetsCut_Matched_FO", "Eta_4_PT_4_QGTagsMLP_noNJetsCut_Matched_FO",40000, -2, 2);
 
 
 
-       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon[0][0] = new TH1F("Eta_0_PT_0_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon", "Eta_0_PT_0_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon[1][0] = new TH1F("Eta_1_PT_0_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon", "Eta_1_PT_0_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon[2][0] = new TH1F("Eta_2_PT_0_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon", "Eta_2_PT_0_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon[3][0] = new TH1F("Eta_3_PT_0_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon", "Eta_3_PT_0_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon[4][0] = new TH1F("Eta_4_PT_0_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon", "Eta_4_PT_0_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon",2000, -1, 1);
+       h_QGTagsMLP_noNJetsCut_Matched_TIGHT[0][0] = new TH1F("Eta_0_PT_0_QGTagsMLP_noNJetsCut_Matched_TIGHT", "Eta_0_PT_0_QGTagsMLP_noNJetsCut_Matched_TIGHT",40000, -2, 2);
+       h_QGTagsMLP_noNJetsCut_Matched_TIGHT[1][0] = new TH1F("Eta_1_PT_0_QGTagsMLP_noNJetsCut_Matched_TIGHT", "Eta_1_PT_0_QGTagsMLP_noNJetsCut_Matched_TIGHT",40000, -2, 2);
+       h_QGTagsMLP_noNJetsCut_Matched_TIGHT[2][0] = new TH1F("Eta_2_PT_0_QGTagsMLP_noNJetsCut_Matched_TIGHT", "Eta_2_PT_0_QGTagsMLP_noNJetsCut_Matched_TIGHT",40000, -2, 2);
+       h_QGTagsMLP_noNJetsCut_Matched_TIGHT[3][0] = new TH1F("Eta_3_PT_0_QGTagsMLP_noNJetsCut_Matched_TIGHT", "Eta_3_PT_0_QGTagsMLP_noNJetsCut_Matched_TIGHT",40000, -2, 2);
+       h_QGTagsMLP_noNJetsCut_Matched_TIGHT[4][0] = new TH1F("Eta_4_PT_0_QGTagsMLP_noNJetsCut_Matched_TIGHT", "Eta_4_PT_0_QGTagsMLP_noNJetsCut_Matched_TIGHT",40000, -2, 2);
 
-       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon[0][1] = new TH1F("Eta_0_PT_1_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon", "Eta_0_PT_1_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon[1][1] = new TH1F("Eta_1_PT_1_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon", "Eta_1_PT_1_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon[2][1] = new TH1F("Eta_2_PT_1_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon", "Eta_2_PT_1_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon[3][1] = new TH1F("Eta_3_PT_1_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon", "Eta_3_PT_1_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon[4][1] = new TH1F("Eta_4_PT_1_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon", "Eta_4_PT_1_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon",2000, -1, 1);
+       h_QGTagsMLP_noNJetsCut_Matched_TIGHT[0][1] = new TH1F("Eta_0_PT_1_QGTagsMLP_noNJetsCut_Matched_TIGHT", "Eta_0_PT_1_QGTagsMLP_noNJetsCut_Matched_TIGHT",40000, -2, 2);
+       h_QGTagsMLP_noNJetsCut_Matched_TIGHT[1][1] = new TH1F("Eta_1_PT_1_QGTagsMLP_noNJetsCut_Matched_TIGHT", "Eta_1_PT_1_QGTagsMLP_noNJetsCut_Matched_TIGHT",40000, -2, 2);
+       h_QGTagsMLP_noNJetsCut_Matched_TIGHT[2][1] = new TH1F("Eta_2_PT_1_QGTagsMLP_noNJetsCut_Matched_TIGHT", "Eta_2_PT_1_QGTagsMLP_noNJetsCut_Matched_TIGHT",40000, -2, 2);
+       h_QGTagsMLP_noNJetsCut_Matched_TIGHT[3][1] = new TH1F("Eta_3_PT_1_QGTagsMLP_noNJetsCut_Matched_TIGHT", "Eta_3_PT_1_QGTagsMLP_noNJetsCut_Matched_TIGHT",40000, -2, 2);
+       h_QGTagsMLP_noNJetsCut_Matched_TIGHT[4][1] = new TH1F("Eta_4_PT_1_QGTagsMLP_noNJetsCut_Matched_TIGHT", "Eta_4_PT_1_QGTagsMLP_noNJetsCut_Matched_TIGHT",40000, -2, 2);
 
-       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon[0][2] = new TH1F("Eta_0_PT_2_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon", "Eta_0_PT_2_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon[1][2] = new TH1F("Eta_1_PT_2_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon", "Eta_1_PT_2_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon[2][2] = new TH1F("Eta_2_PT_2_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon", "Eta_2_PT_2_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon[3][2] = new TH1F("Eta_3_PT_2_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon", "Eta_3_PT_2_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon[4][2] = new TH1F("Eta_4_PT_2_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon", "Eta_4_PT_2_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon",2000, -1, 1);
+       h_QGTagsMLP_noNJetsCut_Matched_TIGHT[0][2] = new TH1F("Eta_0_PT_2_QGTagsMLP_noNJetsCut_Matched_TIGHT", "Eta_0_PT_2_QGTagsMLP_noNJetsCut_Matched_TIGHT",40000, -2, 2);
+       h_QGTagsMLP_noNJetsCut_Matched_TIGHT[1][2] = new TH1F("Eta_1_PT_2_QGTagsMLP_noNJetsCut_Matched_TIGHT", "Eta_1_PT_2_QGTagsMLP_noNJetsCut_Matched_TIGHT",40000, -2, 2);
+       h_QGTagsMLP_noNJetsCut_Matched_TIGHT[2][2] = new TH1F("Eta_2_PT_2_QGTagsMLP_noNJetsCut_Matched_TIGHT", "Eta_2_PT_2_QGTagsMLP_noNJetsCut_Matched_TIGHT",40000, -2, 2);
+       h_QGTagsMLP_noNJetsCut_Matched_TIGHT[3][2] = new TH1F("Eta_3_PT_2_QGTagsMLP_noNJetsCut_Matched_TIGHT", "Eta_3_PT_2_QGTagsMLP_noNJetsCut_Matched_TIGHT",40000, -2, 2);
+       h_QGTagsMLP_noNJetsCut_Matched_TIGHT[4][2] = new TH1F("Eta_4_PT_2_QGTagsMLP_noNJetsCut_Matched_TIGHT", "Eta_4_PT_2_QGTagsMLP_noNJetsCut_Matched_TIGHT",40000, -2, 2);
 
-       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon[0][3] = new TH1F("Eta_0_PT_3_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon", "Eta_0_PT_3_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon[1][3] = new TH1F("Eta_1_PT_3_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon", "Eta_1_PT_3_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon[2][3] = new TH1F("Eta_2_PT_3_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon", "Eta_2_PT_3_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon[3][3] = new TH1F("Eta_3_PT_3_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon", "Eta_3_PT_3_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon[4][3] = new TH1F("Eta_4_PT_3_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon", "Eta_4_PT_3_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon",2000, -1, 1);
+       h_QGTagsMLP_noNJetsCut_Matched_TIGHT[0][3] = new TH1F("Eta_0_PT_3_QGTagsMLP_noNJetsCut_Matched_TIGHT", "Eta_0_PT_3_QGTagsMLP_noNJetsCut_Matched_TIGHT",40000, -2, 2);
+       h_QGTagsMLP_noNJetsCut_Matched_TIGHT[1][3] = new TH1F("Eta_1_PT_3_QGTagsMLP_noNJetsCut_Matched_TIGHT", "Eta_1_PT_3_QGTagsMLP_noNJetsCut_Matched_TIGHT",40000, -2, 2);
+       h_QGTagsMLP_noNJetsCut_Matched_TIGHT[2][3] = new TH1F("Eta_2_PT_3_QGTagsMLP_noNJetsCut_Matched_TIGHT", "Eta_2_PT_3_QGTagsMLP_noNJetsCut_Matched_TIGHT",40000, -2, 2);
+       h_QGTagsMLP_noNJetsCut_Matched_TIGHT[3][3] = new TH1F("Eta_3_PT_3_QGTagsMLP_noNJetsCut_Matched_TIGHT", "Eta_3_PT_3_QGTagsMLP_noNJetsCut_Matched_TIGHT",40000, -2, 2);
+       h_QGTagsMLP_noNJetsCut_Matched_TIGHT[4][3] = new TH1F("Eta_4_PT_3_QGTagsMLP_noNJetsCut_Matched_TIGHT", "Eta_4_PT_3_QGTagsMLP_noNJetsCut_Matched_TIGHT",40000, -2, 2);
 
-       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon[0][4] = new TH1F("Eta_0_PT_4_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon", "Eta_0_PT_4_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon[1][4] = new TH1F("Eta_1_PT_4_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon", "Eta_1_PT_4_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon[2][4] = new TH1F("Eta_2_PT_4_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon", "Eta_2_PT_4_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon[3][4] = new TH1F("Eta_3_PT_4_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon", "Eta_3_PT_4_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon[4][4] = new TH1F("Eta_4_PT_4_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon", "Eta_4_PT_4_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon",2000, -1, 1);
-
-
-
-       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark[0][0] = new TH1F("Eta_0_PT_0_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark", "Eta_0_PT_0_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark[1][0] = new TH1F("Eta_1_PT_0_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark", "Eta_1_PT_0_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark[2][0] = new TH1F("Eta_2_PT_0_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark", "Eta_2_PT_0_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark[3][0] = new TH1F("Eta_3_PT_0_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark", "Eta_3_PT_0_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark[4][0] = new TH1F("Eta_4_PT_0_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark", "Eta_4_PT_0_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark",2000, -1, 1);
-
-       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark[0][1] = new TH1F("Eta_0_PT_1_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark", "Eta_0_PT_1_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark[1][1] = new TH1F("Eta_1_PT_1_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark", "Eta_1_PT_1_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark[2][1] = new TH1F("Eta_2_PT_1_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark", "Eta_2_PT_1_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark[3][1] = new TH1F("Eta_3_PT_1_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark", "Eta_3_PT_1_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark[4][1] = new TH1F("Eta_4_PT_1_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark", "Eta_4_PT_1_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark",2000, -1, 1);
-
-       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark[0][2] = new TH1F("Eta_0_PT_2_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark", "Eta_0_PT_2_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark[1][2] = new TH1F("Eta_1_PT_2_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark", "Eta_1_PT_2_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark[2][2] = new TH1F("Eta_2_PT_2_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark", "Eta_2_PT_2_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark[3][2] = new TH1F("Eta_3_PT_2_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark", "Eta_3_PT_2_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark[4][2] = new TH1F("Eta_4_PT_2_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark", "Eta_4_PT_2_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark",2000, -1, 1);
-
-       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark[0][3] = new TH1F("Eta_0_PT_3_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark", "Eta_0_PT_3_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark[1][3] = new TH1F("Eta_1_PT_3_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark", "Eta_1_PT_3_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark[2][3] = new TH1F("Eta_2_PT_3_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark", "Eta_2_PT_3_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark[3][3] = new TH1F("Eta_3_PT_3_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark", "Eta_3_PT_3_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark[4][3] = new TH1F("Eta_4_PT_3_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark", "Eta_4_PT_3_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark",2000, -1, 1);
-
-       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark[0][4] = new TH1F("Eta_0_PT_4_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark", "Eta_0_PT_4_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark[1][4] = new TH1F("Eta_1_PT_4_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark", "Eta_1_PT_4_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark[2][4] = new TH1F("Eta_2_PT_4_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark", "Eta_2_PT_4_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark[3][4] = new TH1F("Eta_3_PT_4_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark", "Eta_3_PT_4_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark[4][4] = new TH1F("Eta_4_PT_4_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark", "Eta_4_PT_4_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark",2000, -1, 1);
+       h_QGTagsMLP_noNJetsCut_Matched_TIGHT[0][4] = new TH1F("Eta_0_PT_4_QGTagsMLP_noNJetsCut_Matched_TIGHT", "Eta_0_PT_4_QGTagsMLP_noNJetsCut_Matched_TIGHT",40000, -2, 2);
+       h_QGTagsMLP_noNJetsCut_Matched_TIGHT[1][4] = new TH1F("Eta_1_PT_4_QGTagsMLP_noNJetsCut_Matched_TIGHT", "Eta_1_PT_4_QGTagsMLP_noNJetsCut_Matched_TIGHT",40000, -2, 2);
+       h_QGTagsMLP_noNJetsCut_Matched_TIGHT[2][4] = new TH1F("Eta_2_PT_4_QGTagsMLP_noNJetsCut_Matched_TIGHT", "Eta_2_PT_4_QGTagsMLP_noNJetsCut_Matched_TIGHT",40000, -2, 2);
+       h_QGTagsMLP_noNJetsCut_Matched_TIGHT[3][4] = new TH1F("Eta_3_PT_4_QGTagsMLP_noNJetsCut_Matched_TIGHT", "Eta_3_PT_4_QGTagsMLP_noNJetsCut_Matched_TIGHT",40000, -2, 2);
+       h_QGTagsMLP_noNJetsCut_Matched_TIGHT[4][4] = new TH1F("Eta_4_PT_4_QGTagsMLP_noNJetsCut_Matched_TIGHT", "Eta_4_PT_4_QGTagsMLP_noNJetsCut_Matched_TIGHT",40000, -2, 2);
 
 
+
+       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon[0][0] = new TH1F("Eta_0_PT_0_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon", "Eta_0_PT_0_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon[1][0] = new TH1F("Eta_1_PT_0_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon", "Eta_1_PT_0_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon[2][0] = new TH1F("Eta_2_PT_0_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon", "Eta_2_PT_0_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon[3][0] = new TH1F("Eta_3_PT_0_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon", "Eta_3_PT_0_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon[4][0] = new TH1F("Eta_4_PT_0_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon", "Eta_4_PT_0_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon",20000, -1, 1);
+
+       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon[0][1] = new TH1F("Eta_0_PT_1_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon", "Eta_0_PT_1_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon[1][1] = new TH1F("Eta_1_PT_1_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon", "Eta_1_PT_1_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon[2][1] = new TH1F("Eta_2_PT_1_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon", "Eta_2_PT_1_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon[3][1] = new TH1F("Eta_3_PT_1_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon", "Eta_3_PT_1_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon[4][1] = new TH1F("Eta_4_PT_1_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon", "Eta_4_PT_1_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon",20000, -1, 1);
+
+       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon[0][2] = new TH1F("Eta_0_PT_2_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon", "Eta_0_PT_2_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon[1][2] = new TH1F("Eta_1_PT_2_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon", "Eta_1_PT_2_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon[2][2] = new TH1F("Eta_2_PT_2_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon", "Eta_2_PT_2_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon[3][2] = new TH1F("Eta_3_PT_2_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon", "Eta_3_PT_2_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon[4][2] = new TH1F("Eta_4_PT_2_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon", "Eta_4_PT_2_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon",20000, -1, 1);
+
+       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon[0][3] = new TH1F("Eta_0_PT_3_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon", "Eta_0_PT_3_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon[1][3] = new TH1F("Eta_1_PT_3_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon", "Eta_1_PT_3_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon[2][3] = new TH1F("Eta_2_PT_3_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon", "Eta_2_PT_3_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon[3][3] = new TH1F("Eta_3_PT_3_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon", "Eta_3_PT_3_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon[4][3] = new TH1F("Eta_4_PT_3_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon", "Eta_4_PT_3_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon",20000, -1, 1);
+
+       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon[0][4] = new TH1F("Eta_0_PT_4_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon", "Eta_0_PT_4_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon[1][4] = new TH1F("Eta_1_PT_4_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon", "Eta_1_PT_4_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon[2][4] = new TH1F("Eta_2_PT_4_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon", "Eta_2_PT_4_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon[3][4] = new TH1F("Eta_3_PT_4_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon", "Eta_3_PT_4_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon[4][4] = new TH1F("Eta_4_PT_4_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon", "Eta_4_PT_4_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon",20000, -1, 1);
+
+
+
+       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark[0][0] = new TH1F("Eta_0_PT_0_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark", "Eta_0_PT_0_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark[1][0] = new TH1F("Eta_1_PT_0_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark", "Eta_1_PT_0_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark[2][0] = new TH1F("Eta_2_PT_0_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark", "Eta_2_PT_0_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark[3][0] = new TH1F("Eta_3_PT_0_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark", "Eta_3_PT_0_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark[4][0] = new TH1F("Eta_4_PT_0_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark", "Eta_4_PT_0_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark",20000, -1, 1);
+
+       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark[0][1] = new TH1F("Eta_0_PT_1_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark", "Eta_0_PT_1_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark[1][1] = new TH1F("Eta_1_PT_1_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark", "Eta_1_PT_1_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark[2][1] = new TH1F("Eta_2_PT_1_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark", "Eta_2_PT_1_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark[3][1] = new TH1F("Eta_3_PT_1_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark", "Eta_3_PT_1_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark[4][1] = new TH1F("Eta_4_PT_1_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark", "Eta_4_PT_1_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark",20000, -1, 1);
+
+       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark[0][2] = new TH1F("Eta_0_PT_2_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark", "Eta_0_PT_2_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark[1][2] = new TH1F("Eta_1_PT_2_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark", "Eta_1_PT_2_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark[2][2] = new TH1F("Eta_2_PT_2_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark", "Eta_2_PT_2_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark[3][2] = new TH1F("Eta_3_PT_2_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark", "Eta_3_PT_2_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark[4][2] = new TH1F("Eta_4_PT_2_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark", "Eta_4_PT_2_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark",20000, -1, 1);
+
+       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark[0][3] = new TH1F("Eta_0_PT_3_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark", "Eta_0_PT_3_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark[1][3] = new TH1F("Eta_1_PT_3_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark", "Eta_1_PT_3_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark[2][3] = new TH1F("Eta_2_PT_3_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark", "Eta_2_PT_3_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark[3][3] = new TH1F("Eta_3_PT_3_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark", "Eta_3_PT_3_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark[4][3] = new TH1F("Eta_4_PT_3_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark", "Eta_4_PT_3_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark",20000, -1, 1);
+
+       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark[0][4] = new TH1F("Eta_0_PT_4_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark", "Eta_0_PT_4_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark[1][4] = new TH1F("Eta_1_PT_4_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark", "Eta_1_PT_4_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark[2][4] = new TH1F("Eta_2_PT_4_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark", "Eta_2_PT_4_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark[3][4] = new TH1F("Eta_3_PT_4_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark", "Eta_3_PT_4_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark[4][4] = new TH1F("Eta_4_PT_4_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark", "Eta_4_PT_4_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark",20000, -1, 1);
 
 
 
 
-       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon[0][0] = new TH1F("Eta_0_PT_0_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon", "Eta_0_PT_0_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon[1][0] = new TH1F("Eta_1_PT_0_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon", "Eta_1_PT_0_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon[2][0] = new TH1F("Eta_2_PT_0_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon", "Eta_2_PT_0_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon[3][0] = new TH1F("Eta_3_PT_0_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon", "Eta_3_PT_0_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon[4][0] = new TH1F("Eta_4_PT_0_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon", "Eta_4_PT_0_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon",2000, -1, 1);
-
-       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon[0][1] = new TH1F("Eta_0_PT_1_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon", "Eta_0_PT_1_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon[1][1] = new TH1F("Eta_1_PT_1_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon", "Eta_1_PT_1_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon[2][1] = new TH1F("Eta_2_PT_1_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon", "Eta_2_PT_1_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon[3][1] = new TH1F("Eta_3_PT_1_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon", "Eta_3_PT_1_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon[4][1] = new TH1F("Eta_4_PT_1_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon", "Eta_4_PT_1_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon",2000, -1, 1);
-
-       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon[0][2] = new TH1F("Eta_0_PT_2_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon", "Eta_0_PT_2_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon[1][2] = new TH1F("Eta_1_PT_2_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon", "Eta_1_PT_2_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon[2][2] = new TH1F("Eta_2_PT_2_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon", "Eta_2_PT_2_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon[3][2] = new TH1F("Eta_3_PT_2_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon", "Eta_3_PT_2_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon[4][2] = new TH1F("Eta_4_PT_2_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon", "Eta_4_PT_2_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon",2000, -1, 1);
-
-       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon[0][3] = new TH1F("Eta_0_PT_3_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon", "Eta_0_PT_3_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon[1][3] = new TH1F("Eta_1_PT_3_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon", "Eta_1_PT_3_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon[2][3] = new TH1F("Eta_2_PT_3_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon", "Eta_2_PT_3_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon[3][3] = new TH1F("Eta_3_PT_3_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon", "Eta_3_PT_3_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon[4][3] = new TH1F("Eta_4_PT_3_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon", "Eta_4_PT_3_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon",2000, -1, 1);
-
-       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon[0][4] = new TH1F("Eta_0_PT_4_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon", "Eta_0_PT_4_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon[1][4] = new TH1F("Eta_1_PT_4_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon", "Eta_1_PT_4_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon[2][4] = new TH1F("Eta_2_PT_4_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon", "Eta_2_PT_4_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon[3][4] = new TH1F("Eta_3_PT_4_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon", "Eta_3_PT_4_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon[4][4] = new TH1F("Eta_4_PT_4_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon", "Eta_4_PT_4_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon",2000, -1, 1);
 
 
+       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon[0][0] = new TH1F("Eta_0_PT_0_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon", "Eta_0_PT_0_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon[1][0] = new TH1F("Eta_1_PT_0_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon", "Eta_1_PT_0_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon[2][0] = new TH1F("Eta_2_PT_0_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon", "Eta_2_PT_0_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon[3][0] = new TH1F("Eta_3_PT_0_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon", "Eta_3_PT_0_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon[4][0] = new TH1F("Eta_4_PT_0_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon", "Eta_4_PT_0_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon",20000, -1, 1);
 
-       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark[0][0] = new TH1F("Eta_0_PT_0_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark", "Eta_0_PT_0_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark[1][0] = new TH1F("Eta_1_PT_0_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark", "Eta_1_PT_0_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark[2][0] = new TH1F("Eta_2_PT_0_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark", "Eta_2_PT_0_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark[3][0] = new TH1F("Eta_3_PT_0_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark", "Eta_3_PT_0_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark[4][0] = new TH1F("Eta_4_PT_0_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark", "Eta_4_PT_0_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark",2000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon[0][1] = new TH1F("Eta_0_PT_1_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon", "Eta_0_PT_1_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon[1][1] = new TH1F("Eta_1_PT_1_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon", "Eta_1_PT_1_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon[2][1] = new TH1F("Eta_2_PT_1_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon", "Eta_2_PT_1_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon[3][1] = new TH1F("Eta_3_PT_1_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon", "Eta_3_PT_1_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon[4][1] = new TH1F("Eta_4_PT_1_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon", "Eta_4_PT_1_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon",20000, -1, 1);
 
-       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark[0][1] = new TH1F("Eta_0_PT_1_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark", "Eta_0_PT_1_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark[1][1] = new TH1F("Eta_1_PT_1_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark", "Eta_1_PT_1_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark[2][1] = new TH1F("Eta_2_PT_1_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark", "Eta_2_PT_1_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark[3][1] = new TH1F("Eta_3_PT_1_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark", "Eta_3_PT_1_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark[4][1] = new TH1F("Eta_4_PT_1_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark", "Eta_4_PT_1_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark",2000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon[0][2] = new TH1F("Eta_0_PT_2_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon", "Eta_0_PT_2_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon[1][2] = new TH1F("Eta_1_PT_2_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon", "Eta_1_PT_2_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon[2][2] = new TH1F("Eta_2_PT_2_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon", "Eta_2_PT_2_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon[3][2] = new TH1F("Eta_3_PT_2_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon", "Eta_3_PT_2_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon[4][2] = new TH1F("Eta_4_PT_2_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon", "Eta_4_PT_2_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon",20000, -1, 1);
 
-       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark[0][2] = new TH1F("Eta_0_PT_2_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark", "Eta_0_PT_2_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark[1][2] = new TH1F("Eta_1_PT_2_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark", "Eta_1_PT_2_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark[2][2] = new TH1F("Eta_2_PT_2_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark", "Eta_2_PT_2_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark[3][2] = new TH1F("Eta_3_PT_2_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark", "Eta_3_PT_2_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark[4][2] = new TH1F("Eta_4_PT_2_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark", "Eta_4_PT_2_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark",2000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon[0][3] = new TH1F("Eta_0_PT_3_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon", "Eta_0_PT_3_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon[1][3] = new TH1F("Eta_1_PT_3_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon", "Eta_1_PT_3_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon[2][3] = new TH1F("Eta_2_PT_3_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon", "Eta_2_PT_3_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon[3][3] = new TH1F("Eta_3_PT_3_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon", "Eta_3_PT_3_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon[4][3] = new TH1F("Eta_4_PT_3_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon", "Eta_4_PT_3_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon",20000, -1, 1);
 
-       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark[0][3] = new TH1F("Eta_0_PT_3_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark", "Eta_0_PT_3_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark[1][3] = new TH1F("Eta_1_PT_3_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark", "Eta_1_PT_3_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark[2][3] = new TH1F("Eta_2_PT_3_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark", "Eta_2_PT_3_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark[3][3] = new TH1F("Eta_3_PT_3_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark", "Eta_3_PT_3_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark[4][3] = new TH1F("Eta_4_PT_3_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark", "Eta_4_PT_3_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark",2000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon[0][4] = new TH1F("Eta_0_PT_4_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon", "Eta_0_PT_4_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon[1][4] = new TH1F("Eta_1_PT_4_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon", "Eta_1_PT_4_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon[2][4] = new TH1F("Eta_2_PT_4_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon", "Eta_2_PT_4_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon[3][4] = new TH1F("Eta_3_PT_4_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon", "Eta_3_PT_4_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon[4][4] = new TH1F("Eta_4_PT_4_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon", "Eta_4_PT_4_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon",20000, -1, 1);
 
-       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark[0][4] = new TH1F("Eta_0_PT_4_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark", "Eta_0_PT_4_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark[1][4] = new TH1F("Eta_1_PT_4_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark", "Eta_1_PT_4_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark[2][4] = new TH1F("Eta_2_PT_4_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark", "Eta_2_PT_4_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark[3][4] = new TH1F("Eta_3_PT_4_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark", "Eta_3_PT_4_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark",2000, -1, 1);
-       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark[4][4] = new TH1F("Eta_4_PT_4_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark", "Eta_4_PT_4_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark",2000, -1, 1);
+
+
+       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark[0][0] = new TH1F("Eta_0_PT_0_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark", "Eta_0_PT_0_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark[1][0] = new TH1F("Eta_1_PT_0_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark", "Eta_1_PT_0_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark[2][0] = new TH1F("Eta_2_PT_0_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark", "Eta_2_PT_0_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark[3][0] = new TH1F("Eta_3_PT_0_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark", "Eta_3_PT_0_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark[4][0] = new TH1F("Eta_4_PT_0_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark", "Eta_4_PT_0_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark",20000, -1, 1);
+
+       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark[0][1] = new TH1F("Eta_0_PT_1_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark", "Eta_0_PT_1_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark[1][1] = new TH1F("Eta_1_PT_1_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark", "Eta_1_PT_1_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark[2][1] = new TH1F("Eta_2_PT_1_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark", "Eta_2_PT_1_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark[3][1] = new TH1F("Eta_3_PT_1_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark", "Eta_3_PT_1_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark[4][1] = new TH1F("Eta_4_PT_1_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark", "Eta_4_PT_1_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark",20000, -1, 1);
+
+       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark[0][2] = new TH1F("Eta_0_PT_2_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark", "Eta_0_PT_2_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark[1][2] = new TH1F("Eta_1_PT_2_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark", "Eta_1_PT_2_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark[2][2] = new TH1F("Eta_2_PT_2_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark", "Eta_2_PT_2_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark[3][2] = new TH1F("Eta_3_PT_2_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark", "Eta_3_PT_2_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark[4][2] = new TH1F("Eta_4_PT_2_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark", "Eta_4_PT_2_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark",20000, -1, 1);
+
+       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark[0][3] = new TH1F("Eta_0_PT_3_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark", "Eta_0_PT_3_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark[1][3] = new TH1F("Eta_1_PT_3_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark", "Eta_1_PT_3_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark[2][3] = new TH1F("Eta_2_PT_3_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark", "Eta_2_PT_3_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark[3][3] = new TH1F("Eta_3_PT_3_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark", "Eta_3_PT_3_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark[4][3] = new TH1F("Eta_4_PT_3_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark", "Eta_4_PT_3_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark",20000, -1, 1);
+
+       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark[0][4] = new TH1F("Eta_0_PT_4_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark", "Eta_0_PT_4_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark[1][4] = new TH1F("Eta_1_PT_4_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark", "Eta_1_PT_4_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark[2][4] = new TH1F("Eta_2_PT_4_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark", "Eta_2_PT_4_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark[3][4] = new TH1F("Eta_3_PT_4_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark", "Eta_3_PT_4_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark",20000, -1, 1);
+       h_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark[4][4] = new TH1F("Eta_4_PT_4_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark", "Eta_4_PT_4_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark",20000, -1, 1);
 
 
 
@@ -766,7 +761,7 @@ void FakesFromJets_GJets_NoSigmaIetaIeta()
 
        	RecoLeptonSelection(EvtInfo, LepInfo, NMuons, M_Index, NElectrons, E_Index, NLeptons, L_Index);
        	RecoJetSelection(LepInfo, JetInfo, PhotonInfo, NMuons, M_Index, NElectrons, E_Index, NJets, J_Index, NPhotons, P_Index);
-	RecoPhotonSelectionFONoSigmaIetaIeta(LepInfo, PhotonInfo, NMuons, M_Index, NElectrons, E_Index, NPhotons_FO, P_Index_FO, EvtInfo.RhoPU[0]);
+        RecoPhotonSelectionFONoSigmaIetaIeta(LepInfo, PhotonInfo, JetInfo, NJets, J_Index, NMuons, M_Index, NElectrons, E_Index, NPhotons_FO, P_Index_FO, EvtInfo.RhoPU[0]);
 	RecoPhotonSelectionNoSigmaIetaIeta(LepInfo, PhotonInfo, NMuons, M_Index, NElectrons, E_Index, NPhotons_TIGHT, P_Index_TIGHT, EvtInfo.RhoPU[0]);
 
         int NVertices=0;
@@ -786,6 +781,8 @@ void FakesFromJets_GJets_NoSigmaIetaIeta()
        //cout<<"entry:"<<entry <<endl;
        //cout<<"GenInfo.Size:"<<GenInfo.Size <<endl;
        //cout<<"PhotonInfo.Size:"<<PhotonInfo.Size <<endl;
+
+
 
 
 	    for(int g=0;g<NPhotons_FO;g++) { // loop on FO photons
@@ -814,7 +811,7 @@ void FakesFromJets_GJets_NoSigmaIetaIeta()
                  
                }
 
-		 if( (dR_aux2 == 0.5) || (GenInfo.PhotonFlag[mindex]!=1) ) continue;
+		 if( (dR_aux2 == 0.5) || (GenInfo.PhotonFlag[mindex]!=0)  ) continue;
 //              cout<<"GenInfo.PhotonFlag[mindex]:"<<GenInfo.PhotonFlag[mindex] <<endl;
 
 
@@ -847,28 +844,36 @@ void FakesFromJets_GJets_NoSigmaIetaIeta()
 		  }
 		}
 		if(JetInfo.QGTagsLikelihood[J_Index[jindex]] > 0.9){ //Quark-like
-                  Inclusive_noNJetsCut_Sigma_Ieta_Ieta_FO_Quark->Fill(PhotonInfo.SigmaIetaIeta[P_Index_FO[g]],set_of_weights[sample_index]);
+                  if(fabs(PhotonInfo.Eta[P_Index_FO[g]])<=1.4442) Inclusive_noNJetsCut_Sigma_Ieta_Ieta_FO_Quark->Fill(((PhotonInfo.SigmaIetaIeta[P_Index_FO[g]]-0.0090405)*1.04+0.0089405),set_of_weights[sample_index]);
+		  if(fabs(PhotonInfo.Eta[P_Index_FO[g]])<=2.4 && fabs(PhotonInfo.Eta[P_Index_FO[g]])>=1.566) Inclusive_noNJetsCut_Sigma_Ieta_Ieta_FO_Quark->Fill((PhotonInfo.SigmaIetaIeta[P_Index_FO[g]]*1.1-0.0025),set_of_weights[sample_index]);
                   for(unsigned int i=0; i<5; i++){
                     for(unsigned int k=0; k<5; k++){
 		      if(
  		         PhotonInfo.Eta[P_Index_FO[g]] >= (Eta_Min + i * (Eta_Max - Eta_Min)/ 5) && PhotonInfo.Eta[P_Index_FO[g]] < (Eta_Min + (i+1) * (Eta_Max - Eta_Min) / 5) &&
                  //PhotonInfo.Pt[P_Index_FO[g]] >= (PT_Min + k * (PT_Max - PT_Min)/ 5) && PhotonInfo.Pt[P_Index_FO[g]] < (PT_Min + (k+1) * (PT_Max - PT_Min) / 5)
                  PhotonInfo.Pt[P_Index_FO[g]] >= pT_Quark_subranges[k] && PhotonInfo.Pt[P_Index_FO[g]] < pT_Quark_subranges[k+1] 		      		         
-			    ) h_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark[i][k]->Fill(PhotonInfo.SigmaIetaIeta[P_Index_FO[g]],set_of_weights[sample_index]);
+			 ){
+                           if(fabs(PhotonInfo.Eta[P_Index_FO[g]])<=1.4442) h_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark[i][k]->Fill(((PhotonInfo.SigmaIetaIeta[P_Index_FO[g]]-0.0090405)*1.04+0.0089405),set_of_weights[sample_index]);
+		           if(fabs(PhotonInfo.Eta[P_Index_FO[g]])<=2.4 && fabs(PhotonInfo.Eta[P_Index_FO[g]])>=1.566) h_Sigma_Ieta_Ieta_noNJetsCut_FO_Quark[i][k]->Fill((PhotonInfo.SigmaIetaIeta[P_Index_FO[g]]*1.1-0.0025),set_of_weights[sample_index]);
+		      }
 		    }
 		  }
 		  if(NJets >=4){
                      Denominator_Quark_Inclusive->Fill(0.);
-                     Inclusive_Sigma_Ieta_Ieta_FO_Quark->Fill(PhotonInfo.SigmaIetaIeta[P_Index_FO[g]],set_of_weights[sample_index]);
-                     if(fabs(PhotonInfo.Eta[P_Index_FO[g]])<=1.4442) Inclusive_Barrel_Sigma_Ieta_Ieta_FO_Quark->Fill(PhotonInfo.SigmaIetaIeta[P_Index_FO[g]],set_of_weights[sample_index]);
-                     if(fabs(PhotonInfo.Eta[P_Index_FO[g]])<=2.4 && fabs(PhotonInfo.Eta[P_Index_FO[g]])>=1.566) Inclusive_Endcap_Sigma_Ieta_Ieta_FO_Quark->Fill(PhotonInfo.SigmaIetaIeta[P_Index_FO[g]],set_of_weights[sample_index]);
+                     if(fabs(PhotonInfo.Eta[P_Index_FO[g]])<=1.4442) Inclusive_Sigma_Ieta_Ieta_FO_Quark->Fill(((PhotonInfo.SigmaIetaIeta[P_Index_FO[g]]-0.0090405)*1.04+0.0089405),set_of_weights[sample_index]);
+		     if(fabs(PhotonInfo.Eta[P_Index_FO[g]])<=2.4 && fabs(PhotonInfo.Eta[P_Index_FO[g]])>=1.566) Inclusive_Sigma_Ieta_Ieta_FO_Quark->Fill((PhotonInfo.SigmaIetaIeta[P_Index_FO[g]]*1.1-0.0025),set_of_weights[sample_index]);
+                     if(fabs(PhotonInfo.Eta[P_Index_FO[g]])<=1.4442) Inclusive_Barrel_Sigma_Ieta_Ieta_FO_Quark->Fill(((PhotonInfo.SigmaIetaIeta[P_Index_FO[g]]-0.0090405)*1.04+0.0089405),set_of_weights[sample_index]);
+                     if(fabs(PhotonInfo.Eta[P_Index_FO[g]])<=2.4 && fabs(PhotonInfo.Eta[P_Index_FO[g]])>=1.566) Inclusive_Endcap_Sigma_Ieta_Ieta_FO_Quark->Fill((PhotonInfo.SigmaIetaIeta[P_Index_FO[g]]*1.1-0.0025),set_of_weights[sample_index]);
                      for(unsigned int i=0; i<5; i++){
                        for(unsigned int k=0; k<5; k++){
 		        if(
  		           PhotonInfo.Eta[P_Index_FO[g]] >= (Eta_Min + i * (Eta_Max - Eta_Min)/ 5) && PhotonInfo.Eta[P_Index_FO[g]] < (Eta_Min + (i+1) * (Eta_Max - Eta_Min) / 5) &&
                    //PhotonInfo.Pt[P_Index_FO[g]] >= (PT_Min + k * (PT_Max - PT_Min)/ 5) && PhotonInfo.Pt[P_Index_FO[g]] < (PT_Min + (k+1) * (PT_Max - PT_Min) / 5)
                    PhotonInfo.Pt[P_Index_FO[g]] >= pT_Quark_subranges[k] && PhotonInfo.Pt[P_Index_FO[g]] < pT_Quark_subranges[k+1] 
-			      ) h_Sigma_Ieta_Ieta_FO_Quark[i][k]->Fill(PhotonInfo.SigmaIetaIeta[P_Index_FO[g]],set_of_weights[sample_index]);
+			   ){
+                             if(fabs(PhotonInfo.Eta[P_Index_FO[g]])<=1.4442) h_Sigma_Ieta_Ieta_FO_Quark[i][k]->Fill(((PhotonInfo.SigmaIetaIeta[P_Index_FO[g]]-0.0090405)*1.04+0.0089405),set_of_weights[sample_index]);
+		             if(fabs(PhotonInfo.Eta[P_Index_FO[g]])<=2.4 && fabs(PhotonInfo.Eta[P_Index_FO[g]])>=1.566) h_Sigma_Ieta_Ieta_FO_Quark[i][k]->Fill((PhotonInfo.SigmaIetaIeta[P_Index_FO[g]]*1.1-0.0025),set_of_weights[sample_index]);
+			}
 		       }
 		     }
 		  }
@@ -882,28 +887,37 @@ void FakesFromJets_GJets_NoSigmaIetaIeta()
 
 
 		if(JetInfo.QGTagsLikelihood[J_Index[jindex]] < 0.9 && JetInfo.QGTagsLikelihood[J_Index[jindex]] >= 0.){ //Gluon/b-jet-like
-                  Inclusive_noNJetsCut_Sigma_Ieta_Ieta_FO_Gluon->Fill(PhotonInfo.SigmaIetaIeta[P_Index_FO[g]],set_of_weights[sample_index]);
+                  if(fabs(PhotonInfo.Eta[P_Index_FO[g]])<=1.4442) Inclusive_noNJetsCut_Sigma_Ieta_Ieta_FO_Gluon->Fill(((PhotonInfo.SigmaIetaIeta[P_Index_FO[g]]-0.0090405)*1.04+0.0089405),set_of_weights[sample_index]);
+		  if(fabs(PhotonInfo.Eta[P_Index_FO[g]])<=2.4 && fabs(PhotonInfo.Eta[P_Index_FO[g]])>=1.566) Inclusive_noNJetsCut_Sigma_Ieta_Ieta_FO_Gluon->Fill((PhotonInfo.SigmaIetaIeta[P_Index_FO[g]]*1.1-0.0025),set_of_weights[sample_index]);
+
                   for(unsigned int i=0; i<5; i++){
                     for(unsigned int k=0; k<5; k++){
 		      if(
  		         PhotonInfo.Eta[P_Index_FO[g]] >= (Eta_Min + i * (Eta_Max - Eta_Min)/ 5) && PhotonInfo.Eta[P_Index_FO[g]] < (Eta_Min + (i+1) * (Eta_Max - Eta_Min) / 5) &&
                  //PhotonInfo.Pt[P_Index_FO[g]] >= (PT_Min + k * (PT_Max - PT_Min)/ 5) && PhotonInfo.Pt[P_Index_FO[g]] < (PT_Min + (k+1) * (PT_Max - PT_Min) / 5)
                  PhotonInfo.Pt[P_Index_FO[g]] >= pT_Gluon_subranges[k] && PhotonInfo.Pt[P_Index_FO[g]] < pT_Gluon_subranges[k+1] 
-		        ) h_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon[i][k]->Fill(PhotonInfo.SigmaIetaIeta[P_Index_FO[g]],set_of_weights[sample_index]);
+			 ){
+                           if(fabs(PhotonInfo.Eta[P_Index_FO[g]])<=1.4442) h_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon[i][k]->Fill(((PhotonInfo.SigmaIetaIeta[P_Index_FO[g]]-0.0090405)*1.04+0.0089405),set_of_weights[sample_index]);
+	   	           if(fabs(PhotonInfo.Eta[P_Index_FO[g]])<=2.4 && fabs(PhotonInfo.Eta[P_Index_FO[g]])>=1.566) h_Sigma_Ieta_Ieta_noNJetsCut_FO_Gluon[i][k]->Fill((PhotonInfo.SigmaIetaIeta[P_Index_FO[g]]*1.1-0.0025),set_of_weights[sample_index]);
+		      }
 		    }
 		  }
 		  if(NJets >=4){
                      Denominator_Gluon_Inclusive->Fill(0.);
-                     Inclusive_Sigma_Ieta_Ieta_FO_Gluon->Fill(PhotonInfo.SigmaIetaIeta[P_Index_FO[g]],set_of_weights[sample_index]);
-                     if(fabs(PhotonInfo.Eta[P_Index_FO[g]])<=1.4442) Inclusive_Barrel_Sigma_Ieta_Ieta_FO_Gluon->Fill(PhotonInfo.SigmaIetaIeta[P_Index_FO[g]],set_of_weights[sample_index]);
-                     if(fabs(PhotonInfo.Eta[P_Index_FO[g]])<=2.4 && fabs(PhotonInfo.Eta[P_Index_FO[g]])>=1.566) Inclusive_Endcap_Sigma_Ieta_Ieta_FO_Gluon->Fill(PhotonInfo.SigmaIetaIeta[P_Index_FO[g]],set_of_weights[sample_index]);
+                     if(fabs(PhotonInfo.Eta[P_Index_FO[g]])<=1.4442) Inclusive_Sigma_Ieta_Ieta_FO_Gluon->Fill(((PhotonInfo.SigmaIetaIeta[P_Index_FO[g]]-0.0090405)*1.04+0.0089405),set_of_weights[sample_index]);
+		     if(fabs(PhotonInfo.Eta[P_Index_FO[g]])<=2.4 && fabs(PhotonInfo.Eta[P_Index_FO[g]])>=1.566) Inclusive_Sigma_Ieta_Ieta_FO_Gluon->Fill((PhotonInfo.SigmaIetaIeta[P_Index_FO[g]]*1.1-0.0025),set_of_weights[sample_index]);
+                     if(fabs(PhotonInfo.Eta[P_Index_FO[g]])<=1.4442) Inclusive_Barrel_Sigma_Ieta_Ieta_FO_Gluon->Fill(((PhotonInfo.SigmaIetaIeta[P_Index_FO[g]]-0.0090405)*1.04+0.0089405),set_of_weights[sample_index]);
+                     if(fabs(PhotonInfo.Eta[P_Index_FO[g]])<=2.4 && fabs(PhotonInfo.Eta[P_Index_FO[g]])>=1.566) Inclusive_Endcap_Sigma_Ieta_Ieta_FO_Gluon->Fill((PhotonInfo.SigmaIetaIeta[P_Index_FO[g]]*1.1-0.0025),set_of_weights[sample_index]);
                      for(unsigned int i=0; i<5; i++){
                        for(unsigned int k=0; k<5; k++){
 		        if(
    		           PhotonInfo.Eta[P_Index_FO[g]] >= (Eta_Min + i * (Eta_Max - Eta_Min)/ 5) && PhotonInfo.Eta[P_Index_FO[g]] < (Eta_Min + (i+1) * (Eta_Max - Eta_Min) / 5) &&
                    //PhotonInfo.Pt[P_Index_FO[g]] >= (PT_Min + k * (PT_Max - PT_Min)/ 5) && PhotonInfo.Pt[P_Index_FO[g]] < (PT_Min + (k+1) * (PT_Max - PT_Min) / 5)
                    PhotonInfo.Pt[P_Index_FO[g]] >= pT_Gluon_subranges[k] && PhotonInfo.Pt[P_Index_FO[g]] < pT_Gluon_subranges[k+1] 
-			      ) h_Sigma_Ieta_Ieta_FO_Gluon[i][k]->Fill(PhotonInfo.SigmaIetaIeta[P_Index_FO[g]],set_of_weights[sample_index]);
+			   ){
+                             if(fabs(PhotonInfo.Eta[P_Index_FO[g]])<=1.4442) h_Sigma_Ieta_Ieta_FO_Gluon[i][k]->Fill(((PhotonInfo.SigmaIetaIeta[P_Index_FO[g]]-0.0090405)*1.04+0.0089405),set_of_weights[sample_index]);
+		             if(fabs(PhotonInfo.Eta[P_Index_FO[g]])<=2.4 && fabs(PhotonInfo.Eta[P_Index_FO[g]])>=1.566) h_Sigma_Ieta_Ieta_FO_Gluon[i][k]->Fill((PhotonInfo.SigmaIetaIeta[P_Index_FO[g]]*1.1-0.0025),set_of_weights[sample_index]);
+			}
 		       }
 		     }
 		  }
@@ -923,6 +937,10 @@ void FakesFromJets_GJets_NoSigmaIetaIeta()
 
 	    for(int g=0;g<NPhotons_TIGHT;g++) { // loop on TIGHT photons
 
+//              if(GenInfo.PhotonFlag[P_Index_TIGHT[g]]==1 ){//Add by Yuhsiang
+//              cout<<"PhotonFlag:"<<GenInfo.PhotonFlag[P_Index_TIGHT[g]] <<endl;}//Add by Yuhsiang
+//              if(GenInfo.PhotonFlag[P_Index_TIGHT[g]]!=1){continue;}//Add by Yuhsiang
+
      	      double dR_aux = 0.5;
               int jindex;
 	      for(int j=0;j<NJets;j++) { // loop on jets
@@ -932,31 +950,30 @@ void FakesFromJets_GJets_NoSigmaIetaIeta()
                  if(dR < dR_aux){ dR_aux = dR; jindex = j;}
 	      }
 
-              double dR_aux2 = 0.5;//Marco edit the matching BTW GenInfo and RecoPhoton
-              int mindex;
-              for(int m=0;m<GenInfo.Size ;m++) { // loop on GenInfo
+               double dR_aux2 = 0.5;
+
+               int mindex;
+               for(int m=0;m<GenInfo.Size ;m++) { // loop on GenInfo
                  double dphi = DPHI(PhotonInfo.Phi[P_Index_TIGHT[g]], GenInfo.Phi[m]);
-                 double deta = fabs(PhotonInfo.Eta[P_Index_TIGHT[g]]- GenInfo.Eta[m]);
+                 double deta = fabs(PhotonInfo.Eta[P_Index_TIGHT[g]]-GenInfo.Eta[m]);
                  double dR   = pow(dphi*dphi+deta*deta, 0.5);
                  if(dR < dR_aux2){ dR_aux2 = dR; mindex = m;}
+                 
+               }
 
-              }
-
-              if( (dR_aux2 == 0.5) || (GenInfo.PhotonFlag[mindex]!=1)  ) continue;//end matching
+		 if( (dR_aux2 == 0.5) || (GenInfo.PhotonFlag[mindex]!=0)  ) continue;
 //              cout<<"GenInfo.PhotonFlag[mindex]:"<<GenInfo.PhotonFlag[mindex] <<endl;
 
 
-
-
-              Denominator_TIGHT_Matching->Fill(0.);
+              Numerator_TIGHT_Matching->Fill(0.);
 
               if(dR_aux < 0.5){
                 Inclusive_noNJetsCut_QGTagsMLP_Matched_TIGHT->Fill(JetInfo.QGTagsMLP[J_Index[jindex]],set_of_weights[sample_index]);
                 Inclusive_noNJetsCut_QGTagsLikelihood_Matched_TIGHT->Fill(JetInfo.QGTagsLikelihood[J_Index[jindex]],set_of_weights[sample_index]);
                 for(unsigned int i=0; i<5; i++){
                   for(unsigned int k=0; k<5; k++){
-		   if(		   
-		      PhotonInfo.Eta[P_Index_TIGHT[g]] >= (Eta_Min + i * (Eta_Max - Eta_Min)/ 5) && PhotonInfo.Eta[P_Index_TIGHT[g]] < (Eta_Min + (i+1) * (Eta_Max - Eta_Min) / 5) &&
+		   if(
+  		      PhotonInfo.Eta[P_Index_TIGHT[g]] >= (Eta_Min + i * (Eta_Max - Eta_Min)/ 5) && PhotonInfo.Eta[P_Index_TIGHT[g]] < (Eta_Min + (i+1) * (Eta_Max - Eta_Min) / 5) &&
               //PhotonInfo.Pt[P_Index_TIGHT[g]] >= (PT_Min + k * (PT_Max - PT_Min)/ 5) && PhotonInfo.Pt[P_Index_TIGHT[g]] < (PT_Min + (k+1) * (PT_Max - PT_Min) / 5)
               PhotonInfo.Pt[P_Index_TIGHT[g]] >= pT_subranges[k] && PhotonInfo.Pt[P_Index_TIGHT[g]] < pT_subranges[k+1] 
 		     ) h_QGTagsMLP_noNJetsCut_Matched_TIGHT[i][k]->Fill(JetInfo.QGTagsLikelihood[J_Index[jindex]],set_of_weights[sample_index]);
@@ -976,34 +993,40 @@ void FakesFromJets_GJets_NoSigmaIetaIeta()
 		     }
 		  }
 		}
-
 		if(JetInfo.QGTagsLikelihood[J_Index[jindex]] > 0.9){ //Quark-like
-                  Inclusive_noNJetsCut_Sigma_Ieta_Ieta_TIGHT_Quark->Fill(PhotonInfo.SigmaIetaIeta[P_Index_TIGHT[g]],set_of_weights[sample_index]);
+                  if(fabs(PhotonInfo.Eta[P_Index_TIGHT[g]])<=1.4442) Inclusive_noNJetsCut_Sigma_Ieta_Ieta_TIGHT_Quark->Fill(((PhotonInfo.SigmaIetaIeta[P_Index_TIGHT[g]]-0.0090405)*1.04+0.0089405),set_of_weights[sample_index]);
+		  if(fabs(PhotonInfo.Eta[P_Index_TIGHT[g]])<=2.4 && fabs(PhotonInfo.Eta[P_Index_TIGHT[g]])>=1.566) Inclusive_noNJetsCut_Sigma_Ieta_Ieta_TIGHT_Quark->Fill((PhotonInfo.SigmaIetaIeta[P_Index_TIGHT[g]]*1.1-0.0025),set_of_weights[sample_index]);
                   for(unsigned int i=0; i<5; i++){
-                     for(unsigned int k=0; k<5; k++){
+                    for(unsigned int k=0; k<5; k++){
 		      if(
-		         PhotonInfo.Eta[P_Index_TIGHT[g]] >= (Eta_Min + i * (Eta_Max - Eta_Min)/ 5) && PhotonInfo.Eta[P_Index_TIGHT[g]] < (Eta_Min + (i+1) * (Eta_Max - Eta_Min) / 5) &&
+ 		         PhotonInfo.Eta[P_Index_TIGHT[g]] >= (Eta_Min + i * (Eta_Max - Eta_Min)/ 5) && PhotonInfo.Eta[P_Index_TIGHT[g]] < (Eta_Min + (i+1) * (Eta_Max - Eta_Min) / 5) &&
                  //PhotonInfo.Pt[P_Index_TIGHT[g]] >= (PT_Min + k * (PT_Max - PT_Min)/ 5) && PhotonInfo.Pt[P_Index_TIGHT[g]] < (PT_Min + (k+1) * (PT_Max - PT_Min) / 5)
-			 PhotonInfo.Pt[P_Index_TIGHT[g]] >= pT_Quark_subranges[k] && PhotonInfo.Pt[P_Index_TIGHT[g]] < pT_Quark_subranges[k+1] 
-			 ) h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark[i][k]->Fill(PhotonInfo.SigmaIetaIeta[P_Index_TIGHT[g]],set_of_weights[sample_index]);
-		     }
+                 PhotonInfo.Pt[P_Index_TIGHT[g]] >= pT_Quark_subranges[k] && PhotonInfo.Pt[P_Index_TIGHT[g]] < pT_Quark_subranges[k+1] 		      		         
+			 ){
+                           if(fabs(PhotonInfo.Eta[P_Index_TIGHT[g]])<=1.4442) h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark[i][k]->Fill(((PhotonInfo.SigmaIetaIeta[P_Index_TIGHT[g]]-0.0090405)*1.04+0.0089405),set_of_weights[sample_index]);
+		           if(fabs(PhotonInfo.Eta[P_Index_TIGHT[g]])<=2.4 && fabs(PhotonInfo.Eta[P_Index_TIGHT[g]])>=1.566) h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Quark[i][k]->Fill((PhotonInfo.SigmaIetaIeta[P_Index_TIGHT[g]]*1.1-0.0025),set_of_weights[sample_index]);
+		      }
+		    }
 		  }
-                  if(NJets >=4){
+		  if(NJets >=4){
                      Numerator_Quark_Inclusive->Fill(0.);
-                     Inclusive_Sigma_Ieta_Ieta_TIGHT_Quark->Fill(PhotonInfo.SigmaIetaIeta[P_Index_TIGHT[g]],set_of_weights[sample_index]);
-                     if(fabs(PhotonInfo.Eta[P_Index_TIGHT[g]])<=1.4442) Inclusive_Barrel_Sigma_Ieta_Ieta_TIGHT_Quark->Fill(PhotonInfo.SigmaIetaIeta[P_Index_TIGHT[g]],set_of_weights[sample_index]);
-                     if(fabs(PhotonInfo.Eta[P_Index_TIGHT[g]])<=2.4 && fabs(PhotonInfo.Eta[P_Index_TIGHT[g]])>=1.566) Inclusive_Endcap_Sigma_Ieta_Ieta_TIGHT_Quark->Fill(PhotonInfo.SigmaIetaIeta[P_Index_TIGHT[g]],set_of_weights[sample_index]);
+                     if(fabs(PhotonInfo.Eta[P_Index_TIGHT[g]])<=1.4442) Inclusive_Sigma_Ieta_Ieta_TIGHT_Quark->Fill(((PhotonInfo.SigmaIetaIeta[P_Index_TIGHT[g]]-0.0090405)*1.04+0.0089405),set_of_weights[sample_index]);
+		     if(fabs(PhotonInfo.Eta[P_Index_TIGHT[g]])<=2.4 && fabs(PhotonInfo.Eta[P_Index_TIGHT[g]])>=1.566) Inclusive_Sigma_Ieta_Ieta_TIGHT_Quark->Fill((PhotonInfo.SigmaIetaIeta[P_Index_TIGHT[g]]*1.1-0.0025),set_of_weights[sample_index]);
+                     if(fabs(PhotonInfo.Eta[P_Index_TIGHT[g]])<=1.4442) Inclusive_Barrel_Sigma_Ieta_Ieta_TIGHT_Quark->Fill(((PhotonInfo.SigmaIetaIeta[P_Index_TIGHT[g]]-0.0090405)*1.04+0.0089405),set_of_weights[sample_index]);
+                     if(fabs(PhotonInfo.Eta[P_Index_TIGHT[g]])<=2.4 && fabs(PhotonInfo.Eta[P_Index_TIGHT[g]])>=1.566) Inclusive_Endcap_Sigma_Ieta_Ieta_TIGHT_Quark->Fill((PhotonInfo.SigmaIetaIeta[P_Index_TIGHT[g]]*1.1-0.0025),set_of_weights[sample_index]);
                      for(unsigned int i=0; i<5; i++){
                        for(unsigned int k=0; k<5; k++){
 		        if(
-  		           PhotonInfo.Eta[P_Index_TIGHT[g]] >= (Eta_Min + i * (Eta_Max - Eta_Min)/ 5) && PhotonInfo.Eta[P_Index_TIGHT[g]] < (Eta_Min + (i+1) * (Eta_Max - Eta_Min) / 5) &&
+ 		           PhotonInfo.Eta[P_Index_TIGHT[g]] >= (Eta_Min + i * (Eta_Max - Eta_Min)/ 5) && PhotonInfo.Eta[P_Index_TIGHT[g]] < (Eta_Min + (i+1) * (Eta_Max - Eta_Min) / 5) &&
                    //PhotonInfo.Pt[P_Index_TIGHT[g]] >= (PT_Min + k * (PT_Max - PT_Min)/ 5) && PhotonInfo.Pt[P_Index_TIGHT[g]] < (PT_Min + (k+1) * (PT_Max - PT_Min) / 5)
                    PhotonInfo.Pt[P_Index_TIGHT[g]] >= pT_Quark_subranges[k] && PhotonInfo.Pt[P_Index_TIGHT[g]] < pT_Quark_subranges[k+1] 
-			      ) h_Sigma_Ieta_Ieta_TIGHT_Quark[i][k]->Fill(PhotonInfo.SigmaIetaIeta[P_Index_TIGHT[g]],set_of_weights[sample_index]);
+			   ){
+                             if(fabs(PhotonInfo.Eta[P_Index_TIGHT[g]])<=1.4442) h_Sigma_Ieta_Ieta_TIGHT_Quark[i][k]->Fill(((PhotonInfo.SigmaIetaIeta[P_Index_TIGHT[g]]-0.0090405)*1.04+0.0089405),set_of_weights[sample_index]);
+		             if(fabs(PhotonInfo.Eta[P_Index_TIGHT[g]])<=2.4 && fabs(PhotonInfo.Eta[P_Index_TIGHT[g]])>=1.566) h_Sigma_Ieta_Ieta_TIGHT_Quark[i][k]->Fill((PhotonInfo.SigmaIetaIeta[P_Index_TIGHT[g]]*1.1-0.0025),set_of_weights[sample_index]);
+			}
 		       }
 		     }
 		  }
-
 		  Numerator_Quark_NVTX->Fill(NVertices);
 		  Numerator_Quark_NJets->Fill(NJets);
 		  Numerator_Quark_PT->Fill(PhotonInfo.Pt[P_Index_TIGHT[g]]);
@@ -1011,29 +1034,40 @@ void FakesFromJets_GJets_NoSigmaIetaIeta()
 		  Numerator_Quark_Eta_PT->Fill(PhotonInfo.Eta[P_Index_TIGHT[g]],PhotonInfo.Pt[P_Index_TIGHT[g]]);
 		}
 
+
+
 		if(JetInfo.QGTagsLikelihood[J_Index[jindex]] < 0.9 && JetInfo.QGTagsLikelihood[J_Index[jindex]] >= 0.){ //Gluon/b-jet-like
-                  Inclusive_noNJetsCut_Sigma_Ieta_Ieta_TIGHT_Gluon->Fill(PhotonInfo.SigmaIetaIeta[P_Index_TIGHT[g]],set_of_weights[sample_index]);
+                  if(fabs(PhotonInfo.Eta[P_Index_TIGHT[g]])<=1.4442) Inclusive_noNJetsCut_Sigma_Ieta_Ieta_TIGHT_Gluon->Fill(((PhotonInfo.SigmaIetaIeta[P_Index_TIGHT[g]]-0.0090405)*1.04+0.0089405),set_of_weights[sample_index]);
+		  if(fabs(PhotonInfo.Eta[P_Index_TIGHT[g]])<=2.4 && fabs(PhotonInfo.Eta[P_Index_TIGHT[g]])>=1.566) Inclusive_noNJetsCut_Sigma_Ieta_Ieta_TIGHT_Gluon->Fill((PhotonInfo.SigmaIetaIeta[P_Index_TIGHT[g]]*1.1-0.0025),set_of_weights[sample_index]);
+
                   for(unsigned int i=0; i<5; i++){
                     for(unsigned int k=0; k<5; k++){
 		      if(
-		         PhotonInfo.Eta[P_Index_TIGHT[g]] >= (Eta_Min + i * (Eta_Max - Eta_Min)/ 5) && PhotonInfo.Eta[P_Index_TIGHT[g]] < (Eta_Min + (i+1) * (Eta_Max - Eta_Min) / 5) &&
+ 		         PhotonInfo.Eta[P_Index_TIGHT[g]] >= (Eta_Min + i * (Eta_Max - Eta_Min)/ 5) && PhotonInfo.Eta[P_Index_TIGHT[g]] < (Eta_Min + (i+1) * (Eta_Max - Eta_Min) / 5) &&
                  //PhotonInfo.Pt[P_Index_TIGHT[g]] >= (PT_Min + k * (PT_Max - PT_Min)/ 5) && PhotonInfo.Pt[P_Index_TIGHT[g]] < (PT_Min + (k+1) * (PT_Max - PT_Min) / 5)
                  PhotonInfo.Pt[P_Index_TIGHT[g]] >= pT_Gluon_subranges[k] && PhotonInfo.Pt[P_Index_TIGHT[g]] < pT_Gluon_subranges[k+1] 
-			    ) h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon[i][k]->Fill(PhotonInfo.SigmaIetaIeta[P_Index_TIGHT[g]],set_of_weights[sample_index]);
+			 ){
+                           if(fabs(PhotonInfo.Eta[P_Index_TIGHT[g]])<=1.4442) h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon[i][k]->Fill(((PhotonInfo.SigmaIetaIeta[P_Index_TIGHT[g]]-0.0090405)*1.04+0.0089405),set_of_weights[sample_index]);
+	   	           if(fabs(PhotonInfo.Eta[P_Index_TIGHT[g]])<=2.4 && fabs(PhotonInfo.Eta[P_Index_TIGHT[g]])>=1.566) h_Sigma_Ieta_Ieta_noNJetsCut_TIGHT_Gluon[i][k]->Fill((PhotonInfo.SigmaIetaIeta[P_Index_TIGHT[g]]*1.1-0.0025),set_of_weights[sample_index]);
+		      }
 		    }
 		  }
 		  if(NJets >=4){
                      Numerator_Gluon_Inclusive->Fill(0.);
-                     Inclusive_Sigma_Ieta_Ieta_TIGHT_Gluon->Fill(PhotonInfo.SigmaIetaIeta[P_Index_TIGHT[g]],set_of_weights[sample_index]);
-                     if(fabs(PhotonInfo.Eta[P_Index_TIGHT[g]])<=1.4442) Inclusive_Barrel_Sigma_Ieta_Ieta_TIGHT_Gluon->Fill(PhotonInfo.SigmaIetaIeta[P_Index_TIGHT[g]],set_of_weights[sample_index]);
-                     if(fabs(PhotonInfo.Eta[P_Index_TIGHT[g]])<=2.4 && fabs(PhotonInfo.Eta[P_Index_TIGHT[g]])>=1.566) Inclusive_Endcap_Sigma_Ieta_Ieta_TIGHT_Gluon->Fill(PhotonInfo.SigmaIetaIeta[P_Index_TIGHT[g]],set_of_weights[sample_index]);
+                     if(fabs(PhotonInfo.Eta[P_Index_TIGHT[g]])<=1.4442) Inclusive_Sigma_Ieta_Ieta_TIGHT_Gluon->Fill(((PhotonInfo.SigmaIetaIeta[P_Index_TIGHT[g]]-0.0090405)*1.04+0.0089405),set_of_weights[sample_index]);
+		     if(fabs(PhotonInfo.Eta[P_Index_TIGHT[g]])<=2.4 && fabs(PhotonInfo.Eta[P_Index_TIGHT[g]])>=1.566) Inclusive_Sigma_Ieta_Ieta_TIGHT_Gluon->Fill((PhotonInfo.SigmaIetaIeta[P_Index_TIGHT[g]]*1.1-0.0025),set_of_weights[sample_index]);
+                     if(fabs(PhotonInfo.Eta[P_Index_TIGHT[g]])<=1.4442) Inclusive_Barrel_Sigma_Ieta_Ieta_TIGHT_Gluon->Fill(((PhotonInfo.SigmaIetaIeta[P_Index_TIGHT[g]]-0.0090405)*1.04+0.0089405),set_of_weights[sample_index]);
+                     if(fabs(PhotonInfo.Eta[P_Index_TIGHT[g]])<=2.4 && fabs(PhotonInfo.Eta[P_Index_TIGHT[g]])>=1.566) Inclusive_Endcap_Sigma_Ieta_Ieta_TIGHT_Gluon->Fill((PhotonInfo.SigmaIetaIeta[P_Index_TIGHT[g]]*1.1-0.0025),set_of_weights[sample_index]);
                      for(unsigned int i=0; i<5; i++){
                        for(unsigned int k=0; k<5; k++){
 		        if(
- 		           PhotonInfo.Eta[P_Index_TIGHT[g]] >= (Eta_Min + i * (Eta_Max - Eta_Min)/ 5) && PhotonInfo.Eta[P_Index_TIGHT[g]] < (Eta_Min + (i+1) * (Eta_Max - Eta_Min) / 5) &&
+   		           PhotonInfo.Eta[P_Index_TIGHT[g]] >= (Eta_Min + i * (Eta_Max - Eta_Min)/ 5) && PhotonInfo.Eta[P_Index_TIGHT[g]] < (Eta_Min + (i+1) * (Eta_Max - Eta_Min) / 5) &&
                    //PhotonInfo.Pt[P_Index_TIGHT[g]] >= (PT_Min + k * (PT_Max - PT_Min)/ 5) && PhotonInfo.Pt[P_Index_TIGHT[g]] < (PT_Min + (k+1) * (PT_Max - PT_Min) / 5)
-			   PhotonInfo.Pt[P_Index_TIGHT[g]] >= pT_Gluon_subranges[k] && PhotonInfo.Pt[P_Index_TIGHT[g]] < pT_Gluon_subranges[k+1] 
-			      ) h_Sigma_Ieta_Ieta_TIGHT_Gluon[i][k]->Fill(PhotonInfo.SigmaIetaIeta[P_Index_TIGHT[g]],set_of_weights[sample_index]);
+                   PhotonInfo.Pt[P_Index_TIGHT[g]] >= pT_Gluon_subranges[k] && PhotonInfo.Pt[P_Index_TIGHT[g]] < pT_Gluon_subranges[k+1] 
+			   ){
+                             if(fabs(PhotonInfo.Eta[P_Index_TIGHT[g]])<=1.4442) h_Sigma_Ieta_Ieta_TIGHT_Gluon[i][k]->Fill(((PhotonInfo.SigmaIetaIeta[P_Index_TIGHT[g]]-0.0090405)*1.04+0.0089405),set_of_weights[sample_index]);
+		             if(fabs(PhotonInfo.Eta[P_Index_TIGHT[g]])<=2.4 && fabs(PhotonInfo.Eta[P_Index_TIGHT[g]])>=1.566) h_Sigma_Ieta_Ieta_TIGHT_Gluon[i][k]->Fill((PhotonInfo.SigmaIetaIeta[P_Index_TIGHT[g]]*1.1-0.0025),set_of_weights[sample_index]);
+			}
 		       }
 		     }
 		  }
@@ -1049,15 +1083,7 @@ void FakesFromJets_GJets_NoSigmaIetaIeta()
 	    } // loop on TIGHT photons
 
 
-
-
-
-
        } //event loop end
-
-
-
-
 
 
     } // sample loop end
