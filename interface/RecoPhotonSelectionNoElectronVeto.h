@@ -1,7 +1,6 @@
 #ifndef RecoPhotonSelectionNoElectronVeto_H
 #define RecoPhotonSelectionNoElectronVeto_H
 
-
 #include "format.h"
 #include "DPHI.h"
 #include "EffectiveAreaPhoton.h"
@@ -15,9 +14,7 @@ void RecoPhotonSelectionNoElectronVeto(LepInfoBranches LepInfo, PhotonInfoBranch
     for(int nl=0;nl<PhotonInfo.Size;nl++){
         // Tight Photon
         if(     
-                (fabs(PhotonInfo.Pt[nl])>30)
-&&
-
+	        (fabs(PhotonInfo.Pt[nl])>30)&&
                 ((// Barrel
                   fabs(PhotonInfo.Eta[nl])<=1.4442 &&
                   PhotonInfo.hadTowOverEm[nl] <=0.05 &&

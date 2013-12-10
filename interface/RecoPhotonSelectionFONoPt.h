@@ -1,5 +1,5 @@
-#ifndef RecoPhotonSelectionFO_H
-#define RecoPhotonSelectionFO_H
+#ifndef RecoPhotonSelectionFONoPt_H
+#define RecoPhotonSelectionFONoPt_H
 
 
 #include "format.h"
@@ -7,7 +7,7 @@
 #include "EffectiveAreaPhoton.h"
 #include "TLorentzVector.h"
 
-void RecoPhotonSelectionFO(LepInfoBranches LepInfo, PhotonInfoBranches PhotonInfo, 
+void RecoPhotonSelectionFONoPt(LepInfoBranches LepInfo, PhotonInfoBranches PhotonInfo, 
         int NMuons, int M_Index[], int NElectrons, int E_Index[], int &NPhotons, int *P_Index,float RhoPU){
 
     //RhoPU = 0;  // turn off Rho correction
@@ -15,7 +15,7 @@ void RecoPhotonSelectionFO(LepInfoBranches LepInfo, PhotonInfoBranches PhotonInf
     for(int nl=0;nl<PhotonInfo.Size;nl++){
         // Tight Photon
         if(     
-                (fabs(PhotonInfo.Pt[nl])>30)&&
+//                (fabs(PhotonInfo.Pt[nl])>30)&&
                 ((// Barrel
                   fabs(PhotonInfo.Eta[nl])<=1.4442 &&
 		  //                  PhotonInfo.hadTowOverEm[nl] <=0.05 &&

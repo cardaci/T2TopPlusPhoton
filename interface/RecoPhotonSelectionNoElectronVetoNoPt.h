@@ -1,12 +1,12 @@
-#ifndef RecoPhotonSelection_H
-#define RecoPhotonSelection_H
+#ifndef RecoPhotonSelectionNoElectronVetoNoPt_H
+#define RecoPhotonSelectionNoElectronVetoNoPt_H
 
 #include "format.h"
 #include "DPHI.h"
 #include "EffectiveAreaPhoton.h"
 #include "TLorentzVector.h"
 
-void RecoPhotonSelection(LepInfoBranches LepInfo, PhotonInfoBranches PhotonInfo, 
+void RecoPhotonSelectionNoElectronVetoNoPt(LepInfoBranches LepInfo, PhotonInfoBranches PhotonInfo, 
         int NMuons, int M_Index[], int NElectrons, int E_Index[], int &NPhotons, int *P_Index,float RhoPU){
 
     //RhoPU = 0;  // turn off Rho correction
@@ -14,12 +14,12 @@ void RecoPhotonSelection(LepInfoBranches LepInfo, PhotonInfoBranches PhotonInfo,
     for(int nl=0;nl<PhotonInfo.Size;nl++){
         // Tight Photon
         if(     
-	        (fabs(PhotonInfo.Pt[nl])>30)&&
+	        //(fabs(PhotonInfo.Pt[nl])>30)&&
                 ((// Barrel
                   fabs(PhotonInfo.Eta[nl])<=1.4442 &&
                   PhotonInfo.hadTowOverEm[nl] <=0.05 &&
                   PhotonInfo.SigmaIetaIeta[nl]<0.011 &&
-                  PhotonInfo.passelectronveto[nl] &&
+//                  PhotonInfo.passelectronveto[nl] &&
                   (max(PhotonInfo.phoPFChIsoDR03[nl]-EffectiveAreaPhoton(PhotonInfo.Eta[nl],0)*RhoPU,(float)0.) < 0.7) &&
                   (max(PhotonInfo.phoPFNeuIsoDR03[nl]-EffectiveAreaPhoton(PhotonInfo.Eta[nl],1)*RhoPU,(float)0.)<0.4+0.04*PhotonInfo.Pt[nl])
 		  &&
@@ -29,7 +29,7 @@ void RecoPhotonSelection(LepInfoBranches LepInfo, PhotonInfoBranches PhotonInfo,
                  (// Endcap
                   (fabs(PhotonInfo.Eta[nl])<2.4)&&(fabs(PhotonInfo.Eta[nl])>=1.566) &&
                   PhotonInfo.SigmaIetaIeta[nl]<0.031 &&
-                  PhotonInfo.passelectronveto[nl] &&
+//                  PhotonInfo.passelectronveto[nl] &&
                   PhotonInfo.hadTowOverEm[nl] <=0.05 &&
                   (max(PhotonInfo.phoPFChIsoDR03[nl]-EffectiveAreaPhoton(PhotonInfo.Eta[nl],0)*RhoPU,(float)0.) < 0.5) &&
                   (max(PhotonInfo.phoPFNeuIsoDR03[nl]-EffectiveAreaPhoton(PhotonInfo.Eta[nl],1)*RhoPU,(float)0.)<1.5+0.04*PhotonInfo.Pt[nl])
