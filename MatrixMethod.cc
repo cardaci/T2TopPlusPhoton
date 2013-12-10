@@ -55,7 +55,7 @@ void MatrixMethod()
 
 
 
-     for(int pseudoexp_index = 0; pseudoexp_index < 100000; pseudoexp_index++){
+     for(int pseudoexp_index = 0; pseudoexp_index < 1000000; pseudoexp_index++){
 
 
        // Initial values
