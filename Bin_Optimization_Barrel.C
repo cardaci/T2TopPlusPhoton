@@ -25,7 +25,7 @@ void Bin_Optimization_Barrel(){
     int PT_N_bins = 10000;
 
 
-    TFile *f1 = new TFile("FakesFromJetsResults_Background.root");
+    TFile *f1 = new TFile("FakesFromJetsResults_Background_forBin_Optimization.root");
 
     TH1F *h_Denominator_Quark_PT;
     h_Denominator_Quark_PT =(TH1F*) f1->Get("Denominator_Quark_PT_Barrel");
